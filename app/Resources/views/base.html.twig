@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Menu{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" />
+        {% stylesheets filter="compass"
+            "assets/css/global.scss"
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="body">
+            <div id="header-nav">
+                {% block header %}
+                    {{ include('header.html.twig') }}
+                {% endblock header %}
+
+                {% block nav %}
+                    {{ include('nav.html.twig') }}
+                {% endblock nav %}
+            </div>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+
+            {% block footer %}
+            {% endblock footer %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,43 @@
+/* line 7, assetic_compass5sq1Zd.scss */
+body {
+  background-color: #ffffff;
+  width: 100%;
+  font-size: 12px;
+}
+
+/* line 14, assetic_compass5sq1Zd.scss */
+#header-nav header {
+  height: 80px;
+}
+/* line 17, assetic_compass5sq1Zd.scss */
+#header-nav header h1 {
+  text-align: center;
+}
+/* line 24, assetic_compass5sq1Zd.scss */
+#header-nav nav ul {
+  width: 960px;
+  margin: auto;
+  background-color: #b9def0;
+  display: flex;
+  font-size: 2em;
+}
+/* line 30, assetic_compass5sq1Zd.scss */
+#header-nav nav ul :hover {
+  background-color: orange;
+}
+/* line 34, assetic_compass5sq1Zd.scss */
+#header-nav nav ul li {
+  list-style: none;
+  flex: 1 1 100%;
+  border: 1px solid red;
+}
+/* line 42, assetic_compass5sq1Zd.scss */
+#header-nav nav ul li .fa {
+  margin: 0 10px;
+}
+
+/* line 51, assetic_compass5sq1Zd.scss */
+#content {
+  width: 960px;
+  margin: auto;
+}

@@ -1,0 +1,29 @@
+body {
+  background-color: #ffffff;
+  width: 100%;
+  font-size: 12px; }
+
+#header-nav header {
+  height: 80px; }
+  #header-nav header h1 {
+    text-align: center; }
+#header-nav nav ul {
+  width: 960px;
+  margin: auto;
+  background-color: #b9def0;
+  display: flex;
+  font-size: 2em; }
+  #header-nav nav ul :hover {
+    background-color: orange; }
+  #header-nav nav ul li {
+    list-style: none;
+    flex: 1 1 100%;
+    border: 1px solid red; }
+    #header-nav nav ul li .fa {
+      margin: 0 10px; }
+
+#content {
+  width: 960px;
+  margin: auto; }
+
+/*# sourceMappingURL=global.css.map */
