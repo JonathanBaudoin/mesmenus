@@ -1,19 +1,31 @@
-/* line 7, assetic_compass5sq1Zd.scss */
+/* line 13, assetic_compassmcTYjB.scss */
+body, ul, li, a, a:hover {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* line 20, assetic_compassmcTYjB.scss */
 body {
   background-color: #ffffff;
   width: 100%;
-  font-size: 12px;
 }
 
-/* line 14, assetic_compass5sq1Zd.scss */
+/* line 26, assetic_compassmcTYjB.scss */
+h1 {
+  color: #3c7d9c;
+}
+
+/* line 31, assetic_compassmcTYjB.scss */
 #header-nav header {
   height: 80px;
 }
-/* line 17, assetic_compass5sq1Zd.scss */
+/* line 34, assetic_compassmcTYjB.scss */
 #header-nav header h1 {
   text-align: center;
 }
-/* line 24, assetic_compass5sq1Zd.scss */
+/* line 41, assetic_compassmcTYjB.scss */
 #header-nav nav ul {
   width: 960px;
   margin: auto;
@@ -21,22 +33,32 @@ body {
   display: flex;
   font-size: 2em;
 }
-/* line 30, assetic_compass5sq1Zd.scss */
+/* line 47, assetic_compassmcTYjB.scss */
 #header-nav nav ul :hover {
-  background-color: orange;
+  background-color: #3c7d9c;
 }
-/* line 34, assetic_compass5sq1Zd.scss */
+/* line 51, assetic_compassmcTYjB.scss */
 #header-nav nav ul li {
   list-style: none;
   flex: 1 1 100%;
-  border: 1px solid red;
 }
-/* line 42, assetic_compass5sq1Zd.scss */
+/* line 58, assetic_compassmcTYjB.scss */
+#header-nav nav ul li a {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 64, assetic_compassmcTYjB.scss */
+#header-nav nav ul li a:hover {
+  color: #ffffff;
+}
+/* line 69, assetic_compassmcTYjB.scss */
 #header-nav nav ul li .fa {
   margin: 0 10px;
 }
 
-/* line 51, assetic_compass5sq1Zd.scss */
+/* line 78, assetic_compassmcTYjB.scss */
 #content {
   width: 960px;
   margin: auto;

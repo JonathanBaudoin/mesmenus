@@ -1,13 +1,30 @@
-// Color
+// Colors
 $white: #ffffff;
+$blue-normal: #b9def0;
+$blue-light: #cdeaf8;
+$blue-lighter: #d8edf8;
+$blue-dark: #95aab4;
+$blue-darker: #3c7d9c;
+
 
 // Width
 $content-width: 960px;
 
+body, ul, li, a, a:hover {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
 body {
     background-color: $white;
     width: 100%;
-    font-size: 12px;
+    //font-size: 12px;
+}
+
+h1 {
+    color: $blue-darker;
 }
 
 #header-nav {
@@ -24,19 +41,29 @@ body {
         ul {
             width: $content-width;
             margin: auto;
-            background-color: #b9def0;
+            background-color: $blue-normal;
             display: flex;
             font-size: 2em;
             :hover {
-                    background-color: orange;
+                    background-color: $blue-darker;
 
             }
             li {
                 list-style: none;
                 flex: 1 1 100%;
-                border: 1px solid red;
 
                 :hover {
+                }
+
+                a {
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        color: $white;
+                    }
                 }
 
                 & .fa {
