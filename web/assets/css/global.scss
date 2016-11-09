@@ -1,14 +1,11 @@
-// Colors
-$white: #ffffff;
-$blue-normal: #b9def0;
-$blue-light: #cdeaf8;
-$blue-lighter: #d8edf8;
-$blue-dark: #95aab4;
-$blue-darker: #3c7d9c;
+@import "colors";
+@import "breakpoints";
 
 
 // Width
-$content-width: 960px;
+$content-width-desktop: 960px;
+$content-width-tablet: 100%;
+$content-width-mobile: 100%;
 
 body, ul, li, a, a:hover {
     list-style: none;
@@ -38,22 +35,29 @@ h1 {
 
     nav {
 
-        ul {
-            width: $content-width;
+        width: $content-width-tablet;
+
+        @include breakpoint(desktop) {
+            width: $content-width-desktop;
             margin: auto;
+        }
+
+        ul {
             background-color: $blue-normal;
             display: flex;
-            font-size: 2em;
-            :hover {
-                    background-color: $blue-darker;
 
+            font-size: 1.3em;
+            @include breakpoint(desktop) {
+                font-size: 2em;
+            }
+
+            :hover {
+                background-color: $blue-darker;
             }
             li {
                 list-style: none;
                 flex: 1 1 100%;
 
-                :hover {
-                }
 
                 a {
                     height: 60px;
@@ -67,7 +71,10 @@ h1 {
                 }
 
                 & .fa {
-                    margin: 0 10px;
+                    margin: 0 5px;
+                    @include breakpoint(tablet) {
+                        margin: 0 10px;
+                    }
                 }
             }
         }
@@ -76,6 +83,10 @@ h1 {
 }
 
 #content {
-    width: $content-width;
-    margin: auto;
+    width: $content-width-tablet;
+
+    @include breakpoint(desktop) {
+        width: $content-width-desktop;
+        margin: auto;
+    }
 }

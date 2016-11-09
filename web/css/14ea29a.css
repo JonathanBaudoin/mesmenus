@@ -1,0 +1,23 @@
+#explanation {
+  display: flex;
+  cursor: default; }
+  #explanation :hover {
+    background-color: #cdeaf8;
+    color: #3c7d9c; }
+  #explanation div {
+    flex: 1 1 100%;
+    background-color: #3c7d9c;
+    color: #ffffff;
+    text-align: center; }
+    #explanation div p {
+      margin: 0 10px 5px 10px;
+      font-size: 1em; }
+      @media only screen and (min-width: 768px) {
+        #explanation div p {
+          font-size: 1.4em; } }
+    #explanation div i {
+      padding: 10px;
+      font-size: 4em; }
+      @media only screen and (min-width: 768px) {
+        #explanation div i {
+          font-size: 7em; } }

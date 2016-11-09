@@ -1,26 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div id="banner"><img src="http://placehold.it/960x250" /></div>
+    {#<div id="banner"><img src="http://placehold.it/960x250" /></div>#}
 
     <div id="explanation">
-        <div id="menu">
+        <div>
             <i class="fa fa-table" aria-hidden="true"></i>
-            Créez vos menus à partir de recettes, existantes ou non.
+            <p>Créez vos menus...</p>
         </div>
 
-        <div id="menu">
+        <div>
             <i class="fa fa-edit" aria-hidden="true"></i>
-            Editez votre liste de course créée automatiquement en fonction de vos menus.
+            <p>Editez votre liste de course...</p>
         </div>
 
-        <div id="menu">
+        <div>
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            Faites vos courses l'esprit tranquille !
+            <p>Faites vos courses l'esprit tranquille !</p>
         </div>
     </div>
 
 {% endblock %}
 
 {% block stylesheets %}
+    {% stylesheets filter="sass" "assets/css/index.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}

@@ -1,0 +1,33 @@
+@import "colors";
+@import "breakpoints";
+
+#explanation {
+    display: flex;
+    cursor: default;
+    & :hover {
+        background-color: $blue-light;
+        color: $blue-darker;
+    }
+    div {
+        flex: 1 1 100%;
+        background-color: $blue-darker;
+        color: $white;
+        text-align: center;
+
+        p {
+            margin: 0 10px 5px 10px;
+            font-size: 1em;
+            @include breakpoint(tablet) {
+                font-size: 1.4em;
+            }
+        }
+
+        i {
+            padding: 10px;
+            font-size: 4em;
+            @include breakpoint(tablet) {
+                font-size: 7em;
+            }
+        }
+    }
+}
