@@ -1,6 +1,16 @@
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
+# Login
+fos_user_security_login:
+    path: /connexion/
+    defaults: { _controller: 'FOSUserBundle:Security:login' }
+
+# Logout
+fos_user_security_logout:
+    path: /deconnexion/
+    defaults: { _controller: 'FOSUserBundle:Security:logout' }
+
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile

@@ -1,3 +1,6 @@
-input[type="text"] {
-    border: 1px solid red;
+@import "colors";
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    border: 1px solid lightgrey;
 }
