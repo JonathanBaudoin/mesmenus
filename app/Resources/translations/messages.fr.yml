@@ -1,3 +1,9 @@
 menu.homepage.label: Accueil
 menu.menus.label:    Mes menus
 menu.shopping.label: Mes courses
+
+user.login: Connexion
+user.registration: Inscription
+user.username: Nom d'utilisateur
+user.password: Mot de passe
+user.remember_me: Se souvenir de moi

@@ -18,6 +18,12 @@
     <body>
         <div class="body">
             <div id="header-nav">
+                <div id="header-user">
+                    <ul>
+                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'user.login'|trans }}</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">{{ 'user.registration'|trans }}</a></li>
+                    </ul>
+                </div>
                 {% block header %}
                     {{ include('header.html.twig') }}
                 {% endblock header %}

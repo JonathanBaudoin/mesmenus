@@ -26,7 +26,23 @@ h1 {
 
 #header-nav {
 
-    margin-bottom: 20px;
+    #header-user {
+        ul {
+            width: $content-width-tablet;
+            @include breakpoint(desktop) {
+                width: $content-width-desktop;
+                margin: auto;
+            }
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+            li {
+                margin-left: 20px;
+            }
+        }
+    }
 
     header {
         height: 80px;
@@ -37,9 +53,7 @@ h1 {
     }
 
     nav {
-
         width: $content-width-tablet;
-
         @include breakpoint(desktop) {
             width: $content-width-desktop;
             margin: auto;
@@ -48,11 +62,11 @@ h1 {
         ul {
             background-color: $blue-normal;
             display: flex;
-
-            font-size: 1.3em;
             @include breakpoint(desktop) {
                 font-size: 2em;
             }
+
+            font-size: 1.3em;
 
             :hover {
                 background-color: $blue-darker;
@@ -60,7 +74,6 @@ h1 {
             li {
                 list-style: none;
                 flex: 1 1 100%;
-
 
                 a {
                     height: 60px;
