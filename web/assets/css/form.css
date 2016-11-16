@@ -1,14 +1,18 @@
+.form-small, .form-medium, .form-large, .form {
+  margin: auto; }
+
+.form-medium {
+  width: 65%; }
+
 form {
+  width: 100%;
   margin-top: 20px; }
-  form.form-medium {
-    width: 65%;
-    margin: auto; }
-    form.form-medium label {
-      display: block;
-      margin-bottom: 10px; }
-    form.form-medium input[type="text"], form.form-medium input[type="password"] {
-      width: 100%;
-      margin-bottom: 25px; }
+  form label {
+    display: block;
+    margin-bottom: 10px; }
+  form input[type="text"], form input[type="password"] {
+    width: 100%;
+    margin-bottom: 25px; }
   form .remember_me input, form .remember_me label {
     display: inline-block; }
 
