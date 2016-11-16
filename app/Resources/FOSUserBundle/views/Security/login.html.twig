@@ -24,7 +24,7 @@
                 </div>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                <input type="submit" id="_submit" class="btn" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
             </div>
         </form>
     {% endblock fos_user_content %}

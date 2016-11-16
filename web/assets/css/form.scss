@@ -1,4 +1,5 @@
 @import "colors";
+@import "global";
 
 .form-small, .form-medium, .form-large, .form {
     margin: auto;
@@ -17,9 +18,18 @@ form {
         margin-bottom: 10px;
     }
 
-    input[type="text"], input[type="password"] {
+    input[type="text"], input[type="password"], input[type="email"] {
         width: 100%;
         margin-bottom: 25px;
+        padding: 10px;
+        border: 1px solid lightgrey;
+    }
+
+    input[type="submit"], button[type="submit"] {
+        @extend .btn;
+
+        width: 50%;
+        text-align: center;
     }
 
     .remember_me {
@@ -27,9 +37,4 @@ form {
             display: inline-block;
         }
     }
-}
-
-input[type="text"], input[type="password"] {
-    padding: 10px;
-    border: 1px solid lightgrey;
 }
