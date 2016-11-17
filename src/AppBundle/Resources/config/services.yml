@@ -1,0 +1,4 @@
+services:
+    app.services.paginator:
+        class: AppBundle\Services\Paginator
+        arguments: ['@knp_paginator', '@request_stack', '%knp_paginator.page_range%']

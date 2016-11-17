@@ -1,8 +1,10 @@
 menu.homepage.label: Accueil
+menu.recipes.label:  Recettes
 menu.menus.label:    Mes menus
 menu.shopping.label: Mes courses
 
 user.login: Connexion
+user.logout: Déconnexion
 user.registration: Inscription
 user.username: Nom d'utilisateur
 user.password: Mot de passe
