@@ -111,9 +111,11 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     border: 0;
-    background-color: $gray-light;
+    background-color: $blue-darker;
+    color: $white;
 
     &:hover {
-        background-color: $gray;
+        background-color: $blue-normal;
+        color: $black;
     }
 }

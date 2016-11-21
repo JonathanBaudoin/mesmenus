@@ -3,9 +3,21 @@ menu.recipes.label:  Recettes
 menu.menus.label:    Mes menus
 menu.shopping.label: Mes courses
 
-user.login: Connexion
-user.logout: Déconnexion
+user.login.h1:     Connexion
+user.login:        Connexion
+user.logout:       Déconnexion
 user.registration: Inscription
-user.username: Nom d'utilisateur
-user.password: Mot de passe
-user.remember_me: Se souvenir de moi
+user.username:     Nom d'utilisateur
+user.password:     Mot de passe
+user.remember_me:  Se souvenir de moi
+
+recipe.list.h1:                    Toutes les recettes
+recipe.add.h1:                     Ajouter une recette
+recipe.form.name.label:            Nom de la recette
+recipe.form.preparationTime.label: Temps de préparation (en minutes)
+recipe.form.cookingTime.label:     Temps de cuisson (en minutes)
+recipe.form.breakTime.label:       Temps de repos (en minutes)
+recipe.form.eaters.label:          Nombre de personnes
+recipe.form.instructions.label:    Instructions
+recipe.form.minutes.placeholder:   'ex: 60'
+recipe.form.submit:                Créer ma recette

@@ -1,6 +1,8 @@
 @import "colors";
 @import "global";
 
+$padding: 10px;
+
 .form-small, .form-medium, .form-large, .form {
     margin: auto;
 }
@@ -18,11 +20,15 @@ form {
         margin-bottom: 10px;
     }
 
-    input[type="text"], input[type="password"], input[type="email"] {
+    input[type="text"], input[type="password"], input[type="email"], textarea {
+        border: 1px solid $gray-light;
         width: 100%;
         margin-bottom: 25px;
-        padding: 10px;
-        border: 1px solid lightgrey;
+        padding: $padding;
+    }
+
+    textarea {
+        height: 200px;
     }
 
     input[type="submit"], button[type="submit"] {
@@ -31,6 +37,7 @@ form {
         width: 50%;
         text-align: center;
     }
+
 
     .remember_me {
         input, label {

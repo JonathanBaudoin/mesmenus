@@ -92,4 +92,184 @@ class Recipe
      */
     protected $instructions;
 
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return $this
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPreparationTime()
+    {
+        return $this->preparationTime;
+    }
+
+    /**
+     * @param int $preparationTime
+     *
+     * @return $this
+     */
+    public function setPreparationTime($preparationTime)
+    {
+        $this->preparationTime = $preparationTime;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCookingTime()
+    {
+        return $this->cookingTime;
+    }
+
+    /**
+     * @param int $cookingTime
+     *
+     * @return $this
+     */
+    public function setCookingTime($cookingTime)
+    {
+        $this->cookingTime = $cookingTime;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBreakTime()
+    {
+        return $this->breakTime;
+    }
+
+    /**
+     * @param int $breakTime
+     *
+     * @return $this
+     */
+    public function setBreakTime($breakTime)
+    {
+        $this->breakTime = $breakTime;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEaters()
+    {
+        return $this->eaters;
+    }
+
+    /**
+     * @param int $eaters
+     *
+     * @return $this
+     */
+    public function setEaters($eaters)
+    {
+        $this->eaters = $eaters;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstructions()
+    {
+        return $this->instructions;
+    }
+
+    /**
+     * @param string $instructions
+     *
+     * @return $this
+     */
+    public function setInstructions($instructions)
+    {
+        $this->instructions = $instructions;
+
+        return $this;
+    }
 }

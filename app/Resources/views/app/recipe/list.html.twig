@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% for recipe in pagination %}
+        {{ dump(pagination) }}
+    {% endfor %}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
