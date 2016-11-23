@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+
+    <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
+
     {% for recipe in pagination %}
         {{ dump(pagination) }}
     {% endfor %}

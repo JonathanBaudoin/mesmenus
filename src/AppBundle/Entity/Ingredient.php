@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -35,4 +36,89 @@ class Ingredient
      * @Assert\Length(min=1, max=255)
      */
     protected $name;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Recipe", mappedBy="recipeIngredients", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $recipes;
+
+
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
+    }
+
+
+    /**
+     * @param RecipeHasIngredients $recipe
+     *
+     * @return $this
+     */
+    public function addRecipe(RecipeHasIngredients $recipe)
+    {
+        if (!$this->recipes->contains($recipe)) {
+            $this->recipes->add($recipe);
+            $recipe->setIngredient($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param RecipeHasIngredients $recipe
+     *
+     * @return $this
+     */
+    public function removeRecipe(RecipeHasIngredients $recipe)
+    {
+        if ($this->recipes->contains($recipe)) {
+            $this->recipes->removeElement($recipe);
+            $recipe->setIngredient(null);
+        }
+
+        return $this;
+    }
 }

@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -92,6 +93,31 @@ class Recipe
      */
     protected $instructions;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $ingredients;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    protected $status = 0;
+
+
+    public function __construct()
+    {
+        $this->ingredients = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 
     /**
      * @return int
@@ -99,18 +125,6 @@ class Recipe
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param $id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
@@ -272,4 +286,45 @@ class Recipe
 
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @param RecipeHasIngredients $ingredient
+     *
+     * @return $this
+     */
+    public function addIngredient(RecipeHasIngredients $ingredient)
+    {
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients = $ingredient;
+            $ingredient->setRecipe($this);
+
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param RecipeHasIngredients $ingredient
+     *
+     * @return $this
+     */
+    public function removeIngredient(RecipeHasIngredients $ingredient)
+    {
+        if ($this->ingredients->contains($ingredient)) {
+            $this->ingredients->removeElement($ingredient);
+            $ingredient->setRecipe(null);
+        }
+
+        return $this;
+    }
+
+
 }
