@@ -78,7 +78,7 @@ class Ingredient
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = ucfirst(strtolower($name));
 
         return $this;
     }

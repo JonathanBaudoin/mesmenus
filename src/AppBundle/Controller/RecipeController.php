@@ -18,6 +18,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class RecipeController
+ * @package AppBundle\Controller
+ *
+ * @Route("/recettes/")
+ */
 class RecipeController extends Controller
 {
 
@@ -27,7 +33,7 @@ class RecipeController extends Controller
      *
      * @return array
      *
-     * @Route("/recettes/{page}", defaults={"page" = 1}, requirements={"page": "\d+"})
+     * @Route("{page}", defaults={"page" = 1}, requirements={"page": "\d+"})
      * @Template("app/recipe/list.html.twig")
      */
     public function listAction(Request $request, $page = 1)
@@ -47,7 +53,7 @@ class RecipeController extends Controller
      *
      * @return array
      *
-     * @Route("/recettes/ajouter/")
+     * @Route("ajouter/")
      * @Security("has_role('ROLE_USER')")
      * @Template("app/recipe/add.html.twig")
      */

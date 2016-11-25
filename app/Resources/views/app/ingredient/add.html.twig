@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ 'ingredient.add.h1'|trans }}</h1>
+
+    {{ form_start(ingredientForm) }}
+    <div class="form-medium">
+        <div>
+            {{ form_label(ingredientForm.name) }}
+            {{ form_widget(ingredientForm.name) }}
+            {{ form_errors(ingredientForm.name) }}
+        </div>
+        <div>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'ingredient.form.submit'|trans }}" />
+        </div>
+    </div>
+    {{ form_end(ingredientForm) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass" "assets/css/form.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}

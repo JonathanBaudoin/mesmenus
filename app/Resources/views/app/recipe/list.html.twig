@@ -3,6 +3,7 @@
 {% block content %}
 
     <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
+    <a href="{{ path('app_ingredient_add') }}" class="btn">{{ 'add'|trans }} ingrédient</a>
 
     {% for recipe in pagination %}
         {{ dump(pagination) }}

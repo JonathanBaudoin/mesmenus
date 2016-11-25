@@ -9,6 +9,8 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Repository\IngredientRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -25,12 +27,6 @@ class RecipeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ingredients', EntityType::class, [
-                'label' => 'Ingrédients',
-                'class' => 'AppBundle\Entity\Ingredient',
-                'multiple' => true,
-                'expanded' => false,
-            ])
             ->add('name', TextType::class, [
                 'label' => 'recipe.form.name.label',
                 'required' => true,
@@ -56,6 +52,15 @@ class RecipeType extends AbstractType
             ->add('eaters', NumberType::class, [
                 'label' => 'recipe.form.eaters.label',
                 'required' => true,
+            ])
+            ->add('ingredients', EntityType::class, [
+                'label' => 'Ingrédients',
+                'class' => 'AppBundle\Entity\Ingredient',
+                'multiple' => true,
+                'expanded' => false,
+                'query_builder' => function (IngredientRepository $ingredientRepository) {
+                    return $ingredientRepository->findAllQueryBuilder();
+                },
             ])
             ->add('instructions', TextareaType::class, [
                 'label' => 'recipe.form.instructions.label',

@@ -2,8 +2,8 @@ add: Ajouter
 
 menu.homepage.label: Accueil
 menu.recipes.label:  Recettes
-menu.menus.label:    Mes menus
-menu.shopping.label: Mes courses
+menu.menus.label:    Menus
+menu.shopping.label: Courses
 
 user.login.h1:     Connexion
 user.login:        Connexion
@@ -23,3 +23,10 @@ recipe.form.eaters.label:          Nombre de personnes
 recipe.form.instructions.label:    Instructions
 recipe.form.minutes.placeholder:   'ex: 60'
 recipe.form.submit:                Créer ma recette
+
+ingredient.add.h1:          Ajouter un ingrédient
+ingredient.form.name.label: Nom de l'ingrédient
+ingredient.form.submit:     Créer l'ingrédient
+ingredient.add.success:     L'ingrédient %name% a bien été créé !
+ingredient.add.error:       Une erreur est survenue, l'ingrédient %name% n'a pas été créé !
+ingredient.add.exists:      L'ingrédient %name% existe déjà !

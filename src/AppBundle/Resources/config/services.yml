@@ -2,3 +2,7 @@ services:
     app.services.paginator:
         class: AppBundle\Services\Paginator
         arguments: ['@knp_paginator', '@request_stack', '%knp_paginator.page_range%']
+
+    app.manager.ingredient:
+        class: AppBundle\Manager\IngredientManager
+        arguments: ['@doctrine.orm.entity_manager', 'AppBundle\Entity\Ingredient']

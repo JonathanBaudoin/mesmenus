@@ -1,17 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-
     <h1>{{ 'recipe.add.h1'|trans }}</h1>
 
     {{ form_start(recipeForm) }}
         <div class="form-medium">
-            <div>
-                {{ form_label(recipeForm.ingredients) }}
-                {{ form_widget(recipeForm.ingredients) }}
-                {{ form_errors(recipeForm.ingredients) }}
-            </div>
-
             <div>
                 {{ form_label(recipeForm.name) }}
                 {{ form_widget(recipeForm.name) }}
@@ -40,6 +33,12 @@
                 {{ form_label(recipeForm.eaters) }}
                 {{ form_widget(recipeForm.eaters) }}
                 {{ form_errors(recipeForm.eaters) }}
+            </div>
+
+            <div>
+                {{ form_label(recipeForm.ingredients) }}
+                {{ form_widget(recipeForm.ingredients) }}
+                {{ form_errors(recipeForm.ingredients) }}
             </div>
 
             <div>
