@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -64,5 +65,22 @@ class IngredientController extends Controller
         return [
             'ingredientForm' => $ingredientForm->createView(),
         ];
+    }
+
+
+    /**
+     * @param Request $request
+     *
+     * @return string|null
+     *
+     * @Route("ajax/tous/", name="get_all_ingredients_ajax", options={"expose"=true})
+     */
+    public function getAllIngredientsAjaxAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Ingredient')->findAll());
+        }
+
+        return null;
     }
 }

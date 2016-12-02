@@ -4,58 +4,67 @@
     <h1>{{ 'recipe.add.h1'|trans }}</h1>
 
     {{ form_start(recipeForm) }}
-        <div class="form-medium">
-            <div>
-                {{ form_label(recipeForm.name) }}
-                {{ form_widget(recipeForm.name) }}
-                {{ form_errors(recipeForm.name) }}
+        <div>
+            <a href="#" id="recipe-add-ingredient" class="btn">Ajouter un ingrédient</a>
+        </div>
+        <div id="add-recipe">
+            <div id="fields-recipe">
+                <div>
+                    {{ form_label(recipeForm.name) }}
+                    {{ form_widget(recipeForm.name) }}
+                    {{ form_errors(recipeForm.name) }}
+                </div>
+
+                <div>
+                    {{ form_label(recipeForm.preparationTime) }}
+                    {{ form_widget(recipeForm.preparationTime) }}
+                    {{ form_errors(recipeForm.preparationTime) }}
+                </div>
+
+                <div>
+                    {{ form_label(recipeForm.cookingTime) }}
+                    {{ form_widget(recipeForm.cookingTime) }}
+                    {{ form_errors(recipeForm.cookingTime) }}
+                </div>
+
+                <div>
+                    {{ form_label(recipeForm.breakTime) }}
+                    {{ form_widget(recipeForm.breakTime) }}
+                    {{ form_errors(recipeForm.breakTime) }}
+                </div>
+
+                <div>
+                    {{ form_label(recipeForm.eaters) }}
+                    {{ form_widget(recipeForm.eaters) }}
+                    {{ form_errors(recipeForm.eaters) }}
+                </div>
+
+                <div>
+                    {{ form_label(recipeForm.instructions) }}
+                    {{ form_widget(recipeForm.instructions) }}
+                    {{ form_errors(recipeForm.instructions) }}
+                </div>
             </div>
 
-            <div>
-                {{ form_label(recipeForm.preparationTime) }}
-                {{ form_widget(recipeForm.preparationTime) }}
-                {{ form_errors(recipeForm.preparationTime) }}
+            <div id="list-ingredients">
+                <div>
+                    {{ form_label(recipeForm.ingredients) }}
+                    {{ form_widget(recipeForm.ingredients) }}
+                    {{ form_errors(recipeForm.ingredients) }}
+                </div>
             </div>
 
-            <div>
-                {{ form_label(recipeForm.cookingTime) }}
-                {{ form_widget(recipeForm.cookingTime) }}
-                {{ form_errors(recipeForm.cookingTime) }}
-            </div>
-
-            <div>
-                {{ form_label(recipeForm.breakTime) }}
-                {{ form_widget(recipeForm.breakTime) }}
-                {{ form_errors(recipeForm.breakTime) }}
-            </div>
-
-            <div>
-                {{ form_label(recipeForm.eaters) }}
-                {{ form_widget(recipeForm.eaters) }}
-                {{ form_errors(recipeForm.eaters) }}
-            </div>
-
-            <div>
-                {{ form_label(recipeForm.ingredients) }}
-                {{ form_widget(recipeForm.ingredients) }}
-                {{ form_errors(recipeForm.ingredients) }}
-            </div>
-
-            <div>
-                {{ form_label(recipeForm.instructions) }}
-                {{ form_widget(recipeForm.instructions) }}
-                {{ form_errors(recipeForm.instructions) }}
-            </div>
-
-            <div>
-                <input type="submit" id="_submit" name="_submit" value="{{ 'recipe.form.submit'|trans }}" />
-            </div>
+        </div>
+        <div>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'recipe.form.submit'|trans }}" />
         </div>
     {{ form_end(recipeForm) }}
 {% endblock %}
 
 {% block stylesheets %}
-    {% stylesheets filter="sass" "assets/css/form.scss"
+    {% stylesheets filter="sass"
+        "assets/css/form.scss"
+        "assets/css/form/add_recipe.scss"
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -66,4 +75,5 @@
     <script type="text/javascript">
         $('select').select2();
     </script>
+    <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
 {% endblock javascripts %}

@@ -4,3 +4,6 @@ app:
 
 user:
     resource: Routing/user.yml
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

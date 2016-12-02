@@ -202,7 +202,7 @@ class Recipe
      */
     public function setPreparationTime($preparationTime)
     {
-        $this->preparationTime = $preparationTime;
+        $this->preparationTime = (int) $preparationTime;
 
         return $this;
     }
@@ -222,7 +222,7 @@ class Recipe
      */
     public function setCookingTime($cookingTime)
     {
-        $this->cookingTime = $cookingTime;
+        $this->cookingTime = (int) $cookingTime;
 
         return $this;
     }
@@ -242,7 +242,7 @@ class Recipe
      */
     public function setBreakTime($breakTime)
     {
-        $this->breakTime = $breakTime;
+        $this->breakTime = (int) $breakTime;
 
         return $this;
     }
@@ -262,7 +262,7 @@ class Recipe
      */
     public function setEaters($eaters)
     {
-        $this->eaters = $eaters;
+        $this->eaters = (int) $eaters;
 
         return $this;
     }

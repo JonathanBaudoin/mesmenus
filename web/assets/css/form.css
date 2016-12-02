@@ -92,6 +92,7 @@ form {
   form input[type="text"], form input[type="password"], form input[type="email"], form textarea, form select {
     border: 1px solid #e0e0e0;
     width: 100%;
+    box-sizing: border-box;
     padding: 10px; }
   form textarea {
     height: 200px; }

@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recipe;
+use AppBundle\Entity\RecipeHasIngredients;
 use AppBundle\Form\RecipeType;
 use AppBundle\Repository\RecipeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -63,6 +64,19 @@ class RecipeController extends Controller
         $recipe->setUser($this->getUser());
         $recipeForm = $this->createForm(RecipeType::class, $recipe);
         $recipeForm->handleRequest($request);
+
+        if ($recipeForm->isSubmitted()) {
+
+            /*$tmp = new RecipeHasIngredients();
+            $recipe->addIngredient($tmp);
+
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $recipe->addIngredient($ingredient);
+            }*/
+
+            dump($recipeForm->get('ingredients')->getViewData());
+            die();
+        }
 
         return [
             'recipeForm' => $recipeForm->createView(),
