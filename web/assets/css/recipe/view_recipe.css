@@ -1,0 +1,15 @@
+#recipe ul {
+  margin-bottom: 20px; }
+@media only screen and (min-width: 768px) {
+  #recipe #time {
+    display: flex;
+    justify-content: space-between; } }
+#recipe #time li {
+  padding: 10px;
+  background-color: #3c7d9c;
+  color: #ffffff; }
+  @media only screen and (min-width: 992px) {
+    #recipe #time li {
+      border-radius: 5px; } }
+
+/*# sourceMappingURL=view_recipe.css.map */

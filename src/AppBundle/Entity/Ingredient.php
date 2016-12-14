@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="ingredient")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\IngredientRepository")
  */
-class Ingredient
+class Ingredient implements IngredientInterface
 {
     /**
      * @var integer
@@ -40,7 +40,7 @@ class Ingredient
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Recipe", mappedBy="recipeIngredients", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $recipes;
 

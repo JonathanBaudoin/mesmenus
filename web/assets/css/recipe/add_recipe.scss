@@ -1,0 +1,31 @@
+#add-recipe {
+    display: flex;
+    justify-content: space-between;
+    #fields-recipe {
+        border: 1px solid red;
+        width: 55%;
+    }
+
+    #list-ingredients {
+        border: 1px solid orange;
+        width: 40%;
+        min-height: 80px;
+    }
+
+    .recipe-has-ingredient {
+        display: flex;
+        width: 100%;
+        input {
+
+            &.name {
+                width: 40%;
+            }
+            &.amount {
+                width: 18%;
+            }
+            &.measure-unit {
+                width: 30%;
+            }
+        }
+    }
+}

@@ -67,20 +67,4 @@ class IngredientController extends Controller
         ];
     }
 
-
-    /**
-     * @param Request $request
-     *
-     * @return string|null
-     *
-     * @Route("ajax/tous/", name="get_all_ingredients_ajax", options={"expose"=true})
-     */
-    public function getAllIngredientsAjaxAction(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Ingredient')->findAll());
-        }
-
-        return null;
-    }
 }

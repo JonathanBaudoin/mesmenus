@@ -41,7 +41,7 @@ class Recipe
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank()
-     * @Assert\Length(min=1, max=255)
+     * @Assert\Length(max=255)
      */
     protected $name;
 
@@ -49,7 +49,8 @@ class Recipe
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Slug(fields={"name"}, unique=true)
+     * @Assert\Length(max=255)
      */
     protected $slug;
 
@@ -303,24 +304,22 @@ class Recipe
     public function addIngredient(RecipeHasIngredients $ingredient)
     {
         if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients = $ingredient;
+            $this->ingredients->add($ingredient);
             $ingredient->setRecipe($this);
-
         }
 
         return $this;
     }
 
     /**
-     * @param RecipeHasIngredients $ingredient
+     * @param IngredientInterface $ingredient
      *
      * @return $this
      */
-    public function removeIngredient(RecipeHasIngredients $ingredient)
+    public function removeIngredient(IngredientInterface $ingredient)
     {
         if ($this->ingredients->contains($ingredient)) {
             $this->ingredients->removeElement($ingredient);
-            $ingredient->setRecipe(null);
         }
 
         return $this;

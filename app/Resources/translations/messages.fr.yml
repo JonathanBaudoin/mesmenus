@@ -13,6 +13,14 @@ user.username:     Nom d'utilisateur
 user.password:     Mot de passe
 user.remember_me:  Se souvenir de moi
 
+
+# RECIPE
+
+recipe.view.eaters.label:          ']0,1[Pour %count% personne|]1,Inf[Pour %count% personnes'
+recipe.view.preparationTime.label: ']0,1[Préparation : %count% minute|]1,Inf[Préparation : %count% minutes'
+recipe.view.cookingTime.label:     ']0,1[Cuisson : %count% minute|]1,Inf[Cuisson : %count% minutes'
+recipe.view.breakTime.label:       ']0,1[Repos : %count% minute|]1,Inf[Repos : %count% minutes'
+
 recipe.list.h1:                    Toutes les recettes
 recipe.add.h1:                     Ajouter une recette
 recipe.form.name.label:            Nom de la recette
@@ -23,6 +31,10 @@ recipe.form.eaters.label:          Nombre de personnes
 recipe.form.instructions.label:    Instructions
 recipe.form.minutes.placeholder:   'ex: 60'
 recipe.form.submit:                Créer ma recette
+recipe.add.success:                Votre recette a bien été créée
+
+
+# INGREDIENT
 
 ingredient.add.h1:          Ajouter un ingrédient
 ingredient.form.name.label: Nom de l'ingrédient

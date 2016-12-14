@@ -5,9 +5,12 @@
     <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
     <a href="{{ path('app_ingredient_add') }}" class="btn">{{ 'add'|trans }} ingrédient</a>
 
+    <ul>
+
     {% for recipe in pagination %}
-        {{ dump(pagination) }}
+        <li><a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">{{ recipe.name }}</a></li>
     {% endfor %}
+    </ul>
 {% endblock %}
 
 {% block stylesheets %}

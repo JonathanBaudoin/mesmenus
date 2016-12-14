@@ -1,0 +1,21 @@
+#add-recipe {
+  display: flex;
+  justify-content: space-between; }
+  #add-recipe #fields-recipe {
+    border: 1px solid red;
+    width: 55%; }
+  #add-recipe #list-ingredients {
+    border: 1px solid orange;
+    width: 40%;
+    min-height: 80px; }
+  #add-recipe .recipe-has-ingredient {
+    display: flex;
+    width: 100%; }
+    #add-recipe .recipe-has-ingredient input.name {
+      width: 40%; }
+    #add-recipe .recipe-has-ingredient input.amount {
+      width: 18%; }
+    #add-recipe .recipe-has-ingredient input.measure-unit {
+      width: 30%; }
+
+/*# sourceMappingURL=add_recipe.css.map */

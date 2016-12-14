@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ recipe.name }}{% if is_granted('ROLE_ADMIN') %} <a href="{{ path('app_recipe_edit', {'slug': recipe.slug}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{% endif %}</h1>
+
+    <div id="recipe">
+        <ul id="time">
+            <li><i class="fa fa-users" aria-hidden="true"></i> {{ 'recipe.view.eaters.label'|transchoice(recipe.eaters) }}</li>
+            <li><i class="fa fa-hourglass-start" aria-hidden="true"></i> {{ 'recipe.view.preparationTime.label'|transchoice(recipe.preparationTime) }}</li>
+            <li><i class="fa fa-hourglass-half" aria-hidden="true"></i> {{ 'recipe.view.cookingTime.label'|transchoice(recipe.preparationTime) }}</li>
+            <li><i class="fa fa-hourglass-end" aria-hidden="true"></i> {{ 'recipe.view.breakTime.label'|transchoice(recipe.preparationTime) }}</li>
+        </ul>
+
+        <ul id="ingredients">
+        {% for ingredient in recipe.ingredients %}
+            <li><span class="ingredient-name">{{ ingredient.name }} :</span> {{ ingredient.amount }} {{ ingredient.measureUnit }}</li>
+        {% endfor %}
+        </ul>
+
+        <div id="instructions">{{ recipe.instructions|raw }}</div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/form.scss"
+    "assets/css/recipe/view_recipe.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}

@@ -4,9 +4,9 @@
     <h1>{{ 'recipe.add.h1'|trans }}</h1>
 
     {{ form_start(recipeForm) }}
-        <div>
-            <a href="#" id="recipe-add-ingredient" class="btn">Ajouter un ingrédient</a>
-        </div>
+
+        {{ form_errors(recipeForm) }}
+
         <div id="add-recipe">
             <div id="fields-recipe">
                 <div>
@@ -52,6 +52,16 @@
                     {{ form_widget(recipeForm.ingredients) }}
                     {{ form_errors(recipeForm.ingredients) }}
                 </div>
+
+                <div id="added-ingredients">
+                    {% for recipeIngredient in recipeForm.vars.value.ingredients %}
+                        <div id="ingredient_{{ recipeIngredient.ingredient.id }}" class="recipe-has-ingredient" data-ingredient-id="{{ recipeIngredient.ingredient.id }}" data-ingredient-name="{{ recipeIngredient.name }}">
+                            <input class="name" name="ingredient[{{ recipeIngredient.ingredient.id }}][name]" value="{{ recipeIngredient.name }}" disabled />
+                            <input type="number" class="amount" name="ingredient[{{ recipeIngredient.ingredient.id }}][amount]" value="{{ recipeIngredient.amount }}" placeholder="Quantité" />
+                            <input class="measure-unit" name="ingredient[{{ recipeIngredient.ingredient.id }}][measureUnit]" value="{{ recipeIngredient.measureUnit }}"  placeholder="Unité de mesure" />
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
 
         </div>
@@ -64,7 +74,7 @@
 {% block stylesheets %}
     {% stylesheets filter="sass"
         "assets/css/form.scss"
-        "assets/css/form/add_recipe.scss"
+        "assets/css/recipe/add_recipe.scss"
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

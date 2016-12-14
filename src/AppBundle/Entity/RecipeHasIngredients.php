@@ -16,7 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="recipe_has_ingredients")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecipeRepository")
  */
-class RecipeHasIngredients
+class RecipeHasIngredients implements IngredientInterface
 {
     /**
      * @var integer
@@ -30,13 +30,13 @@ class RecipeHasIngredients
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="recipeIngredients")
+     * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="ingredients")
      * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id", nullable=false)
      */
     protected $recipe;
 
     /**
-     * @var int
+     * @var Ingredient
      *
      * @ORM\ManyToOne(targetEntity="Ingredient", inversedBy="recipes")
      * @ORM\JoinColumn(name="ingredient_id", referencedColumnName="id", nullable=false)
@@ -59,6 +59,11 @@ class RecipeHasIngredients
      */
     protected $measureUnit;
 
+    public function __toString()
+    {
+        return $this->ingredient->getName();
+    }
+
     /**
      * @return int
      */
@@ -76,11 +81,11 @@ class RecipeHasIngredients
     }
 
     /**
-     * @param int $recipe
+     * @param Recipe $recipe
      *
      * @return $this
      */
-    public function setRecipe($recipe)
+    public function setRecipe(Recipe $recipe)
     {
         $this->recipe = $recipe;
 
@@ -88,7 +93,7 @@ class RecipeHasIngredients
     }
 
     /**
-     * @return int
+     * @return Ingredient
      */
     public function getIngredient()
     {
@@ -96,11 +101,11 @@ class RecipeHasIngredients
     }
 
     /**
-     * @param int $ingredient
+     * @param Ingredient $ingredient
      *
      * @return $this
      */
-    public function setIngredient($ingredient)
+    public function setIngredient(Ingredient $ingredient)
     {
         $this->ingredient = $ingredient;
 
@@ -145,6 +150,14 @@ class RecipeHasIngredients
         $this->measureUnit = $measureUnit;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->ingredient->getName();
     }
 
 }

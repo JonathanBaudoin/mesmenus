@@ -1,0 +1,24 @@
+@import "../colors";
+@import "../breakpoints";
+
+#recipe {
+    ul {
+        margin-bottom: 20px;
+    }
+
+    #time {
+        @include breakpoint(tablet) {
+            display: flex;
+            justify-content: space-between;
+        }
+        li {
+            @include breakpoint(desktop) {
+                border-radius: 5px;
+            }
+
+            padding: 10px;
+            background-color: $blue-darker;
+            color: $white;
+        }
+    }
+}
