@@ -40,7 +40,7 @@ class Ingredient implements IngredientInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe")
      */
     protected $recipes;
 

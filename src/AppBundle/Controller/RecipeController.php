@@ -52,11 +52,12 @@ class RecipeController extends Controller
 
     /**
      * @param Request $request
+     * @param string  $slug
      *
      * @return array
      *
-     * @Route("ajouter/")
-     * @Route("{slug}/modifier/")
+     * @Route("ajouter/", name="app_recipe_add")
+     * @Route("{slug}/modifier/", name="app_recipe_edit")
      * @Security("has_role('ROLE_USER')")
      * @Template("app/recipe/add.html.twig")
      */
@@ -72,35 +73,46 @@ class RecipeController extends Controller
             $recipe->setUser($this->getUser());
         }
 
+        $em         = $this->getDoctrine()->getManager();
         $recipeForm = $this->createForm(RecipeType::class, $recipe);
         $recipeForm->handleRequest($request);
 
         if ($recipeForm->isSubmitted()) {
-
+            // Form added ingredients
             $formDataIngredients = $request->request->get('ingredient');
 
             /** @var Ingredient $ingredient */
             foreach ($recipe->getIngredients() as $ingredient) {
-                $recipeHasIngredient = new RecipeHasIngredients();
+                // Get Recipe's ingredient by recipe and ingredient entities
+                $recipeHasIngredient = $this->getDoctrine()->getRepository('AppBundle:RecipeHasIngredients')
+                    ->findOneBy([
+                        'recipe'     => $recipe,
+                        'ingredient' => $ingredient
+                    ])
+                ;
+
+                // Is no result, new entity
+                if (!$recipeHasIngredient) {
+                    $recipeHasIngredient = new RecipeHasIngredients();
+                }
+
                 $recipeHasIngredient
+                    ->setRecipe($recipe)
                     ->setIngredient($ingredient)
                     ->setAmount($formDataIngredients[$ingredient->getId()]['amount'])
                     ->setMeasureUnit($formDataIngredients[$ingredient->getId()]['measureUnit'])
                 ;
 
+                // Add RecipeHasIngredients entity and remove Ingredient entity
                 $recipe->addIngredient($recipeHasIngredient);
                 $recipe->removeIngredient($ingredient);
             }
 
             if ($recipeForm->isValid()) {
-
-                dump($recipe);
-
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($recipe);
                 $em->flush();
                 $this->addFlash('notice', $this->get('translator')->trans('recipe.add.success'));
-                return $this->redirectToRoute('app_recipe_view', ['recipe' => $recipe]);
+                return $this->redirectToRoute('app_recipe_view', ['slug' => $recipe->getSlug()]);
             }
 
         }
@@ -109,27 +121,6 @@ class RecipeController extends Controller
             'recipeForm' => $recipeForm->createView(),
         ];
     }
-
-//    /**
-//     * @param Request $request
-//     * @param Recipe $recipe
-//     *
-//     * @return array
-//     *
-//     * @Route("{slug}/modifier/")
-//     * @Security("has_role('ROLE_USER')")
-//     * @Template("app/recipe/add.html.twig")
-//     */
-//    public function editAction(Request $request, Recipe $recipe)
-//    {
-//        $recipeForm = $this->createForm(RecipeType::class, $recipe);
-//        $recipeForm->handleRequest($request);
-//
-//        return [
-//            'recipeForm' => $recipeForm->createView(),
-//            'test' => 'test',
-//        ];
-//    }
 
     /**
      * @param Recipe $recipe

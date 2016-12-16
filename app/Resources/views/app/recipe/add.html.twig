@@ -82,8 +82,8 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
     <script type="text/javascript">
         $('select').select2();
     </script>
-    <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
 {% endblock javascripts %}

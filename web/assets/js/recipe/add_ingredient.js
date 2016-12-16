@@ -10,7 +10,6 @@ AddIngredient.prototype = {
 
     displayIngredientOnLoad: function() {
         var selectedIngredients = $('.recipe-has-ingredient');
-
         selectedIngredients.each(function() {
             console.log($(this).data('ingredient-name'));
             $('#recipe_ingredients option[value='+$(this).data('ingredient-id')+']').prop('selected', 'selected');
