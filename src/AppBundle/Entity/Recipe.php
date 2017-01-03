@@ -97,7 +97,7 @@ class Recipe
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", orphanRemoval=true, cascade={"persist", "remove"})
      */
     protected $ingredients;
 

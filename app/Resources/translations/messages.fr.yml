@@ -30,8 +30,10 @@ recipe.form.breakTime.label:       Temps de repos (en minutes)
 recipe.form.eaters.label:          Nombre de personnes
 recipe.form.instructions.label:    Instructions
 recipe.form.minutes.placeholder:   'ex: 60'
-recipe.form.submit:                Créer ma recette
+recipe.form.submit.add:            Créer ma recette
+recipe.form.submit.edit:           Modifier la recette
 recipe.add.success:                Votre recette a bien été créée
+recipe.edit.success:               La recette a bien été modifiée
 
 
 # INGREDIENT

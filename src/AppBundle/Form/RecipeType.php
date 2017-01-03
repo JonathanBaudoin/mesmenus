@@ -28,36 +28,37 @@ class RecipeType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'recipe.form.name.label',
+                'label'    => 'recipe.form.name.label',
                 'required' => true,
             ])
             ->add('preparationTime', NumberType::class, [
-                'label' => 'recipe.form.preparationTime.label',
+                'label'    => 'recipe.form.preparationTime.label',
                 'required' => true,
-                'attr' => ['placeholder' => 'recipe.form.minutes.placeholder'],
+                'attr'     => ['placeholder' => 'recipe.form.minutes.placeholder'],
 
             ])
             ->add('cookingTime', NumberType::class, [
-                'label' => 'recipe.form.cookingTime.label',
+                'label'    => 'recipe.form.cookingTime.label',
                 'required' => false,
-                'attr' => ['placeholder' => 'recipe.form.minutes.placeholder'],
+                'attr'     => ['placeholder' => 'recipe.form.minutes.placeholder'],
 
             ])
             ->add('breakTime', NumberType::class, [
-                'label' => 'recipe.form.breakTime.label',
+                'label'    => 'recipe.form.breakTime.label',
                 'required' => false,
-                'attr' => ['placeholder' => 'recipe.form.minutes.placeholder'],
+                'attr'     => ['placeholder' => 'recipe.form.minutes.placeholder'],
 
             ])
             ->add('eaters', NumberType::class, [
-                'label' => 'recipe.form.eaters.label',
+                'label'    => 'recipe.form.eaters.label',
                 'required' => true,
             ])
             ->add('ingredients', EntityType::class, [
-                'label' => 'Ingrédients',
-                'class' => 'AppBundle\Entity\Ingredient',
-                'multiple' => true,
-                'expanded' => false,
+                'label'         => 'Ingrédients',
+                'class'         => 'AppBundle\Entity\Ingredient',
+                'multiple'      => true,
+                'expanded'      => false,
+                'mapped'        => false,
                 'query_builder' => function (IngredientRepository $ingredientRepository) {
                     return $ingredientRepository->findAllQueryBuilder();
                 },
@@ -77,5 +78,4 @@ class RecipeType extends AbstractType
             'data_class' => 'AppBundle\Entity\Recipe',
         ]);
     }
-
 }

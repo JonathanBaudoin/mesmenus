@@ -17,6 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -51,10 +52,10 @@ class RecipeController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param string  $slug
+     * @param Request     $request
+     * @param null|string $slug
      *
-     * @return array
+     * @return array|RedirectResponse
      *
      * @Route("ajouter/", name="app_recipe_add")
      * @Route("{slug}/modifier/", name="app_recipe_edit")
@@ -68,6 +69,7 @@ class RecipeController extends Controller
             if (!$recipe) {
                 throw $this->createNotFoundException('Cette recette n\'existe pas.');
             }
+
         } else {
             $recipe = new Recipe();
             $recipe->setUser($this->getUser());
@@ -78,46 +80,53 @@ class RecipeController extends Controller
         $recipeForm->handleRequest($request);
 
         if ($recipeForm->isSubmitted()) {
+
             // Form added ingredients
             $formDataIngredients = $request->request->get('ingredient');
+            $recipeIngredients   = [];
 
-            /** @var Ingredient $ingredient */
-            foreach ($recipe->getIngredients() as $ingredient) {
-                // Get Recipe's ingredient by recipe and ingredient entities
-                $recipeHasIngredient = $this->getDoctrine()->getRepository('AppBundle:RecipeHasIngredients')
-                    ->findOneBy([
-                        'recipe'     => $recipe,
-                        'ingredient' => $ingredient
-                    ])
-                ;
+            /** @var RecipeHasIngredients $recipeIngredient */
+            foreach ($recipe->getIngredients() as $recipeIngredient) {
+                // Create an array with recipe ingredients from form
+                $recipeIngredients[$recipeIngredient->getIngredient()->getId()] = $recipeIngredient;
 
-                // Is no result, new entity
-                if (!$recipeHasIngredient) {
-                    $recipeHasIngredient = new RecipeHasIngredients();
+                // If ingredient has been removed
+                if (!isset($formDataIngredients[$recipeIngredient->getIngredient()->getId()])) {
+                    $recipe->removeIngredient($recipeIngredient);
+                }
+            }
+
+            // Adding ingredients
+            foreach ($formDataIngredients as $dataIngredientId => $dataIngredientValue) {
+                // If the ingredient is ever in the recipe
+                if (!empty($recipeIngredients[$dataIngredientId])) {
+                    /** @var RecipeHasIngredients $tmpRecipeIngredient */
+                    $tmpRecipeIngredient = $recipeIngredients[$dataIngredientId];
+                } else {
+                    $ingredient = $this->getDoctrine()->getRepository('AppBundle:Ingredient')->find($dataIngredientId);
+                    $tmpRecipeIngredient = new RecipeHasIngredients();
+                    $tmpRecipeIngredient->setIngredient($ingredient);
+                    $recipe->addIngredient($tmpRecipeIngredient);
                 }
 
-                $recipeHasIngredient
-                    ->setRecipe($recipe)
-                    ->setIngredient($ingredient)
-                    ->setAmount($formDataIngredients[$ingredient->getId()]['amount'])
-                    ->setMeasureUnit($formDataIngredients[$ingredient->getId()]['measureUnit'])
+                $tmpRecipeIngredient
+                    ->setAmount($dataIngredientValue['amount'])
+                    ->setMeasureUnit($dataIngredientValue['measureUnit'])
                 ;
-
-                // Add RecipeHasIngredients entity and remove Ingredient entity
-                $recipe->addIngredient($recipeHasIngredient);
-                $recipe->removeIngredient($ingredient);
             }
 
             if ($recipeForm->isValid()) {
+                $recipeFormSuccessMessage = (!empty($recipe->getId())) ? 'recipe.edit.success' : 'recipe.add.success';
+
                 $em->persist($recipe);
                 $em->flush();
-                $this->addFlash('notice', $this->get('translator')->trans('recipe.add.success'));
+                $this->addFlash('notice', $this->get('translator')->trans($recipeFormSuccessMessage));
                 return $this->redirectToRoute('app_recipe_view', ['slug' => $recipe->getSlug()]);
             }
-
         }
 
         return [
+            'recipe'     => $recipe,
             'recipeForm' => $recipeForm->createView(),
         ];
     }
