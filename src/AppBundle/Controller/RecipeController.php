@@ -8,18 +8,16 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\RecipeHasIngredients;
 use AppBundle\Form\RecipeType;
 use AppBundle\Repository\RecipeRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Class RecipeController
@@ -31,15 +29,14 @@ class RecipeController extends Controller
 {
 
     /**
-     * @param Request $request
-     * @param int     $page
+     * @param int $page
      *
      * @return array
      *
      * @Route("{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
      * @Template("app/recipe/list.html.twig")
      */
-    public function listAction(Request $request, $page = 1)
+    public function listAction($page = 1)
     {
         /** @var RecipeRepository $recipeRepository */
         $recipeRepository = $this->getDoctrine()->getRepository('AppBundle:Recipe');

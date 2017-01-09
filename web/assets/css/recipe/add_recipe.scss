@@ -1,15 +1,30 @@
+@import "../colors";
+@import "../breakpoints";
+
 #add-recipe {
-    display: flex;
-    justify-content: space-between;
+    @include breakpoint(desktop) {
+        display: flex;
+        justify-content: space-between;
+    }
+
     #fields-recipe {
-        border: 1px solid red;
-        width: 55%;
+        width: 100%;
+
+        @include breakpoint(desktop) {
+            width: 55%;
+            padding-right: 10px;
+        }
     }
 
     #list-ingredients {
-        border: 1px solid orange;
-        width: 40%;
-        min-height: 80px;
+        width: 100%;
+
+        @include breakpoint(desktop) {
+            width: 45%;
+            min-height: 80px;
+            padding-left: 10px;
+            border-left: 1px solid $gray;
+        }
     }
 
     .recipe-has-ingredient {

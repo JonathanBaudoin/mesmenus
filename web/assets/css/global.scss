@@ -6,7 +6,7 @@ $content-width-desktop: 960px;
 $content-width-tablet: 100%;
 $content-width-mobile: 100%;
 
-body, ul, li, a, a:hover {
+body, ul, li, a, a:hover, h1, h2, h3, h4, h5, h6 {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -22,6 +22,12 @@ body {
 
 h1 {
     color: $blue-darker;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #header-nav {

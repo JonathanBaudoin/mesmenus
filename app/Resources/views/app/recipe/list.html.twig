@@ -1,17 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <div>
+        <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
+        <a href="{{ path('app_ingredient_add') }}" class="btn">{{ 'ingredient.add'|trans }}</a>
+    </div>
 
-    <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
-    <a href="{{ path('app_ingredient_add') }}" class="btn">{{ 'add'|trans }} ingrédient</a>
-
-    <ul>
-
+    <ul id="recipe-list">
     {% for recipe in pagination %}
-        <li><a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">{{ recipe.name }}</a></li>
+        <li>
+            <h2><a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">{{ recipe.name }}</a></h2>
+        </li>
     {% endfor %}
     </ul>
 {% endblock %}
 
 {% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/recipe/list.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}

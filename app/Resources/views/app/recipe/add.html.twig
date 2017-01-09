@@ -65,7 +65,7 @@
             </div>
 
         </div>
-        <div>
+        <div class="center">
             {% if recipe.id is null %}
                 {% set submitValue = 'recipe.form.submit.add' %}
             {% else %}
@@ -89,6 +89,8 @@
     {{ parent() }}
     <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
     <script type="text/javascript">
-        $('select').select2();
+        $(function() {
+            $('select').select2();
+        });
     </script>
 {% endblock javascripts %}

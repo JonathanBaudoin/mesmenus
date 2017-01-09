@@ -1,0 +1,25 @@
+@media only screen and (min-width: 768px) {
+  #recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; } }
+#recipe-list li {
+  border: 1px solid #c1c1c1;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 10px; }
+  #recipe-list li:hover {
+    background-color: #d8edf8; }
+  #recipe-list li a {
+    display: block;
+    padding: 10px; }
+  @media only screen and (min-width: 768px) {
+    #recipe-list li {
+      flex: 0 1 calc(100% * (1/2) - 20px); }
+      #recipe-list li h2 {
+        text-align: center; } }
+  @media only screen and (min-width: 992px) {
+    #recipe-list li {
+      flex: 0 1 calc(100% * (1/4) - 20px); } }
+
+/*# sourceMappingURL=list.css.map */
