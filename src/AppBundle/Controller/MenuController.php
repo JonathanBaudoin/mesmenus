@@ -2,17 +2,22 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class MenuController extends Controller
 {
     /**
      * @Route("/menu")
+     *
+     * @Template("app/menu/add.html.twig")
      */
-    public function indexAction(Request $request)
+    public function listAction(Request $request)
     {
-        return $this->render('app/index.html.twig');
+        //$menus = $this->getDoctrine()->getRepository('me')
+
+        //return ['menus' => $menus];
     }
 }
