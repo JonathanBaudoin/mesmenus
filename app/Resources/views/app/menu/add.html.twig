@@ -1,8 +1,80 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    {{ form_start(menuForm) }}
+    <div id="menu-choose-date">
+        <div class="choose-date">
+            <div class="label">{{ form_label(menuForm.dateStart) }}</div>
+            <div class="widget">{{ form_widget(menuForm.dateStart) }}</div>
+            <div class="errors">{{ form_errors(menuForm.dateStart) }}</div>
+        </div>
 
+        <div class="choose-date">
+            <div class="label">{{ form_label(menuForm.dateEnd) }}</div>
+            <div class="widget">{{ form_widget(menuForm.dateEnd) }}</div>
+            <div class="errors">{{ form_errors(menuForm.dateEnd) }}</div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Déjeuner</th>
+                <th>Dîner</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menuDate in range(menu.dateStart|date('U'), menu.dateEnd|date('U'), 86400) %}
+            <tr>
+                <td>{{ menuDate|date('D') }}</td>
+                <td>{{ form_widget(attribute(menuForm, 'recipes_' ~ menuDate|date('Y-m-d') ~ '_lunch')) }}</td>
+                <td>{{ form_widget(attribute(menuForm, 'recipes_' ~ menuDate|date('Y-m-d') ~ '_dinner')) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="center">
+        <input type="submit" id="_submit" name="_submit" value="Valider" />
+    </div>
+    {{ form_end(menuForm) }}
 {% endblock %}
 
 {% block stylesheets %}
+    {% stylesheets filter='cssrewrite'
+    "assets/vendor/jquery-ui/themes/base/jquery-ui.min.css"
+    "assets/vendor/jquery-ui/themes/base/datepicker.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {% stylesheets filter="sass"
+    "assets/css/form.scss"
+    "assets/css/menu/add_menu.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            var options = {
+                dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+                monthNames: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                firstDay: 1,
+                dateFormat: $('#menu_dateStart').data('date-format').toLowerCase(),
+            };
+
+            $('#menu_dateStart').datepicker(options);
+            $('#menu_dateEnd').datepicker(options);
+
+            $('select').select2();
+        });
+    </script>
+{% endblock javascripts %}

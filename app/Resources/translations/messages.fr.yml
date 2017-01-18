@@ -46,3 +46,8 @@ ingredient.add.exists:      L'ingrédient %name% existe déjà !
 
 
 # MENU
+menu.form.dateStart:           Premier jour
+menu.form.dateEnd:             Dernier jour
+menu.form.recipes.empty_value: -
+menu.add.success:              Votre menu a bien été créé
+menu.edit.success:             Votre menu a bien été modifié

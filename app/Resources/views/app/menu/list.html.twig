@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div>
+        <a href="{{ path('app_menu_add') }}" class="btn">{{ 'add'|trans }}</a>
+    </div>
+
+    <ul>
+
+    {% for menu in pagination %}
+        <li><a href="#">Menu du {{ menu.dateStart|date('d-m-Y') }} au {{ menu.dateEnd|date('d-m-Y') }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

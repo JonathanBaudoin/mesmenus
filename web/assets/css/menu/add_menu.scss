@@ -1,0 +1,12 @@
+#menu-choose-date {
+    display: flex;
+
+    justify-content: space-around;
+
+    .choose-date {
+        .label {
+            font-size: 1.3em;
+            text-align: center;
+        }
+    }
+}

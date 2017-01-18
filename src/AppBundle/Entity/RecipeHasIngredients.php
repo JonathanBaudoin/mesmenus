@@ -10,7 +10,6 @@ namespace AppBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="recipe_has_ingredients")
@@ -28,7 +27,7 @@ class RecipeHasIngredients implements IngredientInterface
     protected $id;
 
     /**
-     * @var int
+     * @var Recipe
      *
      * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="ingredients")
      * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id", nullable=false)
