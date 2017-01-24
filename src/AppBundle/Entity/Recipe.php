@@ -102,13 +102,6 @@ class Recipe
     protected $ingredients;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="MenuHasRecipes", mappedBy="menu")
-     */
-    protected $menus;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer")
@@ -119,7 +112,6 @@ class Recipe
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
-        $this->menus       = new ArrayCollection();
     }
 
     public function __toString()
@@ -332,6 +324,4 @@ class Recipe
 
         return $this;
     }
-
-
 }

@@ -5,4 +5,9 @@
     font-size: 1.3em;
     text-align: center; }
 
+.table #day {
+  width: 50px; }
+.table .lunch, .table .dinner {
+  width: 50%; }
+
 /*# sourceMappingURL=add_menu.css.map */

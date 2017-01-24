@@ -8,7 +8,7 @@
     <ul>
 
     {% for menu in pagination %}
-        <li><a href="#">Menu du {{ menu.dateStart|date('d-m-Y') }} au {{ menu.dateEnd|date('d-m-Y') }}</a></li>
+        <li><a href="{{ path('app_menu_view', {'id': menu.id}) }}">Menu du {{ menu.dateStart|date('d-m-Y') }} au {{ menu.dateEnd|date('d-m-Y') }}</a><a href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> </li>
     {% endfor %}
     </ul>
 {% endblock %}

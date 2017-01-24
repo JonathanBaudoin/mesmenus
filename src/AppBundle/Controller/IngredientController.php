@@ -55,7 +55,7 @@ class IngredientController extends Controller
             }
 
             $message = $this->get('translator')->trans($message, ['%name%' => $ingredient->getName()]);
-            $this->addFlash('notice', $message);
+            $this->addFlash('success', $message);
 
             if ($redirect) {
                 return $this->redirectToRoute('app_ingredient_add');

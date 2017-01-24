@@ -33,7 +33,7 @@ class RecipeController extends Controller
      *
      * @return array
      *
-     * @Route("{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
+     * @Route("{page}/", name="app_recipe_list", defaults={"page" = 1}, requirements={"page": "\d+"})
      * @Template("app/recipe/list.html.twig")
      */
     public function listAction($page = 1)
@@ -117,7 +117,7 @@ class RecipeController extends Controller
 
                 $em->persist($recipe);
                 $em->flush();
-                $this->addFlash('notice', $this->get('translator')->trans($recipeFormSuccessMessage));
+                $this->addFlash('success', $this->get('translator')->trans($recipeFormSuccessMessage));
                 return $this->redirectToRoute('app_recipe_view', ['slug' => $recipe->getSlug()]);
             }
         }
@@ -133,7 +133,7 @@ class RecipeController extends Controller
      *
      * @return array
      *
-     * @Route("{slug}/")
+     * @Route("{slug}/", name="app_recipe_view")
      * @Template("app/recipe/view.html.twig")
      */
     public function viewAction(Recipe $recipe)

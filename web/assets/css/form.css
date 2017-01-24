@@ -66,6 +66,25 @@ h1 {
 
 #content {
   width: 100%; }
+  #content .flash-message {
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    box-sizing: content-box;
+    border: 1px solid;
+    border-radius: 5px;
+    color: #ffffff; }
+    #content .flash-message.flash-success {
+      border-color: #449d44;
+      background-color: #5cb85c; }
+    #content .flash-message.flash-notice {
+      border-color: #31b0d5;
+      background-color: #5bc0de; }
+    #content .flash-message.flash-warning {
+      border-color: #ec971f;
+      background-color: #f0ad4e; }
+    #content .flash-message.flash-error {
+      border-color: #c9302c;
+      background-color: #d9534f; }
   @media only screen and (min-width: 992px) {
     #content {
       width: 960px;

@@ -105,6 +105,36 @@ h1 {
 }
 
 #content {
+
+    .flash-message {
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        box-sizing: content-box;
+        border: 1px solid;
+        border-radius: 5px;
+        color: $white;
+
+        &.flash-success {
+            border-color: darken($flash-success, 10%);
+            background-color: $flash-success;
+        }
+
+        &.flash-notice {
+            border-color: darken($flash-notice, 10%);
+            background-color: $flash-notice;
+        }
+
+        &.flash-warning {
+            border-color: darken($flash-warning, 10%);
+            background-color: $flash-warning;
+        }
+
+        &.flash-error {
+            border-color: darken($flash-error, 10%);
+            background-color: $flash-error;
+        }
+    }
+
     width: $content-width-tablet;
 
     @include breakpoint(desktop) {

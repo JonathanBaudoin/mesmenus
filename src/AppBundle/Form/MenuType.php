@@ -9,8 +9,8 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\Meal;
 use AppBundle\Entity\Menu;
-use AppBundle\Entity\MenuHasRecipes;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -55,9 +55,9 @@ class MenuType extends AbstractType
             $startDate = clone $menu->getDateStart();
 
             for ($d = $startDate; $d <= $menu->getDateEnd(); $d->add(new \DateInterval('P1D'))) {
-                foreach (MenuHasRecipes::$meals as $meal) {
+                foreach (Meal::$mealTypes as $meal) {
                     $builder
-                        ->add('recipes_'.$d->format('Y-m-d').'_'.$meal, EntityType::class, array(
+                        ->add('meal_'.$d->format('Y-m-d').'_'.$meal, EntityType::class, array(
                             'class'       => 'AppBundle\Entity\Recipe',
                             'required'    => false,
                             'multiple'    => true,

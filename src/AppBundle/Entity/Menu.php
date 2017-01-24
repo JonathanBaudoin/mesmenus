@@ -55,9 +55,9 @@ class Menu
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="MenuHasRecipes", mappedBy="menu", orphanRemoval=true, cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Meal", mappedBy="menu", cascade={"persist"})
      */
-    protected $recipes;
+    protected $meals;
 
     /**
      * @var User
@@ -67,10 +67,17 @@ class Menu
      */
     protected $user;
 
+    /**
+     * @var ShoppingList
+     *
+     * @ORM\OneToOne(targetEntity="ShoppingList", mappedBy="menu", cascade={"persist"})
+     */
+    protected $shoppingList;
+
 
     public function __construct()
     {
-        $this->recipes = new ArrayCollection();
+        $this->meals = new ArrayCollection();
     }
 
     /**
@@ -122,26 +129,6 @@ class Menu
     }
 
     /**
-     * @return ArrayCollection
-     */
-    public function getRecipes()
-    {
-        return $this->recipes;
-    }
-
-    /**
-     * @param ArrayCollection $recipes
-     *
-     * @return $this
-     */
-    public function setRecipes($recipes)
-    {
-        $this->recipes = $recipes;
-
-        return $this;
-    }
-
-    /**
      * @return User
      */
     public function getUser()
@@ -160,5 +147,64 @@ class Menu
 
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMeals()
+    {
+        return $this->meals;
+    }
+
+    /**
+     * @param Meal $meal
+     *
+     * @return $this
+     */
+    public function addMeal(Meal $meal)
+    {
+        if (!$this->meals->contains($meal)) {
+            $this->meals->add($meal);
+            $meal->setMenu($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Meal $meal
+     *
+     * @return $this
+     */
+    public function removeMeal(Meal $meal)
+    {
+        if ($this->meals->contains($meal)) {
+            $this->meals->removeElement($meal);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return ShoppingList
+     */
+    public function getShoppingList()
+    {
+        return $this->shoppingList;
+    }
+
+    /**
+     * @param ShoppingList $shoppingList
+     *
+     * @return $this
+     */
+    public function setShoppingList($shoppingList)
+    {
+        $this->shoppingList = $shoppingList;
+
+        return $this;
+    }
+
+
 
 }

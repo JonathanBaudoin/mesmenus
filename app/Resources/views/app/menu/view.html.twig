@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h1>Menus du {{ menu.dateStart|date('D d/m/Y') }} au {{ menu.dateEnd|date('D d/m/Y') }}</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="day">Jour</th>
+            <th class="lunch">Déjeuner</th>
+            <th class="dinner">Dîner</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for menuDate in range(menu.dateStart|date('U'), menu.dateEnd|date('U'), 86400) %}
+            {% set lunches = meals[menuDate|date('Y-m-d')]['lunch'] %}
+            {% set dinners = meals[menuDate|date('Y-m-d')]['dinner'] %}
+            <tr>
+                <td class="day">{{ menuDate|date('D') }}</td>
+                <td class="lunch">
+                    {% if lunches|length > 0 %}
+                    <ul>
+                        {% for lunch in lunches %}
+                        <li><a href="{{ path('app_recipe_view', {'slug': lunch.slug}) }}">{{ lunch.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+                <td class="dinner">
+                    {% if dinners|length > 0 %}
+                    <ul>
+                        {% for dinner in dinners %}
+                            <li><a href="{{ path('app_recipe_view', {'slug': dinner.slug}) }}">{{ dinner.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/table.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}

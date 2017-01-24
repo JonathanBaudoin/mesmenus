@@ -16,24 +16,26 @@
         </div>
     </div>
 
-    <table>
+    {% if menu.id is not null %}
+    <table class="table">
         <thead>
             <tr>
-                <th>Jour</th>
-                <th>Déjeuner</th>
-                <th>Dîner</th>
+                <th class="day">Jour</th>
+                <th class="lunch">Déjeuner</th>
+                <th class="dinner">Dîner</th>
             </tr>
         </thead>
         <tbody>
         {% for menuDate in range(menu.dateStart|date('U'), menu.dateEnd|date('U'), 86400) %}
             <tr>
-                <td>{{ menuDate|date('D') }}</td>
-                <td>{{ form_widget(attribute(menuForm, 'recipes_' ~ menuDate|date('Y-m-d') ~ '_lunch')) }}</td>
-                <td>{{ form_widget(attribute(menuForm, 'recipes_' ~ menuDate|date('Y-m-d') ~ '_dinner')) }}</td>
+                <td class="day">{{ menuDate|date('D') }}</td>
+                <td class="lunch">{{ form_widget(attribute(menuForm, 'meal_' ~ menuDate|date('Y-m-d') ~ '_lunch')) }}</td>
+                <td class="dinner">{{ form_widget(attribute(menuForm, 'meal_' ~ menuDate|date('Y-m-d') ~ '_dinner')) }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 
     <div class="center">
         <input type="submit" id="_submit" name="_submit" value="Valider" />
@@ -52,6 +54,7 @@
     {% stylesheets filter="sass"
     "assets/css/form.scss"
     "assets/css/menu/add_menu.scss"
+    "assets/css/table.scss"
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
