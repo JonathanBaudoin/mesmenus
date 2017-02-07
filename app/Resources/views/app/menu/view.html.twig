@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% set from = menu.dateStart|localizeddate('full', 'none') %}
+{% set to = menu.dateEnd|localizeddate('full', 'none') %}
+
 {% block content %}
 
-    <h1>Menus du {{ menu.dateStart|date('D d/m/Y') }} au {{ menu.dateEnd|date('D d/m/Y') }}</h1>
+    <h1>{{ 'menu.from_to'|trans({'%from%': from, '%to%': to}) }}</h1>
 
+    {# Menu #}
     <table class="table">
         <thead>
         <tr>
@@ -40,6 +44,21 @@
         {% endfor %}
         </tbody>
     </table>
+
+    {# Shopping list #}
+    <div>
+        <ul>
+        {% for ingredient in shoppingList %}
+            <li>{{ ingredient['name'] }} :
+            {% for measureUnit, amount in ingredient['values'] %}
+                {% if ingredient['values']|length > 1 %}<ul><li>{% endif %}
+                    {{ amount }} {{ measureUnit }}
+                {% if ingredient['values']|length > 1 %}</li></ul>{% endif %}
+            {% endfor %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

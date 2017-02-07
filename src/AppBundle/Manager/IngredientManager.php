@@ -8,7 +8,6 @@
 
 namespace AppBundle\Manager;
 
-
 use AppBundle\Entity\Ingredient;
 
 class IngredientManager extends BaseManager

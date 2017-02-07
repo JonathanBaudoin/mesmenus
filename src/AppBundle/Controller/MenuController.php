@@ -18,7 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  * Class MenuController
  * @package AppBundle\Controller
  *
- * @Route("/menu/")
+ * @Route("/menu")
  */
 class MenuController extends Controller
 {
@@ -27,7 +27,7 @@ class MenuController extends Controller
      *
      * @return array
      *
-     * @Route("{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
+     * @Route("/{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
      * @Security("has_role('ROLE_USER')")
      * @Template("app/menu/list.html.twig")
      */
@@ -77,12 +77,21 @@ class MenuController extends Controller
                 for ($d = $startDate; $d <= $menu->getDateEnd(); $d->add(new \DateInterval('P1D'))) {
                     // Lunch and dinner
                     foreach (Meal::$mealTypes as $mealType) {
-                        $meal    = new Meal();
                         // Get recipes from current day and current meal
                         $recipes = $menuForm['meal_'.$d->format('Y-m-d').'_'.$mealType]->getData();
 
                         $d2 = clone $d;
                         ($mealType === 'lunch') ? $d2->setTime(12, 00) : $d2->setTime(19, 00);
+
+                        $meal = $this->getDoctrine()->getRepository('AppBundle:Meal')->findOneBy([
+                            'menu' => $menu,
+                            'date' => $d,
+                            'type' => $mealType
+                        ]);
+
+                        if (!$meal) {
+                            $meal = new Meal();
+                        }
 
                         $meal
                             ->setDate($d2)
@@ -143,8 +152,9 @@ class MenuController extends Controller
         }
 
         return [
-            'menu'  => $menu,
-            'meals' => $meals,
+            'menu'         => $menu,
+            'meals'        => $meals,
+            'shoppingList' => $this->get('app.manager.menu')->getShoppingList($menu),
         ];
     }
 }

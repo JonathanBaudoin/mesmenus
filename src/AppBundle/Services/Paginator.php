@@ -29,12 +29,16 @@ class Paginator
         $this->pageRange = $pageRange;
     }
 
-    public function paginate(QueryBuilder $qb, $page)
+    public function paginate(QueryBuilder $qb, $page, $pageRange = null)
     {
+        if (is_null($pageRange)) {
+            $pageRange = $this->pageRange;
+        }
+
         return $this->paginator->paginate(
             $qb,
             $this->request->getCurrentRequest()->query->getInt('page', $page),
-            $this->pageRange
+            $pageRange
         );
     }
 }

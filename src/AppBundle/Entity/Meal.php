@@ -184,6 +184,12 @@ class Meal
             $this->addRecipe($recipe);
         }
 
+        foreach ($this->getRecipes() as $recipe) {
+            if (!in_array($recipe, $recipes->toArray())) {
+                $this->removeRecipe($recipe);
+            }
+        }
+
         return $this;
     }
 }

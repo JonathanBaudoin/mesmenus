@@ -20,9 +20,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="day">Jour</th>
-                <th class="lunch">Déjeuner</th>
-                <th class="dinner">Dîner</th>
+                <th class="day">{{ 'day'|trans }}</th>
+                <th class="lunch">{{ 'lunch'|trans }}</th>
+                <th class="dinner">{{ 'dinner'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@
     {% endif %}
 
     <div class="center">
-        <input type="submit" id="_submit" name="_submit" value="Valider" />
+        <input type="submit" id="_submit" name="_submit" value="{{ 'validate'|trans }}" />
     </div>
     {{ form_end(menuForm) }}
 {% endblock %}

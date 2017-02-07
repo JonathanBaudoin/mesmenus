@@ -1,10 +1,21 @@
 add: Ajouter
+day: Jour
+lunch: Déjeuner
+dinner: Dîner
+validate: Valider
 
+ingredient:  Ingrédient
+ingredients: Ingrédients
+amount:      Quantité
+measureUnit: Unité de mesure
+
+# NAVIGATION MENU
 menu.homepage.label: Accueil
 menu.recipes.label:  Recettes
 menu.menus.label:    Menus
 menu.shopping.label: Courses
 
+# USER
 user.login.h1:     Connexion
 user.login:        Connexion
 user.logout:       Déconnexion
@@ -51,3 +62,4 @@ menu.form.dateEnd:             Dernier jour
 menu.form.recipes.empty_value: -
 menu.add.success:              Votre menu a bien été créé
 menu.edit.success:             Votre menu a bien été modifié
+menu.from_to:                  Menu du %from% au %to%

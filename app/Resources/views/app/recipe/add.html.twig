@@ -55,9 +55,9 @@
                 <div id="added-ingredients">
                     {% for recipeIngredient in recipeForm.vars.value.ingredients %}
                         <div id="ingredient_{{ recipeIngredient.ingredient.id }}" class="recipe-has-ingredient" data-ingredient-id="{{ recipeIngredient.ingredient.id }}" data-ingredient-name="{{ recipeIngredient.name }}">
-                            <input class="name" name="ingredient[{{ recipeIngredient.ingredient.id }}][name]" value="{{ recipeIngredient.name }}" disabled />
-                            <input type="number" class="amount" name="ingredient[{{ recipeIngredient.ingredient.id }}][amount]" value="{{ recipeIngredient.amount }}" placeholder="Quantité" />
-                            <input class="measure-unit" name="ingredient[{{ recipeIngredient.ingredient.id }}][measureUnit]" value="{{ recipeIngredient.measureUnit }}"  placeholder="Unité de mesure" />
+                            <input title="{{ 'ingredient'|trans }}" type="text" class="name" name="ingredient[{{ recipeIngredient.ingredient.id }}][name]" value="{{ recipeIngredient.name }}" disabled />
+                            <input title="{{ 'amount'|trans }}" type="number" class="amount" name="ingredient[{{ recipeIngredient.ingredient.id }}][amount]" value="{{ recipeIngredient.amount }}" placeholder="{{ 'amount'|trans }}" />
+                            <input title="{{ 'measureUnit'|trans }}" class="measure-unit" name="ingredient[{{ recipeIngredient.ingredient.id }}][measureUnit]" value="{{ recipeIngredient.measureUnit }}"  placeholder="{{ 'measureUnit'|trans }}" />
                         </div>
                     {% endfor %}
                 </div>

@@ -6,3 +6,7 @@ services:
     app.manager.ingredient:
         class: AppBundle\Manager\IngredientManager
         arguments: ['@doctrine.orm.entity_manager', 'AppBundle\Entity\Ingredient']
+
+    app.manager.menu:
+        class: AppBundle\Manager\MenuManager
+        arguments: ['@doctrine.orm.entity_manager', 'AppBundle\Entity\Menu']
