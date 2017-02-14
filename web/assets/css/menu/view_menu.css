@@ -1,0 +1,12 @@
+tbody tr .recipe {
+  border-radius: 3px;
+  padding: 3px;
+  background-color: #3c7d9c;
+  color: #ffffff; }
+
+td.day {
+  background-color: #b9def0; }
+  td.day::first-letter {
+    text-transform: capitalize; }
+
+/*# sourceMappingURL=view_menu.css.map */

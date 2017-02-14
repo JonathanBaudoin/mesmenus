@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div>
-        <a href="{{ path('app_menu_add') }}" class="btn">{{ 'add'|trans }}</a>
+    <div id="actions">
+        <a href="{{ path('app_menu_add') }}" class="btn">{{ 'menu.add'|trans }}</a>
     </div>
 
     <ul>
@@ -11,7 +11,7 @@
         {% set from = menu.dateStart|localizeddate('full', 'none') %}
         {% set to = menu.dateEnd|localizeddate('full', 'none') %}
         <li>
-            <a href="{{ path('app_menu_view', {'id': menu.id}) }}">{{ 'menu.from_to'|trans({'%from%': from, '%to%': to}) }}</a>
+            <a href="{{ path('app_menu_view', {'id': menu.id}) }}">{{ 'menu.from_to'|trans({'%from%': from, '%to%': to})|raw }}</a>
             <a href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </li>
     {% endfor %}

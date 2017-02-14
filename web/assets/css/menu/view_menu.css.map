@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIQ,gBAAQ;EACJ,aAAa,EAAE,GAAG;EAClB,OAAO,EAAE,GAAG;EACZ,gBAAgB,ECGd,OAAO;EDFT,KAAK,ECPT,OAAO;;ADYf,MAAO;EACH,gBAAgB,ECRN,OAAO;EDUjB,oBAAgB;IACZ,cAAc,EAAE,UAAU",
+"sources": ["view_menu.scss","../_colors.scss"],
+"names": [],
+"file": "view_menu.css"
+}

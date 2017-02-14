@@ -7,12 +7,15 @@
   border: 1px solid #c1c1c1;
   border-radius: 3px;
   width: 100%;
-  margin-bottom: 10px; }
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center; }
   #recipe-list li:hover {
     background-color: #d8edf8; }
   #recipe-list li a {
-    display: block;
-    padding: 10px; }
+    display: block; }
+  #recipe-list li .recipe-author {
+    font-size: 0.8em; }
   @media only screen and (min-width: 768px) {
     #recipe-list li {
       flex: 0 1 calc(100% * (1/2) - 20px); }

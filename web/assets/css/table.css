@@ -1,8 +1,14 @@
 .table {
   width: 100%;
   border-collapse: collapse; }
+  .table thead th {
+    background-color: #95aab4;
+    border-color: #3c7d9c; }
   .table td, .table th {
     border: 1px solid #95aab4;
     padding: 5px; }
+  .table tbody tr:hover {
+    background-color: #d8edf8;
+    color: #3c7d9c; }
 
 /*# sourceMappingURL=table.css.map */

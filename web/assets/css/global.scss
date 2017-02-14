@@ -143,6 +143,12 @@ h1 {
     }
 }
 
+#actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
 .btn, a.btn {
     padding: 10px;
     border-radius: 5px;
@@ -153,6 +159,6 @@ h1 {
 
     &:hover {
         background-color: $blue-normal;
-        color: $black;
+        color: $blue-darker;
     }
 }

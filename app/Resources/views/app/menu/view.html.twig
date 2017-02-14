@@ -5,15 +5,15 @@
 
 {% block content %}
 
-    <h1>{{ 'menu.from_to'|trans({'%from%': from, '%to%': to}) }}</h1>
+    <h1>{{ 'menu.from_to'|trans({'%from%': from, '%to%': to})|raw }}</h1>
 
     {# Menu #}
     <table class="table">
         <thead>
         <tr>
-            <th class="day">Jour</th>
-            <th class="lunch">Déjeuner</th>
-            <th class="dinner">Dîner</th>
+            <th class="day">{{ 'day'|trans }}</th>
+            <th class="lunch">{{ 'lunch'|trans }}</th>
+            <th class="dinner">{{ 'dinner'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -21,12 +21,12 @@
             {% set lunches = meals[menuDate|date('Y-m-d')]['lunch'] %}
             {% set dinners = meals[menuDate|date('Y-m-d')]['dinner'] %}
             <tr>
-                <td class="day">{{ menuDate|date('D') }}</td>
+                <td class="day">{{ menuDate|localizeddate('none', 'none', null, null, 'EEEE') }}</td>
                 <td class="lunch">
                     {% if lunches|length > 0 %}
                     <ul>
                         {% for lunch in lunches %}
-                        <li><a href="{{ path('app_recipe_view', {'slug': lunch.slug}) }}">{{ lunch.name }}</a></li>
+                        <li><a href="{{ path('app_recipe_view', {'slug': lunch.slug}) }}" class="recipe">{{ lunch.name }}</a></li>
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -35,7 +35,7 @@
                     {% if dinners|length > 0 %}
                     <ul>
                         {% for dinner in dinners %}
-                            <li><a href="{{ path('app_recipe_view', {'slug': dinner.slug}) }}">{{ dinner.name }}</a></li>
+                            <li><a href="{{ path('app_recipe_view', {'slug': dinner.slug}) }}" class="recipe">{{ dinner.name }}</a></li>
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -64,6 +64,7 @@
 {% block stylesheets %}
     {% stylesheets filter="sass"
     "assets/css/table.scss"
+    "assets/css/menu/view_menu.scss"
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

@@ -33,6 +33,7 @@ recipe.view.breakTime.label:       ']0,1[Repos : %count% minute|]1,Inf[Repos : %
 
 recipe.list.h1:                    Toutes les recettes
 recipe.add.h1:                     Ajouter une recette
+recipe.add:                     Ajouter une recette
 recipe.form.name.label:            Nom de la recette
 recipe.form.preparationTime.label: Temps de préparation (en minutes)
 recipe.form.cookingTime.label:     Temps de cuisson (en minutes)
@@ -57,9 +58,10 @@ ingredient.add.exists:      L'ingrédient %name% existe déjà !
 
 
 # MENU
+menu.add:                      Créer un nouveau menu
 menu.form.dateStart:           Premier jour
 menu.form.dateEnd:             Dernier jour
 menu.form.recipes.empty_value: -
 menu.add.success:              Votre menu a bien été créé
 menu.edit.success:             Votre menu a bien été modifié
-menu.from_to:                  Menu du %from% au %to%
+menu.from_to:                  Menu du <strong>%from%</strong> au <strong>%to%</strong>

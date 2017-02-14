@@ -4,8 +4,22 @@
     width: 100%;
     border-collapse: collapse;
 
+    thead {
+        th {
+            background-color: $blue-dark;
+            border-color: $blue-darker;
+        }
+    }
+
     td, th {
         border: 1px solid $blue-dark;
         padding: 5px;
+    }
+
+    tbody {
+        tr:hover {
+            background-color: $blue-lighter;
+            color: $blue-darker;
+        }
     }
 }

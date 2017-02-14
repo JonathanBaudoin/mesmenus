@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div>
-        <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'add'|trans }}</a>
+    <div id="actions">
+        <a href="{{ path('app_recipe_add') }}" class="btn">{{ 'recipe.add'|trans }}</a>
         <a href="{{ path('app_ingredient_add') }}" class="btn">{{ 'ingredient.add'|trans }}</a>
     </div>
 
@@ -10,6 +10,7 @@
     {% for recipe in pagination %}
         <li>
             <h2><a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">{{ recipe.name }}</a></h2>
+            <span class="recipe-author">proposée par {{ recipe.user.username }}</span>
         </li>
     {% endfor %}
     </ul>
