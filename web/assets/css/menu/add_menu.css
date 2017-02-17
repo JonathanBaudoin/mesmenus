@@ -7,6 +7,10 @@
 
 .table #day {
   width: 50px; }
+.table td.day {
+  background-color: #b9def0; }
+  .table td.day::first-letter {
+    text-transform: capitalize; }
 .table .lunch, .table .dinner {
   width: 50%; }
 

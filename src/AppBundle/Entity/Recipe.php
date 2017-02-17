@@ -66,7 +66,7 @@ class Recipe
     /**
      * @var int
      *
-     * @ORM\Column(name="cooking_time", type="integer")
+     * @ORM\Column(name="cooking_time", type="integer", nullable=true)
      * @Assert\Type("integer")
      */
     protected $cookingTime;
@@ -74,7 +74,7 @@ class Recipe
     /**
      * @var int
      *
-     * @ORM\Column(name="break_time", type="integer")
+     * @ORM\Column(name="break_time", type="integer", nullable=true)
      * @Assert\Type("integer")
      */
     protected $breakTime;
@@ -324,4 +324,24 @@ class Recipe
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->status = (int) $status;
+        return $this;
+    }
+
 }

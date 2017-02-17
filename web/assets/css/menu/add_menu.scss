@@ -1,3 +1,5 @@
+@import "../colors";
+
 #menu-choose-date {
     display: flex;
 
@@ -14,6 +16,14 @@
 .table {
     #day {
         width: 50px;
+    }
+
+    td.day {
+        background-color: $blue-normal;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
     }
 
     .lunch, .dinner {

@@ -28,7 +28,7 @@
         <tbody>
         {% for menuDate in range(menu.dateStart|date('U'), menu.dateEnd|date('U'), 86400) %}
             <tr>
-                <td class="day">{{ menuDate|date('D') }}</td>
+                <td class="day">{{ menuDate|localizeddate('none', 'none', null, null, 'EEEE') }}</td>
                 <td class="lunch">{{ form_widget(attribute(menuForm, 'meal_' ~ menuDate|date('Y-m-d') ~ '_lunch')) }}</td>
                 <td class="dinner">{{ form_widget(attribute(menuForm, 'meal_' ~ menuDate|date('Y-m-d') ~ '_dinner')) }}</td>
             </tr>

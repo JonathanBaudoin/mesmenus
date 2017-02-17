@@ -50,7 +50,7 @@ class Meal
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_day", type="date", nullable=false)
+     * @ORM\Column(name="date_day", type="datetime", nullable=false)
      * @Assert\NotBlank()
      * @Assert\Date()
      */

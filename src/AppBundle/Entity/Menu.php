@@ -16,6 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Table(name="menu")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MenuRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Menu
 {
@@ -34,7 +35,6 @@ class Menu
      * @ORM\Column(name="date_start", type="date", nullable=false)
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\GreaterThanOrEqual("today", message="menu.dateStart.gte.today")
      */
     protected $dateStart;
 
@@ -55,7 +55,7 @@ class Menu
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Meal", mappedBy="menu", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Meal", mappedBy="menu", cascade={"all"})
      */
     protected $meals;
 
@@ -183,6 +183,51 @@ class Menu
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setMealsValues()
+    {
+        $currentMeals = [];
+        $meals        = [];
+        $startDate    = clone $this->dateStart;
+
+        /** @var Meal $meal */
+        foreach ($this->meals as $meal) {
+            $currentMeals[$meal->getDate()->format('d-m-Y').'-'.$meal->getType()] = $meal;
+        }
+
+        for ($d = $startDate; $d <= $this->dateEnd; $d->add(new \DateInterval('P1D'))) {
+            foreach (Meal::$mealTypes as $mealType) {
+                $meals[$d->format('d-m-Y').'-'.$mealType] = [
+                    'date' => new \DateTime($d->format('d-m-Y')),
+                    'type' => $mealType
+                ];
+            }
+        }
+
+        foreach ($currentMeals as $key => $value) {
+            if (!isset($meals[$key])) {
+                $this->removeMeal($value);
+            }
+        }
+
+        foreach ($meals as $key => $value) {
+            if (!isset($currentMeals[$key])) {
+                $meal = new Meal();
+                ($value['type'] === 'lunch') ? $value['date']->setTime(12, 00) : $value['date']->setTime(19, 00);
+                $meal
+                    ->setDate($value['date'])
+                    ->setType($value['type'])
+                    ->setMenu($this)
+                ;
+
+                $this->addMeal($meal);
+            }
+        }
     }
 
     /**

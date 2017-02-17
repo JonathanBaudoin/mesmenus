@@ -38,6 +38,14 @@ class Ingredient implements IngredientInterface
     protected $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(length=255, unique=true, nullable=false)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    protected $slug;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe")
@@ -79,6 +87,26 @@ class Ingredient implements IngredientInterface
     public function setName($name)
     {
         $this->name = ucfirst(strtolower($name));
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }

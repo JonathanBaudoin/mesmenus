@@ -18,7 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  * Class MenuController
  * @package AppBundle\Controller
  *
- * @Route("/menu")
+ * @Route("/menu/")
  */
 class MenuController extends Controller
 {
@@ -27,7 +27,7 @@ class MenuController extends Controller
      *
      * @return array
      *
-     * @Route("/{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
+     * @Route("{page}/", defaults={"page" = 1}, requirements={"page": "\d+"})
      * @Security("has_role('ROLE_USER')")
      * @Template("app/menu/list.html.twig")
      */
@@ -77,6 +77,11 @@ class MenuController extends Controller
                 for ($d = $startDate; $d <= $menu->getDateEnd(); $d->add(new \DateInterval('P1D'))) {
                     // Lunch and dinner
                     foreach (Meal::$mealTypes as $mealType) {
+
+                        if (!isset($menuForm['meal_'.$d->format('Y-m-d').'_'.$mealType])) {
+                            continue;
+                        }
+
                         // Get recipes from current day and current meal
                         $recipes = $menuForm['meal_'.$d->format('Y-m-d').'_'.$mealType]->getData();
 
@@ -85,7 +90,7 @@ class MenuController extends Controller
 
                         $meal = $this->getDoctrine()->getRepository('AppBundle:Meal')->findOneBy([
                             'menu' => $menu,
-                            'date' => $d,
+                            'date' => $d2,
                             'type' => $mealType
                         ]);
 
@@ -119,7 +124,9 @@ class MenuController extends Controller
                 // Form is manually setted with meals menu values
                 /** @var Meal $meal */
                 foreach ($menu->getMeals() as $meal) {
-                    $menuForm['meal_' . $meal->getDate()->format('Y-m-d') . '_' . $meal->getType()]->setData($meal->getRecipes());
+                    if (!empty($menuForm['meal_' . $meal->getDate()->format('Y-m-d') . '_' . $meal->getType()])) {
+                        $menuForm['meal_' . $meal->getDate()->format('Y-m-d') . '_' . $meal->getType()]->setData($meal->getRecipes());
+                    }
                 }
             }
         }

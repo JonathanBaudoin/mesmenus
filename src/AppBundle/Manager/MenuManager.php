@@ -17,7 +17,6 @@ class MenuManager extends BaseManager
 {
     public function getShoppingList(Menu $menu)
     {
-
         $shoppingList = [];
         /** @var Meal $meal */
         foreach ($menu->getMeals() as $meal) {
@@ -27,7 +26,6 @@ class MenuManager extends BaseManager
 
                 /** @var RecipeHasIngredients $ingredient */
                 foreach ($recipe->getIngredients() as $ingredient) {
-
 
                     $ingredientId                        = $ingredient->getIngredient()->getId();
                     $shoppingList[$ingredientId]['name'] = $ingredient->getName();
