@@ -20,7 +20,7 @@ form {
         margin-bottom: 10px;
     }
 
-    input[type="text"], input[type="password"], input[type="email"], textarea, select {
+    input[type="text"], input[type="password"], input[type="email"], input[type="phone"], input[type="number"], textarea, select {
         border: 1px solid $gray-light;
         width: 100%;
         box-sizing: border-box;

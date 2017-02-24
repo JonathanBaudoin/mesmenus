@@ -47,17 +47,7 @@
 
     {# Shopping list #}
     <div>
-        <ul>
-        {% for ingredient in shoppingList %}
-            <li>{{ ingredient['name'] }} :
-            {% for measureUnit, amount in ingredient['values'] %}
-                {% if ingredient['values']|length > 1 %}<ul><li>{% endif %}
-                    {{ amount }} {{ measureUnit }}
-                {% if ingredient['values']|length > 1 %}</li></ul>{% endif %}
-            {% endfor %}
-            </li>
-        {% endfor %}
-        </ul>
+        <p class="center"><a class="btn" href="{{ path('app_shoppinglist_view', {'id': menu.getId}) }}">{{ 'shoppingList.see'|trans }}</a></p>
     </div>
 {% endblock %}
 

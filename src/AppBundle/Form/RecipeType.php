@@ -54,7 +54,7 @@ class RecipeType extends AbstractType
                 'required' => true,
             ])
             ->add('ingredients', EntityType::class, [
-                'label'         => 'Ingrédients',
+                'label'         => 'ingredients',
                 'class'         => 'AppBundle\Entity\Ingredient',
                 'multiple'      => true,
                 'expanded'      => false,

@@ -1,0 +1,12 @@
+@media only screen and (min-width: 992px) {
+  #add-ingredient {
+    display: flex;
+    justify-content: center; }
+    #add-ingredient div {
+      width: 100%; } }
+
+#quantity {
+  display: flex;
+  justify-content: center; }
+
+/*# sourceMappingURL=add_ingredient.css.map */

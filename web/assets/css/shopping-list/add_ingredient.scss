@@ -1,0 +1,18 @@
+@import "../colors";
+@import "../breakpoints";
+
+#add-ingredient {
+    @include breakpoint(desktop) {
+        display: flex;
+        justify-content: center;
+
+        div {
+            width: 100%;
+        }
+    }
+}
+
+#quantity {
+    display: flex;
+    justify-content: center;
+}

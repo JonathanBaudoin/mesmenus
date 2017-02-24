@@ -2,7 +2,27 @@
 
 {% block content %}
 
+    <p class="center"><a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.ingredient.add'|trans }}</a></p>
+
+    {% if menu.shoppingListIngredients is empty %}
+        <p class="flash-message flash-success">{{ 'shoppingList.empty.explanation'|trans }}</p>
+        <p class="flash-message flash-error">{{ 'shoppingList.empty.warning'|trans }}</p>
+        <p class="center">
+            <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.generate'|trans }}</a>
+        </p>
+    {% else %}
+        <ul id="shopping-list">
+        {% for ingredient in menu.shoppingListIngredients %}
+            <li class="ingredient" data-name="{{ ingredient.ingredientName }}"><span class="name">{{ ingredient.ingredientName }}</span><span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
 
 {% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/shopping-list/view_shoppingList.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}

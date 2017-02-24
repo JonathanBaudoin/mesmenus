@@ -17,6 +17,9 @@ h1 {
   align-items: center;
   justify-content: center; }
 
+.error {
+  color: #d9534f; }
+
 #header-nav #header-user ul {
   width: 100%;
   display: flex;
@@ -96,6 +99,7 @@ h1 {
   padding: 10px; }
 
 .btn, form input[type="submit"], form button[type="submit"], a.btn {
+  margin: 10px;
   padding: 10px;
   border-radius: 5px;
   border: 0;
@@ -118,7 +122,7 @@ form {
   form label {
     display: block;
     margin-bottom: 10px; }
-  form input[type="text"], form input[type="password"], form input[type="email"], form textarea, form select {
+  form input[type="text"], form input[type="password"], form input[type="email"], form input[type="phone"], form input[type="number"], form textarea, form select {
     border: 1px solid #e0e0e0;
     width: 100%;
     box-sizing: border-box;

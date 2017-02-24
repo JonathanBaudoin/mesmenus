@@ -30,6 +30,10 @@ h1 {
     justify-content: center;
 }
 
+.error {
+    color: $flash-error;
+}
+
 #header-nav {
 
     #header-user {
@@ -150,6 +154,7 @@ h1 {
 }
 
 .btn, a.btn {
+    margin: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 0;

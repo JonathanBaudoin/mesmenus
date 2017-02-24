@@ -1,0 +1,24 @@
+@media only screen and (min-width: 768px) {
+  #shopping-list {
+    display: flex;
+    flex-wrap: wrap; } }
+#shopping-list li.ingredient {
+  padding: 5px; }
+  @media only screen and (max-width: 480px) {
+    #shopping-list li.ingredient span {
+      display: inline-block; }
+    #shopping-list li.ingredient .name {
+      margin-right: 10px;
+      font-weight: bold; } }
+  @media only screen and (min-width: 768px) {
+    #shopping-list li.ingredient {
+      flex: 0 1 calc(100% * (1/2) - 20px); }
+      #shopping-list li.ingredient span {
+        display: block; }
+      #shopping-list li.ingredient h2 {
+        text-align: center; } }
+  @media only screen and (min-width: 992px) {
+    #shopping-list li.ingredient {
+      flex: 0 1 calc(100% * (1/4) - 20px); } }
+
+/*# sourceMappingURL=view_shoppingList.css.map */

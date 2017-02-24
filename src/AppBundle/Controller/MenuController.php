@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Meal;
 use AppBundle\Entity\Menu;
-use AppBundle\Entity\ShoppingList;
+use AppBundle\Entity\ShoppingListIngredients;
 use AppBundle\Form\MenuType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -60,10 +60,7 @@ class MenuController extends Controller
             }
         } else {
             $menu = new Menu();
-            $menu
-                ->setUser($this->getUser())
-                ->setShoppingList(new ShoppingList())
-            ;
+            $menu->setUser($this->getUser());
         }
 
         $menuForm = $this->createForm(MenuType::class, $menu);
@@ -161,7 +158,7 @@ class MenuController extends Controller
         return [
             'menu'         => $menu,
             'meals'        => $meals,
-            'shoppingList' => $this->get('app.manager.menu')->getShoppingList($menu),
+            'shoppingList' => $this->get('app.manager.shopping_list')->generateShoppingListFromRecipesMenu($menu),
         ];
     }
 }

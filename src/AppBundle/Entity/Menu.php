@@ -55,7 +55,7 @@ class Menu
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Meal", mappedBy="menu", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Meal", mappedBy="menu", cascade={"persist", "remove"})
      */
     protected $meals;
 
@@ -68,16 +68,17 @@ class Menu
     protected $user;
 
     /**
-     * @var ShoppingList
+     * @var ArrayCollection
      *
-     * @ORM\OneToOne(targetEntity="ShoppingList", mappedBy="menu", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ShoppingListIngredients", mappedBy="menu", cascade={"persist", "remove"})
      */
-    protected $shoppingList;
+    protected $shoppingListIngredients;
 
 
     public function __construct()
     {
-        $this->meals = new ArrayCollection();
+        $this->meals                   = new ArrayCollection();
+        $this->shoppingListIngredients = new ArrayCollection();
     }
 
     /**
@@ -231,25 +232,38 @@ class Menu
     }
 
     /**
-     * @return ShoppingList
+     * @return ShoppingListIngredients
      */
-    public function getShoppingList()
+    public function getShoppingListIngredients()
     {
-        return $this->shoppingList;
+        return $this->shoppingListIngredients;
     }
 
     /**
-     * @param ShoppingList $shoppingList
+     * @param ShoppingListIngredients $shoppingListIngredient
      *
      * @return $this
      */
-    public function setShoppingList($shoppingList)
+    public function addShoppingListIngredient(ShoppingListIngredients $shoppingListIngredient)
     {
-        $this->shoppingList = $shoppingList;
+        $this->shoppingListIngredients->add($shoppingListIngredient);
+        $shoppingListIngredient->setMenu($this);
 
         return $this;
     }
 
+    /**
+     * @param ShoppingListIngredients $shoppingListIngredient
+     *
+     * @return $this
+     */
+    public function removeShoppingListIngredient(ShoppingListIngredients $shoppingListIngredient)
+    {
+        if ($this->shoppingListIngredients->contains($shoppingListIngredient)) {
+            $this->shoppingListIngredients->remove($shoppingListIngredient);
+        }
 
+        return $this;
+    }
 
 }

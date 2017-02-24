@@ -7,6 +7,8 @@
   .table td, .table th {
     border: 1px solid #95aab4;
     padding: 5px; }
+  .table tr {
+    width: auto; }
   .table tbody tr:hover {
     background-color: #d8edf8;
     color: #3c7d9c; }

@@ -16,6 +16,10 @@
         padding: 5px;
     }
 
+    tr {
+        width: auto;
+    }
+
     tbody {
         tr:hover {
             background-color: $blue-lighter;

@@ -1,0 +1,41 @@
+@import "../colors";
+@import "../breakpoints";
+
+#shopping-list {
+
+    @include breakpoint(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    li.ingredient {
+        padding: 5px;
+
+        @include breakpoint(mobile) {
+            span {
+                display: inline-block;
+            }
+
+            .name {
+                margin-right: 10px;
+                font-weight: bold;
+            }
+        }
+
+        @include breakpoint(tablet) {
+            span {
+                display: block;
+            }
+
+            flex: 0 1 calc(100% * (1/2) - 20px);
+
+            h2 {
+                text-align: center;
+            }
+        }
+
+        @include breakpoint(desktop) {
+            flex: 0 1 calc(100% * (1/4) - 20px);
+        }
+    }
+}

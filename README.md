@@ -13,7 +13,6 @@ sudo su -c "gem install sass"
 sudo gem install sass
 sudo gem update --system
 
-bower install --save bootstrap
 bower install --save fontawesome
 ```
 

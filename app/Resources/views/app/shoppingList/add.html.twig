@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {{ form_start(shoppingListForm) }}
+
+    <div id="add-ingredient">
+        <div>
+            {{ form_label(shoppingListForm.ingredient) }}
+            {{ form_widget(shoppingListForm.ingredient) }}
+            {{ form_errors(shoppingListForm.ingredient) }}
+        </div>
+
+        <div class="center">
+            Le produit n'existe pas ?<br />Ajoutez-le à votre liste !
+        </div>
+
+        <div>
+            {{ form_label(shoppingListForm.ingredientName) }}
+            {{ form_widget(shoppingListForm.ingredientName) }}
+            {{ form_errors(shoppingListForm.ingredientName) }}
+        </div>
+    </div>
+
+    <div id="quantity">
+        <div>
+            {{ form_label(shoppingListForm.amount) }}
+            {{ form_widget(shoppingListForm.amount) }}
+            {{ form_errors(shoppingListForm.amount) }}
+        </div>
+
+        <div>
+            {{ form_label(shoppingListForm.measureUnit) }}
+            {{ form_widget(shoppingListForm.measureUnit) }}
+            {{ form_errors(shoppingListForm.measureUnit) }}
+        </div>
+    </div>
+
+    <div class="center">
+        <input type="submit" id="_submit" name="_submit" value="{{ 'add'|trans }}" />
+    </div>
+    {{ form_end(shoppingListForm) }}
+
+    <div class="center">
+        <a href="{{ path('app_shoppinglist_view', {'id': menu.id}) }}" class="btn">Retourner à la liste de courses</a>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/form.scss"
+    "assets/css/shopping-list/add_ingredient.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/recipe/add_ingredient.js') }}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('select').select2();
+        });
+    </script>
+{% endblock javascripts %}
