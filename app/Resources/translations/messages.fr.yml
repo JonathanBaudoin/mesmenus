@@ -61,6 +61,8 @@ ingredient.add.exists:      L'ingrédient %name% existe déjà !
 
 # MENU
 menu.add:                      Créer un nouveau menu
+menu.edit:                     Modifier le menu
+menu.view:                     Voir le menu
 menu.form.dateStart:           Premier jour
 menu.form.dateEnd:             Dernier jour
 menu.form.recipes.empty_value: -
@@ -70,7 +72,7 @@ menu.from_to:                  Menu du <strong>%from%</strong> au <strong>%to%</
 
 
 # SHOPPING LIST
-shoppingList.see:               Voir la liste de courses
+shoppingList.view:              Voir la liste de courses
 shoppingList.generate:          Générer la liste de courses
 shoppingList.add:               Modifier la liste de courses
 shoppingList.ingredient.add:    Ajouter un produit
@@ -80,4 +82,4 @@ shoppingList.empty.explanation: >
     prévues seront automatiquement importés. Vous pourrez alors compléter la liste.
 shoppingList.empty.warning:     >
     Attention, si votre liste de courses est déjà générée et que vous ajoutez une recette dans votre menu, les ingrédients
-    associés ne seront pas importés ! Soyez bien sûr d'avoir terminé votre menu.
+    associés ne seront pas importés ! Soyez donc bien sûr d'avoir terminé votre menu.

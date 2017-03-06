@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"\/app_dev.php","routes":{"app_shoppinglist_add_product_to_cart":{"tokens":[["variable","\/","[^\/]++","productId"],["text","\/liste-de-courses\/voir\/ajax\/product_cart"],["variable","\/","[^\/]++","id"],["text","\/menu"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});

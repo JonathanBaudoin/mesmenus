@@ -9,6 +9,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Menu;
+use AppBundle\Entity\ShoppingListIngredients;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -51,5 +52,22 @@ class ShoppingListRepository extends EntityRepository
     public function findByMenu(Menu $menu)
     {
         return $this->findByMenuQueryBuilder($menu)->getQuery()->getResult();
+    }
+
+    /**
+     * @param Menu    $menu
+     * @param integer $productId
+     *
+     * @return null|ShoppingListIngredients
+     */
+    public function findProductByMenu(Menu $menu, $productId)
+    {
+        return $this
+            ->findByMenuQueryBuilder($menu)
+            ->andWhere('sl.id = :productId')
+            ->setParameter('productId', $productId)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 }

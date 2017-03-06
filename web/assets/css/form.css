@@ -12,6 +12,9 @@ body {
 h1 {
   color: #3c7d9c; }
 
+a {
+  outline: 0; }
+
 .center {
   display: flex;
   align-items: center;
@@ -105,6 +108,7 @@ h1 {
   border: 0;
   background-color: #3c7d9c;
   color: #ffffff;
+  text-align: center;
   cursor: pointer; }
   .btn:hover, form input[type="submit"]:hover, form button[type="submit"]:hover, a.btn:hover {
     background-color: #b9def0;

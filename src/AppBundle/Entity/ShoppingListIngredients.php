@@ -69,7 +69,7 @@ class ShoppingListIngredients
     protected $measureUnit;
 
     /**
-     * To know if this Ingredient is in the Menu or not
+     * To know if this product is in the Menu or not
      * @var boolean
      *
      * @ORM\Column(name="extra_menu", type="integer", nullable=false)
@@ -77,6 +77,17 @@ class ShoppingListIngredients
      * @Assert\Type("bool")
      */
     protected $extraMenu;
+
+    /**
+     * To know if the product is in the customer cart (if he ever bought)
+     *
+     * @var integer
+     *
+     * @ORM\Column(name="in_cart", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Type("bool")
+     */
+    protected $inCart = 0;
 
     /**
      * @return int
@@ -210,6 +221,25 @@ class ShoppingListIngredients
     public function setExtraMenu($extraMenu)
     {
         $this->extraMenu = $extraMenu;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function isInCart()
+    {
+        return $this->inCart;
+    }
+
+    /**
+     * @param int $inCart
+     *
+     * @return $this
+     */
+    public function setInCart($inCart)
+    {
+        $this->inCart = $inCart;
         return $this;
     }
 

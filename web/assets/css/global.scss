@@ -24,6 +24,10 @@ h1 {
     color: $blue-darker;
 }
 
+a {
+    outline: 0;
+}
+
 .center {
     display: flex;
     align-items: center;
@@ -160,6 +164,7 @@ h1 {
     border: 0;
     background-color: $blue-darker;
     color: $white;
+    text-align: center;
     cursor: pointer;
 
     &:hover {

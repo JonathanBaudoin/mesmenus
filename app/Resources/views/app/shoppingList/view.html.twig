@@ -2,7 +2,11 @@
 
 {% block content %}
 
-    <p class="center"><a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.ingredient.add'|trans }}</a></p>
+    <p class="center">
+        <a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.ingredient.add'|trans }}</a>
+        <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.generate'|trans }}</a>
+        <a href="{{ path('app_menu_view', {'id': menu.id}) }}" class="btn">{{ 'menu.view'|trans }}</a>
+    </p>
 
     {% if menu.shoppingListIngredients is empty %}
         <p class="flash-message flash-success">{{ 'shoppingList.empty.explanation'|trans }}</p>
@@ -11,9 +15,14 @@
             <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.generate'|trans }}</a>
         </p>
     {% else %}
-        <ul id="shopping-list">
+        <ul id="shopping-list" data-menu="{{ menu.id }}">
         {% for ingredient in menu.shoppingListIngredients %}
-            <li class="ingredient" data-name="{{ ingredient.ingredientName }}"><span class="name">{{ ingredient.ingredientName }}</span><span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span></li>
+            {% set flashType = (ingredient.isInCart) ? 'success' : 'error' %}
+            <li class="ingredient flash-message flash-{{ flashType }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
+                <a href="#">
+                    <span class="name">{{ ingredient.ingredientName }}</span><span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span>
+                </a>
+            </li>
         {% endfor %}
         </ul>
     {% endif %}
@@ -26,3 +35,8 @@
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/shoppingList/cart_products.js') }}"></script>
+{% endblock javascripts %}
