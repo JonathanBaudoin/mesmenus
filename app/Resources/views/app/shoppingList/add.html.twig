@@ -11,7 +11,7 @@
         </div>
 
         <div class="center">
-            Le produit n'existe pas ?<br />Ajoutez-le à votre liste !
+            {{ 'shoppingList.ingredient.add.long'|trans|raw }}
         </div>
 
         <div>
@@ -41,7 +41,7 @@
     {{ form_end(shoppingListForm) }}
 
     <div class="center">
-        <a href="{{ path('app_shoppinglist_view', {'id': menu.id}) }}" class="btn">Retourner à la liste de courses</a>
+        <a href="{{ path('app_shoppinglist_view', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.return'|trans }}</a>
     </div>
 {% endblock %}
 

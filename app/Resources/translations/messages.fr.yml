@@ -11,11 +11,19 @@ measureUnit:  Unité de mesure
 product:      Produit
 product.name: Nom du produit
 
+
 # NAVIGATION MENU
 menu.homepage.label: Accueil
 menu.recipes.label:  Recettes
 menu.menus.label:    Menus
 menu.shopping.label: Courses
+
+
+# HOMEPAGE
+homepage.create.menu:       Créez vos menus...
+homepage.edit.shoppingList: Éditez votre liste de course...
+homepage.free_mind:         Faites vos courses l'esprit tranquille !
+
 
 # USER
 user.login.h1:     Connexion
@@ -35,7 +43,9 @@ recipe.view.breakTime.label:       ']0,1[Repos : %count% minute|]1,Inf[Repos : %
 
 recipe.list.h1:                    Toutes les recettes
 recipe.add.h1:                     Ajouter une recette
-recipe.add:                     Ajouter une recette
+recipe.add:                        Ajouter une recette
+recipe.edit:                       Modifier la recette
+recipe.return:                     Retourner à la recette
 recipe.form.name.label:            Nom de la recette
 recipe.form.preparationTime.label: Temps de préparation (en minutes)
 recipe.form.cookingTime.label:     Temps de cuisson (en minutes)
@@ -72,11 +82,13 @@ menu.from_to:                  Menu du <strong>%from%</strong> au <strong>%to%</
 
 
 # SHOPPING LIST
-shoppingList.view:              Voir la liste de courses
-shoppingList.generate:          Générer la liste de courses
-shoppingList.add:               Modifier la liste de courses
-shoppingList.ingredient.add:    Ajouter un produit
-shoppingList.ingredient.added:  Le produit a bien été ajouté à votre liste de courses
+shoppingList.view:                Voir la liste de courses
+shoppingList.generate:            Générer la liste de courses
+shoppingList.add:                 Modifier la liste de courses
+shoppingList.return:              Retourner à la liste de courses
+shoppingList.ingredient.add:      Ajouter un produit
+shoppingList.ingredient.add.long: Le produit n'existe pas ?<br />Ajoutez-le à votre liste !
+shoppingList.ingredient.added:    Le produit a bien été ajouté à votre liste de courses
 shoppingList.empty.explanation: >
     Votre liste de courses est vide. Si vous avez terminé votre menu, vous pouvez la générer. Les ingrédients des recettes
     prévues seront automatiquement importés. Vous pourrez alors compléter la liste.

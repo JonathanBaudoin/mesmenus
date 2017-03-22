@@ -156,9 +156,8 @@ class MenuController extends Controller
         }
 
         return [
-            'menu'         => $menu,
-            'meals'        => $meals,
-            'shoppingList' => $this->get('app.manager.shopping_list')->generateShoppingListFromRecipesMenu($menu),
+            'menu'  => $menu,
+            'meals' => $meals,
         ];
     }
 }

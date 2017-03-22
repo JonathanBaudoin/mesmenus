@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% if recipe.id is null %}
+    {% set titleH1 = 'recipe.add.h1'|trans %}
+    {% set submitValue = 'recipe.form.submit.add' %}
+{% else %}
+    {% set titleH1 = recipe.name %}
+    {% set submitValue = 'recipe.form.submit.edit' %}
+{% endif %}
+
 {% block content %}
-    <h1>{{ 'recipe.add.h1'|trans }}</h1>
+    <h1>{{ titleH1 }}</h1>
 
     {{ form_start(recipeForm) }}
         {{ form_errors(recipeForm) }}
@@ -65,12 +73,8 @@
 
         </div>
         <div class="center">
-            {% if recipe.id is null %}
-                {% set submitValue = 'recipe.form.submit.add' %}
-            {% else %}
-                {% set submitValue = 'recipe.form.submit.edit' %}
-            {% endif %}
             <input type="submit" id="_submit" name="_submit" value="{{ submitValue|trans }}" />
+            {% if recipe.id is not null %}<a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}" class="btn">{{ 'recipe.return'|trans }}</a>{% endif %}
         </div>
     {{ form_end(recipeForm) }}
 {% endblock %}

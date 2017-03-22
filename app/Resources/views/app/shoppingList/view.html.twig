@@ -3,9 +3,9 @@
 {% block content %}
 
     <p class="center">
-        <a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.ingredient.add'|trans }}</a>
-        <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.generate'|trans }}</a>
-        <a href="{{ path('app_menu_view', {'id': menu.id}) }}" class="btn">{{ 'menu.view'|trans }}</a>
+        <a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'shoppingList.ingredient.add'|trans }}</a>
+        <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn"><i class="fa fa-refresh" aria-hidden="true"></i> {{ 'shoppingList.generate'|trans }}</a>
+        <a href="{{ path('app_menu_view', {'id': menu.id}) }}" class="btn"><i class="fa fa-bars" aria-hidden="true"></i> {{ 'menu.view'|trans }}</a>
     </p>
 
     {% if menu.shoppingListIngredients is empty %}

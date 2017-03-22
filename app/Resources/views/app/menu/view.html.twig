@@ -48,7 +48,7 @@
     {# Shopping list #}
     <div>
         <p class="center">
-            <a class="btn" href="{{ path('app_shoppinglist_view', {'id': menu.getId}) }}">{{ 'shoppingList.view'|trans }}</a>
+            <a class="btn" href="{{ path('app_shoppinglist_view', {'id': menu.getId}) }}" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ 'shoppingList.view'|trans }}</a>
             <a class="btn" href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ 'menu.edit'|trans }}</a>
         </p>
     </div>

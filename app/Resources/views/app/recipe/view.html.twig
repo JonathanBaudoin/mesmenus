@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ recipe.name }}{% if is_granted('ROLE_ADMIN') %} <a href="{{ path('app_recipe_edit', {'slug': recipe.slug}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>{% endif %}</h1>
+    <h1>{{ recipe.name }}</h1>
 
     <div id="recipe">
         <ul id="time">
@@ -18,6 +18,12 @@
         </ul>
 
         <div id="instructions">{{ recipe.instructions|raw }}</div>
+
+        {% if is_granted('ROLE_ADMIN') or app.user == recipe.user %}
+        <div class="center">
+            <a href="{{ path('app_recipe_edit', {'slug': recipe.slug}) }}" class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ 'recipe.edit'|trans }}</a>
+        </div>
+        {% endif %}
     </div>
 {% endblock %}
 

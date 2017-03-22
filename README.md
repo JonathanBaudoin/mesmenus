@@ -8,11 +8,12 @@ A Symfony project created on October 31, 2016, 1:37 pm.
 Front
 ----
 ```bash
-npm install -g bower
+sudo npm install -g bower
 sudo su -c "gem install sass"
 sudo gem install sass
 sudo gem update --system
 
+# Example to install lib with bower
 bower install --save fontawesome
 ```
 
