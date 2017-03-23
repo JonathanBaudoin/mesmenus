@@ -4,7 +4,7 @@
  * Please change the configuration for correct use deploy.
  */
 
-require 'recipe/symfony.php';
+require 'recipe/symfony3.php';
 
 // Configure servers
 server('prod', '51.254.124.178', 22)
@@ -12,7 +12,7 @@ server('prod', '51.254.124.178', 22)
     ->password('xxx')
     //->identityFile()
     ->stage('prod')
-    ->env('deploy_path', '/home/mesmenus/web')
+    ->env('deploy_path', '/home/mesmenus/web/prod')
     ->env('branch', 'master')
     ->env('env', 'prod');
 
@@ -31,8 +31,8 @@ set('shared_dirs', [
     'app/logs',
     'vendor',
     'web/bundles',
-    'web/css',
-    'web/js',
+    //'web/css',
+    //'web/js',
 
 ]);
 set('writable_dirs', [
@@ -50,14 +50,14 @@ task('vendors', function () {
     cd('{{release_path}}');
     run('npm install');
     run('bower update');
-    run('php bin/console assets:install --symlink');
+    run('php bin/console assets:install --symlink --env=prod');
     run('php bin/console assetic:dump --env=prod');
     run('php bin/console fos:js-routing:dump --env=prod');
 });
 
 task('database', function () {
     cd('{{release_path}}');
-    run('php app/console doctrine:schema:update --force --env=prod');
+    run('php bin/console doctrine:schema:update --force --env=prod');
 });
 
 task('cache', function () {
