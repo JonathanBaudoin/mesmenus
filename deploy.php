@@ -10,25 +10,19 @@ require 'recipe/symfony3.php';
 server('prod', '51.254.124.178', 22)
     ->user('mesmenus')
     ->password('xxx')
-    //->identityFile()
     ->stage('prod')
     ->env('deploy_path', '/home/mesmenus/web/prod')
     ->env('branch', 'master')
-    ->env('env', 'prod');
+    ->env('env', 'prod')
+;
 
-/*
-server('beta', 'beta.domain.com')
-    ->user('username')
-    ->password()
-    ->env('deploy_path', '/var/www/beta.domain.com');
-*/
 
 // Set configurations
 set('repository', 'git@bitbucket.org:JonathanBaudoin/mesmenus.git');
 set('keep_releases', 5);
 set('shared_files', ['app/config/parameters.yml']);
 set('shared_dirs', [
-    'app/logs',
+    'var/logs',
     'vendor',
     'web/bundles',
     //'web/css',
@@ -38,11 +32,14 @@ set('shared_dirs', [
 set('writable_dirs', [
     'var/cache',
     'var/logs',
+    'var/sessions',
     'web/assets',
     'web/bundles',
     'web/css',
     'web/js',
 ]);
+
+set('writable_use_sudo', false);
 
 env('composer_options', 'update --no-dev --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
 
