@@ -107,7 +107,7 @@ class RecipeController extends Controller
                 }
 
                 $tmpRecipeIngredient
-                    ->setAmount($dataIngredientValue['amount'])
+                    ->setAmount(floatval($dataIngredientValue['amount']))
                     ->setMeasureUnit($dataIngredientValue['measureUnit'])
                 ;
             }

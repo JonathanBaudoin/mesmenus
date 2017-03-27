@@ -47,6 +47,7 @@ class RecipeHasIngredients implements IngredientInterface
      *
      * @ORM\Column(name="amount", type="float", nullable=false)
      * @Assert\NotBlank()
+     * @Assert\Type("float")
      */
     protected $amount;
 

@@ -4,10 +4,7 @@
 #explanation {
     display: flex;
     cursor: default;
-    & :hover {
-        background-color: $blue-light;
-        color: $blue-darker;
-    }
+
     div {
         flex: 1 1 100%;
         background-color: $blue-darker;

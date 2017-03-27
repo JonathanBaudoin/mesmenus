@@ -28,7 +28,7 @@ AddIngredient.prototype = {
                     $('#added-ingredients').append(
                         '<div id="'+ingredientId+'" class="recipe-has-ingredient" data-ingredient-id="'+$(this).val()+'"  data-ingredient-name="'+$(this).text()+'">' +
                         '<input class="name" name="ingredient['+$(this).val()+'][name]" value="'+$(this).text()+'" disabled />' +
-                        '<input type="number" class="amount" name="ingredient['+$(this).val()+'][amount]" placeholder="Quantité" />' +
+                        '<input type="number" required="required" class="amount" name="ingredient['+$(this).val()+'][amount]" placeholder="Quantité" />' +
                         '<input class="measure-unit" name="ingredient['+$(this).val()+'][measureUnit]"  placeholder="Unité de mesure" />' +
                         '</div>'
                     );
