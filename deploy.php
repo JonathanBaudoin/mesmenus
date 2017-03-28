@@ -25,9 +25,6 @@ set('shared_dirs', [
     'var/logs',
     'vendor',
     'web/bundles',
-    //'web/css',
-    //'web/js',
-
 ]);
 set('writable_dirs', [
     'var/cache',
