@@ -114,6 +114,15 @@ a {
     background-color: #b9def0;
     color: #3c7d9c; }
 
+.pagination .current {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  background-color: #b9def0;
+  color: #000000;
+  text-align: center; }
+
 .form-small, .form-medium, .form-large, .form {
   margin: auto; }
 

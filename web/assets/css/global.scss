@@ -173,3 +173,16 @@ a {
         color: $blue-darker;
     }
 }
+
+.pagination {
+
+    .current {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 0;
+        background-color: $blue-normal;
+        color: $black;
+        text-align: center;
+    }
+}
