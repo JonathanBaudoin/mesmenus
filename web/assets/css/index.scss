@@ -1,6 +1,15 @@
 @import "colors";
 @import "breakpoints";
 
+#banner {
+
+    line-height: 0;
+
+    img {
+        width: 100%;
+    }
+}
+
 #explanation {
     display: flex;
     cursor: default;

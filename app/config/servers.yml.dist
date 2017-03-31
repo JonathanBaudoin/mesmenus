@@ -1,0 +1,8 @@
+prod:
+    host:        server host
+    user:        user
+    password:    user password
+    stage:       prod
+    deploy_path: /home/mesmenus/web/prod
+    branch:      master
+    env:         prod

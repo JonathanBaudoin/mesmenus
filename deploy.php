@@ -7,15 +7,7 @@
 require 'recipe/symfony3.php';
 
 // Configure servers
-server('prod', '51.254.124.178', 22)
-    ->user('mesmenus')
-    ->password('xxx')
-    ->stage('prod')
-    ->env('deploy_path', '/home/mesmenus/web/prod')
-    ->env('branch', 'master')
-    ->env('env', 'prod')
-;
-
+serverList('./app/config/servers.yml');
 
 // Set configurations
 set('repository', 'git@bitbucket.org:JonathanBaudoin/mesmenus.git');
@@ -25,9 +17,6 @@ set('shared_dirs', [
     'var/logs',
     'vendor',
     'web/bundles',
-    //'web/css',
-    //'web/js',
-
 ]);
 set('writable_dirs', [
     'var/cache',
