@@ -1,3 +1,8 @@
+#add-ingredient {
+  margin-top: 20px; }
+  #add-ingredient #add-ingredient-message {
+    margin-top: 20px; }
+
 @media only screen and (min-width: 992px) {
   #add-recipe {
     display: flex;

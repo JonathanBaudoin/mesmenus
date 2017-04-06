@@ -8,8 +8,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\RecipeHasIngredients;
+use AppBundle\Form\IngredientType;
 use AppBundle\Form\RecipeType;
 use AppBundle\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -122,9 +124,15 @@ class RecipeController extends Controller
             }
         }
 
+        $ingredientForm = $this->createForm(IngredientType::class, new Ingredient(), array(
+            'method' => 'POST',
+            'action' => $this->generateUrl('app_ingredient_addajax')
+        ));
+
         return [
-            'recipe'     => $recipe,
-            'recipeForm' => $recipeForm->createView(),
+            'recipe'         => $recipe,
+            'recipeForm'     => $recipeForm->createView(),
+            'ingredientForm' => $ingredientForm->createView(),
         ];
     }
 

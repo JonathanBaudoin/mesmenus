@@ -67,4 +67,44 @@ class IngredientController extends Controller
         ];
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse|null
+     *
+     * @Route("ajax/ajouter/")
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function addAjaxAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            /** @var IngredientManager $ingredientManager */
+            $ingredientManager = $this->get('app.manager.ingredient');
+            $ingredientName    = $request->query->get('ingredientName');
+
+            $ingredient = new Ingredient();
+            $ingredient->setName($ingredientName);
+
+            if ($ingredientManager->ingredientAlreadyExists($ingredient)) {
+                $return  = 'error';
+                $message = 'ingredient.add.exists';
+            } else {
+                $ingredientManager->save($ingredient);
+                $return  = 'success';
+                $message = 'ingredient.add.success';
+            }
+
+            $message = $this->get('translator')->trans($message, ['%name%' => $ingredient->getName()]);
+
+            return new JsonResponse([
+                'return'         => $return,
+                'message'        => $message,
+                'ingredientId'   => $ingredient->getId(),
+                'ingredientName' => $ingredient->getName(),
+            ]);
+        }
+
+        return null;
+    }
+
 }
