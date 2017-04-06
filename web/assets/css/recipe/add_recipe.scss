@@ -1,6 +1,14 @@
 @import "../colors";
 @import "../breakpoints";
 
+#add-ingredient {
+    margin-top: 20px;
+
+    #add-ingredient-message {
+        margin-top: 20px;
+    }
+}
+
 #add-recipe {
     @include breakpoint(desktop) {
         display: flex;

@@ -11,6 +11,21 @@
 {% block content %}
     <h1>{{ titleH1 }}</h1>
 
+    <div id="add-ingredient">
+        <div id="ingredient-button">
+            <a href="#" class="btn">{{ 'ingredient.create.new'|trans }}</a>
+        </div>
+
+        <div id="ingredient-form" class="hidden">
+            {{ form_start(ingredientForm, {'attr': {'id': 'ingredient_form'} }) }}
+                {{ form_row(ingredientForm.name) }}
+                <input type="submit" class="btn" value="{{ 'ingredient.create.new'|trans }}" />
+            {{ form_end(ingredientForm) }}
+        </div>
+
+        <p id="add-ingredient-message"></p>
+    </div>
+
     {{ form_start(recipeForm) }}
         {{ form_errors(recipeForm) }}
 
@@ -54,11 +69,6 @@
             </div>
 
             <div id="list-ingredients">
-
-                <div>
-                    <a href="#" class="btn">Ajouter un nouvel ingrédient</a>
-                </div>
-
                 <div>
                     {{ form_label(recipeForm.ingredients) }}
                     {{ form_widget(recipeForm.ingredients) }}

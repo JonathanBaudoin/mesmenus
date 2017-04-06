@@ -62,6 +62,7 @@ recipe.edit.success:               La recette a bien été modifiée
 # INGREDIENT
 ingredient.add.h1:          Ajouter un ingrédient
 ingredient.add:             Ajouter un ingrédient
+ingredient.create.new:      Créer un nouvel ingrédient
 ingredient.form.name.label: Nom de l'ingrédient
 ingredient.form.submit:     Créer l'ingrédient
 ingredient.add.success:     L'ingrédient %name% a bien été créé !
