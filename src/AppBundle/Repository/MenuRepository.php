@@ -10,15 +10,30 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
+/**
+ * Class MenuRepository
+ * @package AppBundle\Repository
+ *
+ * @author Jonathan Baudoin <jonathan@ddf.agency>
+ */
 class MenuRepository extends EntityRepository
 {
-    public function findAllQueryBuilder()
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('m')->orderBy('m.dateStart', 'DESC');
     }
 
-    public function findByUserQueryBuilder(User $user)
+    /**
+     * @param User $user
+     *
+     * @return QueryBuilder
+     */
+    public function findByUserQueryBuilder(User $user): QueryBuilder
     {
         return $this->findAllQueryBuilder()
             ->andWhere('m.user = :user')

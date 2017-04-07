@@ -41,7 +41,7 @@ class BaseManager
     /**
      * @return EntityManager
      */
-    public function getEntityManager()
+    public function getEntityManager(): EntityManager
     {
         return $this->em;
     }
@@ -49,7 +49,7 @@ class BaseManager
     /**
      * @return EntityRepository
      */
-    public function getRepository()
+    public function getRepository(): EntityRepository
     {
         return $this->repository;
     }
@@ -57,7 +57,7 @@ class BaseManager
     /**
      * @return string
      */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }

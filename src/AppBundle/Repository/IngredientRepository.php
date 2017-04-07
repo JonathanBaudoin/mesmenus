@@ -9,13 +9,20 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
+/**
+ * Class IngredientRepository
+ * @package AppBundle\Repository
+ *
+ * @author Jonathan Baudoin <jonathan@ddf.agency>
+ */
 class IngredientRepository extends EntityRepository
 {
     /**
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
-    public function findAllQueryBuilder()
+    public function findAllQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('i')->orderBy('i.name', 'ASC');
     }

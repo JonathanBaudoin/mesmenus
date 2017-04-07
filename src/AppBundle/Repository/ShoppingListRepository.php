@@ -18,7 +18,7 @@ class ShoppingListRepository extends EntityRepository
     /**
      * @return QueryBuilder
      */
-    public function findAllQueryBuilder()
+    public function findAllQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('sl');
     }
@@ -26,7 +26,7 @@ class ShoppingListRepository extends EntityRepository
     /**
      * @return array
      */
-    public function findAll()
+    public function findAll(): array
     {
         return $this->findAllQueryBuilder()->getQuery()->getResult();
     }
@@ -36,7 +36,7 @@ class ShoppingListRepository extends EntityRepository
      *
      * @return QueryBuilder
      */
-    public function findByMenuQueryBuilder(Menu $menu)
+    public function findByMenuQueryBuilder(Menu $menu): QueryBuilder
     {
         return $this->findAllQueryBuilder()
             ->andWhere('sl.menu = :menu')
@@ -49,7 +49,7 @@ class ShoppingListRepository extends EntityRepository
      *
      * @return array
      */
-    public function findByMenu(Menu $menu)
+    public function findByMenu(Menu $menu): array
     {
         return $this->findByMenuQueryBuilder($menu)->getQuery()->getResult();
     }
@@ -60,7 +60,7 @@ class ShoppingListRepository extends EntityRepository
      *
      * @return null|ShoppingListIngredients
      */
-    public function findProductByMenu(Menu $menu, $productId)
+    public function findProductByMenu(Menu $menu, $productId): ShoppingListIngredients
     {
         return $this
             ->findByMenuQueryBuilder($menu)

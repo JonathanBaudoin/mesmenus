@@ -62,7 +62,7 @@ class MenuType extends AbstractType
                             'required'    => false,
                             'multiple'    => true,
                             'mapped'      => false,
-                            'empty_value' => 'menu.form.recipes.empty_value'
+                            'placeholder' => 'menu.form.recipes.empty_value'
                         ))
                     ;
                 }
