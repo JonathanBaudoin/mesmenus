@@ -10,6 +10,12 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * Class MealRepository
+ * @package AppBundle\Repository
+ *
+ * @author Jonathan Baudoin <jonathan@ddf.agency>
+ */
 class MealRepository extends EntityRepository
 {
 

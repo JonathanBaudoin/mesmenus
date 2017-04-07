@@ -24,13 +24,13 @@ security:
             context:   user
             anonymous: true
             form_login:
-                provider:            fos_userbundle
-                csrf_provider:       security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
-                login_path:          /connexion
-                check_path:          /login_check
-                use_forward:         false
-                failure_path:        null
-                default_target_path: /
+                provider:             fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                login_path:           /connexion
+                check_path:           /login_check
+                use_forward:          false
+                failure_path:         null
+                default_target_path:  /
             logout:
                 path: /deconnexion/
                 target: homepage

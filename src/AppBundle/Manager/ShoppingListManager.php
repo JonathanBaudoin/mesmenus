@@ -12,7 +12,12 @@ use AppBundle\Entity\ShoppingListIngredients;
 
 class ShoppingListManager extends BaseManager
 {
-    public function generateShoppingListFromRecipesMenu(Menu $menu)
+    /**
+     * @param Menu $menu
+     *
+     * @return array
+     */
+    public function generateShoppingListFromRecipesMenu(Menu $menu): array
     {
         $shoppingList = [];
         /** @var Meal $meal */
@@ -39,6 +44,9 @@ class ShoppingListManager extends BaseManager
         return $shoppingList;
     }
 
+    /**
+     * @param Menu $menu
+     */
     public function saveShoppingListFromRecipesMenu(Menu $menu)
     {
         // Delete shoppingList item which come from Meals Menu

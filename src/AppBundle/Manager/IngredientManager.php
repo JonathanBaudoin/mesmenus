@@ -12,7 +12,12 @@ use AppBundle\Entity\Ingredient;
 
 class IngredientManager extends BaseManager
 {
-    public function ingredientAlreadyExists(Ingredient $ingredient)
+    /**
+     * @param Ingredient $ingredient
+     *
+     * @return null|Ingredient
+     */
+    public function ingredientAlreadyExists(Ingredient $ingredient): Ingredient
     {
         return $this->getRepository()->findOneBy(['name' => $ingredient->getName()]);
     }
