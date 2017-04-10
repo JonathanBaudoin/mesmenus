@@ -73,10 +73,10 @@ class ShoppingListIngredients
      * @var boolean
      *
      * @ORM\Column(name="extra_menu", type="integer", nullable=false)
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      */
-    protected $extraMenu;
+    protected $extraMenu = false;
 
     /**
      * To know if the product is in the customer cart (if he ever bought)
@@ -84,10 +84,10 @@ class ShoppingListIngredients
      * @var integer
      *
      * @ORM\Column(name="in_cart", type="integer", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      */
-    protected $inCart = 0;
+    protected $inCart = false;
 
     /**
      * @return int
