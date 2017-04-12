@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/form.scss"
+    "assets/css/shopping-list/add_ingredient.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            $('select').select2();
+        });
+    </script>
+{% endblock javascripts %}

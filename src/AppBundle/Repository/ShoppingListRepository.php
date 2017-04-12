@@ -51,7 +51,12 @@ class ShoppingListRepository extends EntityRepository
      */
     public function findByMenu(Menu $menu): array
     {
-        return $this->findByMenuQueryBuilder($menu)->getQuery()->getResult();
+        return $this
+            ->findByMenuQueryBuilder($menu)
+            ->orderBy('sl.ingredientName')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**

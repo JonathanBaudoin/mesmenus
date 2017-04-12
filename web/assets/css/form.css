@@ -26,6 +26,12 @@ a {
 .error {
   color: #d9534f; }
 
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
 #header-nav #header-user ul {
   width: 100%;
   display: flex;

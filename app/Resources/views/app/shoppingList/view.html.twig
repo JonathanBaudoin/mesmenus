@@ -3,7 +3,8 @@
 {% block content %}
 
     <p class="center">
-        <a href="{{ path('app_shoppinglist_add', {'id': menu.id}) }}" class="btn"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'shoppingList.ingredient.add'|trans }}</a>
+        <a href="{{ path('app_shoppinglist_addproduct', {'id': menu.id}) }}" class="btn"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'shoppingList.ingredient.add_product'|trans }}</a>
+        <a href="{{ path('app_shoppinglist_edit', {'id': menu.id}) }}" class="btn"><i class="fa fa-edit" aria-hidden="true"></i> {{ 'shoppingList.ingredient.edit'|trans }}</a>
         <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn"><i class="fa fa-refresh" aria-hidden="true"></i> {{ 'shoppingList.generate'|trans }}</a>
         <a href="{{ path('app_menu_view', {'id': menu.id}) }}" class="btn"><i class="fa fa-bars" aria-hidden="true"></i> {{ 'menu.view'|trans }}</a>
     </p>
@@ -16,11 +17,15 @@
         </p>
     {% else %}
         <ul id="shopping-list" data-menu="{{ menu.id }}">
-        {% for ingredient in menu.shoppingListIngredients %}
-            {% set flashType = (ingredient.isInCart) ? 'success' : 'error' %}
-            <li class="ingredient flash-message flash-{{ flashType }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
-                <a href="#">
-                    <span class="name">{{ ingredient.ingredientName }}</span><span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span>
+        {% for ingredient in shoppingList %}
+            {% set inCart = (ingredient.isInCart) ? 'added' : 'removed' %}
+            <li class="ingredient {{ inCart }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
+                <a href="#" class="product">
+                    <span>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <span class="name">{{ ingredient.ingredientName }}</span>
+                    </span>
+                    <span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span>
                 </a>
             </li>
         {% endfor %}

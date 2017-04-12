@@ -3,15 +3,81 @@
 
 #shopping-list {
 
+    column-count: 1;
+
+    @include breakpoint(tablet) {
+        column-count: 2;
+    }
+
+    @include breakpoint(desktop) {
+        column-count: 3;
+        //column-rule: 1px solid $gray-light;
+        //column-gap: 50px;
+    }
+
+    .ingredient {
+
+        .product {
+            border-bottom: 1px solid $gray;
+            background-color: $gray-light;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+            .fa {
+                font-size: 120%;
+            }
+        }
+
+        &.added {
+
+            .name, .quantity {
+                opacity: 0.7;
+                text-decoration: line-through;
+            }
+
+            .fa {
+                color: $flash-success;
+
+            }
+        }
+        &.removed {
+            .fa {
+                color: $flash-error;
+            }
+        }
+    }
+
+}
+
+/*
+#shopping-list {
+
     @include breakpoint(tablet) {
         display: flex;
         flex-wrap: wrap;
-            justify-content: space-around;
+        justify-content: space-around;
     }
 
-    li.ingredient {
-        padding: 5px;
-        cursor: pointer;
+    !*li.ingredient {
+        //cursor: pointer;
+
+        .edit {
+
+            background-color: $gray-light;
+            padding: 15px;
+
+            .fa-edit {
+            }
+        }
+
+        .flash-message {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
 
         a {
             color: #ffffff;
@@ -62,5 +128,5 @@
         @include breakpoint(desktop) {
             flex: 0 1 calc(100% * (1/4) - 20px);
         }
-    }
-}
+    }*!
+}*/

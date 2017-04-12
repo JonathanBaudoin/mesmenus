@@ -158,9 +158,15 @@ class ShoppingListIngredients
      *
      * @return $this
      */
-    public function setIngredientName($ingredientName)
+    public function setIngredientName($ingredientName = null)
     {
-        $this->ingredientName = $ingredientName;
+        if (!is_null($ingredientName)) {
+            $this->ingredientName = $ingredientName;
+        } else {
+            if (!is_null($this->getIngredient())) {
+                $this->ingredientName = $this->ingredient->getName();
+            }
+        }
 
         return $this;
     }

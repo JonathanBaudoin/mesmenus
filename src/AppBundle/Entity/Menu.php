@@ -232,7 +232,7 @@ class Menu
     }
 
     /**
-     * @return ShoppingListIngredients
+     * @return ArrayCollection
      */
     public function getShoppingListIngredients()
     {

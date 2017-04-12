@@ -11,22 +11,22 @@ CartProducts.prototype = {
         $('.ingredient').click(function (e) {
             e.preventDefault();
 
-            var product = $(this);
+            var ingredient = $(this);
 
             $.ajax({
-                url: Routing.generate('app_shoppinglist_add_product_to_cart', { id: $('#shopping-list').data('menu'), productId: product.data('id') }),
+                url: Routing.generate('app_shoppinglist_add_product_to_cart', { id: $('#shopping-list').data('menu'), productId: ingredient.data('id') }),
                 success: function(msg) {
                     if (msg !== 'error') {
                         if (msg === 'removed') {
-                            var classToAdd    = 'error';
-                            var classToRemove = 'success';
+                            var classToAdd    = 'removed';
+                            var classToRemove = 'added';
                         } else if (msg === 'added') {
-                            var classToAdd    = 'success';
-                            var classToRemove = 'error';
+                            var classToAdd    = 'added';
+                            var classToRemove = 'removed';
                         }
 
-                        product.removeClass('flash-'+classToRemove);
-                        product.addClass('flash-'+classToAdd);
+                        ingredient.removeClass(classToRemove);
+                        ingredient.addClass(classToAdd);
                     }
                 }
             });

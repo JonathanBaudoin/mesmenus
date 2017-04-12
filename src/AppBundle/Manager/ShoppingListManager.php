@@ -73,6 +73,11 @@ class ShoppingListManager extends BaseManager
                         ->setMeasureUnit($quantityKey)
                         ->setExtraMenu(false)
                     ;
+
+                    if (!empty($values['ingredient'])) {
+                        $ingredient->setIngredientName($values['ingredient']->getName());
+                    }
+
                     $menu->addShoppingListIngredient($ingredient);
 
                 }

@@ -34,11 +34,11 @@ class ShoppingListController extends Controller
      *
      * @return array|RedirectResponse
      *
-     * @Route("{id}/liste-de-courses/modifier/")
+     * @Route("{id}/liste-de-courses/ajouter/produit")
      * @Security("has_role('ROLE_USER')")
      * @Template("app/shoppingList/add.html.twig")
      */
-    public function addAction(Request $request, Menu $menu)
+    public function addProductAction(Request $request, Menu $menu)
     {
         if ($menu->getUser() !== $this->getUser()) {
             throw $this->createNotFoundException();
@@ -50,11 +50,14 @@ class ShoppingListController extends Controller
             ->setExtraMenu(true)
         ;
 
-        $shoppingListForm       = $this->createForm(ShoppingListIngredientType::class, $shoppingListIngredient);
+        $shoppingListForm = $this->createForm(ShoppingListIngredientType::class, $shoppingListIngredient);
         $shoppingListForm->handleRequest($request);
 
         if ($shoppingListForm->isSubmitted()) {
             if ($shoppingListForm->isValid()) {
+
+                $shoppingListIngredient->setIngredientName();
+
                 $menu->addShoppingListIngredient($shoppingListIngredient);
 
                 $em = $this->getDoctrine()->getManager();
@@ -69,6 +72,27 @@ class ShoppingListController extends Controller
         return [
             'menu'             => $menu,
             'shoppingListForm' => $shoppingListForm->createView(),
+        ];
+    }
+
+    /**
+     * @param Request $request
+     * @param Menu    $menu
+     *
+     * @return array|RedirectResponse
+     *
+     * @Route("{id}/liste-de-courses/modifier")
+     * @Security("has_role('ROLE_USER')")
+     * @Template("app/shoppingList/edit.html.twig")
+     */
+    public function editAction(Request $request, Menu $menu)
+    {
+        if ($menu->getUser() !== $this->getUser()) {
+            throw $this->createNotFoundException();
+        }
+
+        return [
+
         ];
     }
 
@@ -107,7 +131,16 @@ class ShoppingListController extends Controller
             throw $this->createNotFoundException();
         }
 
-        return ['menu' => $menu];
+        $shoppingList = $this
+            ->get('doctrine')
+            ->getRepository('AppBundle:ShoppingListIngredients')
+            ->findByMenu($menu)
+        ;
+
+        return [
+            'menu' => $menu,
+            'shoppingList' => $shoppingList,
+        ];
     }
 
     /**
