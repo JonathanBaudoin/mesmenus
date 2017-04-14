@@ -65,7 +65,7 @@ class ShoppingListRepository extends EntityRepository
      *
      * @return null|ShoppingListIngredients
      */
-    public function findProductByMenu(Menu $menu, $productId): ShoppingListIngredients
+    public function findProductByMenu(Menu $menu, $productId)
     {
         return $this
             ->findByMenuQueryBuilder($menu)

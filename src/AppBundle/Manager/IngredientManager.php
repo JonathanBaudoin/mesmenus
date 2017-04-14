@@ -17,7 +17,7 @@ class IngredientManager extends BaseManager
      *
      * @return null|Ingredient
      */
-    public function ingredientAlreadyExists(Ingredient $ingredient): Ingredient
+    public function ingredientAlreadyExists(Ingredient $ingredient)
     {
         return $this->getRepository()->findOneBy(['name' => $ingredient->getName()]);
     }
