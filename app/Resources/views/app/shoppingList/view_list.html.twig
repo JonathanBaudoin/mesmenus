@@ -1,0 +1,18 @@
+<ul class="shopping-list" data-menu="{{ menu.id }}">
+    {% for ingredient in shoppingList %}
+        {% set inCart = (ingredient.isInCart) ? 'in-cart' : 'not-in-cart' %}
+        <li class="{{ inCart }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
+            <div class="actions">
+                <a href="#"><i class="fa fa-edit" aria-hidden="true"></i></a>
+            </div>
+
+            <div class="name">
+                <a href="#" class="product" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">{{ ingredient.ingredientName }}</a>
+            </div>
+
+            <div class="quantity">
+                <a href="#" class="product" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">{{ ingredient.amount }} {{ ingredient.measureUnit }}</a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

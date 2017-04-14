@@ -16,20 +16,18 @@
             <a href="{{ path('app_shoppinglist_generate', {'id': menu.id}) }}" class="btn">{{ 'shoppingList.generate'|trans }}</a>
         </p>
     {% else %}
-        <ul id="shopping-list" data-menu="{{ menu.id }}">
-        {% for ingredient in shoppingList %}
-            {% set inCart = (ingredient.isInCart) ? 'added' : 'removed' %}
-            <li class="ingredient {{ inCart }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
-                <a href="#" class="product">
-                    <span>
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="name">{{ ingredient.ingredientName }}</span>
-                    </span>
-                    <span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+
+    <div id="cart">
+        <div id="not-in-cart">
+            <h2>{{ 'shoppingList.product.not_in_cart.title'|trans }}</h2>
+            {% include('app/shoppingList/view_list.html.twig') %}
+        </div>
+
+        <div id="in-cart">
+            <h2>{{ 'shoppingList.product.in_cart.title'|trans }}</h2>
+            {% include('app/shoppingList/view_list.html.twig') %}
+        </div>
+    </div>
     {% endif %}
 {% endblock %}
 

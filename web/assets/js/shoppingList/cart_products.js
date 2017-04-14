@@ -8,25 +8,25 @@ CartProducts.prototype = {
     },
 
     productOnClick: function() {
-        $('.ingredient').click(function (e) {
+        $('.product').click(function (e) {
             e.preventDefault();
 
-            var ingredient = $(this);
+            var product = $(this);
 
             $.ajax({
-                url: Routing.generate('app_shoppinglist_add_product_to_cart', { id: $('#shopping-list').data('menu'), productId: ingredient.data('id') }),
+                url: Routing.generate('app_shoppinglist_add_product_to_cart', { id: $('.shopping-list').data('menu'), productId: product.data('id') }),
                 success: function(msg) {
                     if (msg !== 'error') {
-                        if (msg === 'removed') {
-                            var classToAdd    = 'removed';
-                            var classToRemove = 'added';
-                        } else if (msg === 'added') {
-                            var classToAdd    = 'added';
-                            var classToRemove = 'removed';
-                        }
+                        var productNotInCart = $('#not-in-cart').find("[data-id='" + product.data('id') + "']");
+                        var productInCart    = $('#in-cart').find("[data-id='" + product.data('id') + "']");
 
-                        ingredient.removeClass(classToRemove);
-                        ingredient.addClass(classToAdd);
+                        if (msg === 'removed') {
+                            productInCart.hide('fast');
+                            productNotInCart.show('fast');
+                        } else if (msg === 'added') {
+                            productInCart.show('fast');
+                            productNotInCart.hide('fast');
+                        }
                     }
                 }
             });

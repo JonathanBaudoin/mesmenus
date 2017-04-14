@@ -138,7 +138,7 @@ class ShoppingListController extends Controller
         ;
 
         return [
-            'menu' => $menu,
+            'menu'         => $menu,
             'shoppingList' => $shoppingList,
         ];
     }
@@ -146,7 +146,7 @@ class ShoppingListController extends Controller
     /**
      * @param Request $request
      * @param Menu    $menu
-     * @param         $productId
+     * @param int     $productId
      *
      * @return JsonResponse
      *
@@ -155,7 +155,6 @@ class ShoppingListController extends Controller
     public function addProductToCartAction(Request $request, Menu $menu, $productId)
     {
         if ($request->isXmlHttpRequest()) {
-
             if ($menu && $this->getUser()) {
                 if ($menu->getUser() === $this->getUser()) {
                     $shoppingListRepository = $this->getDoctrine()->getRepository('AppBundle:ShoppingListIngredients');
