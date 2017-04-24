@@ -74,7 +74,7 @@ class ShoppingListIngredients
      *
      * @ORM\Column(name="extra_menu", type="integer", nullable=false)
      * @Assert\NotNull()
-     * @Assert\Type("bool")
+     * @Assert\Choice({0, 1})
      */
     protected $extraMenu = false;
 
@@ -85,7 +85,7 @@ class ShoppingListIngredients
      *
      * @ORM\Column(name="in_cart", type="integer", nullable=true)
      * @Assert\NotNull()
-     * @Assert\Type("bool")
+     * @Assert\Choice({0, 1})
      */
     protected $inCart = false;
 

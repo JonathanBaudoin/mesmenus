@@ -43,6 +43,14 @@ a {
     color: $flash-error;
 }
 
+.delete {
+    background-color: $flash-error !important;
+
+    &:hover {
+        color: $gray !important;
+    }
+}
+
 .float-left {
     float: left;
 }

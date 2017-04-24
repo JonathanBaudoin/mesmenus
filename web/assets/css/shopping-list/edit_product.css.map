@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAK;EAED,UAAU,EAAE,IAAI;EAEhB,YAAQ;IACJ,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,MAAM",
+"sources": ["edit_product.scss"],
+"names": [],
+"file": "edit_product.css"
+}

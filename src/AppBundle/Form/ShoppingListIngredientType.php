@@ -3,10 +3,9 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Form\Type\FloatType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,9 +25,13 @@ class ShoppingListIngredientType extends AbstractType
                 'label'    => 'product.name',
                 'required' => false,
             ])
-            ->add('amount', IntegerType::class, [
+            ->add('amount', FloatType::class, [
                 'label'    => 'amount',
                 'required' => true,
+                'attr'     => [
+                    'min'  => 0.5,
+                    'step' => 0.5
+                ]
             ])
             ->add('measureUnit', TextType::class, [
                 'label'    => 'measureUnit',

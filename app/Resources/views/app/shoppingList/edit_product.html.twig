@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ 'shoppingList.product.edit'|trans }}</h1>
+
+    {{ form_start(productForm) }}
+        <div class="center">
+            <h2>{{ product.ingredientName }}</h2>
+        </div>
+        <div id="fields">
+            <div>
+                {{ form_label(productForm.amount) }}
+                {{ form_widget(productForm.amount) }}
+                {{ form_errors(productForm.amount) }}
+            </div>
+            <div>
+                {{ form_label(productForm.measureUnit) }}
+                {{ form_widget(productForm.measureUnit) }}
+                {{ form_errors(productForm.measureUnit) }}
+            </div>
+        </div>
+
+        <div class="center">
+            <input type="submit" id="_submit" name="_submit" value="{{ 'edit'|trans }}" />
+        </div>
+    {{ form_end(productForm) }}
+
+    {{ form_start(removeProductForm) }}
+        <div class="center">
+            <input class="delete" type="submit" id="_submit" name="_submit" value="{{ 'delete'|trans }}" />
+        </div>
+    {{ form_end(removeProductForm) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/form.scss"
+    "assets/css/shopping-list/edit_product.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            $('select').select2();
+        });
+    </script>
+{% endblock javascripts %}

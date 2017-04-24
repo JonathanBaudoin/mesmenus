@@ -4,10 +4,10 @@ function CartProducts() {
 
 CartProducts.prototype = {
     ready: function() {
-        CartProducts.prototype.productOnClick();
+        CartProducts.prototype.addProduct();
     },
 
-    productOnClick: function() {
+    addProduct: function() {
         $('.product').click(function (e) {
             e.preventDefault();
 

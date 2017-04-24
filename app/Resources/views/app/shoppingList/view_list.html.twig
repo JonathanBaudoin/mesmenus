@@ -3,7 +3,7 @@
         {% set inCart = (ingredient.isInCart) ? 'in-cart' : 'not-in-cart' %}
         <li class="{{ inCart }}" data-name="{{ ingredient.ingredientName }}" data-id="{{ ingredient.id }}">
             <div class="actions">
-                <a href="#"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('app_shoppinglist_edit_product_to_cart', {'id': menu.id, 'productId': ingredient.id}) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
             </div>
 
             <div class="name">

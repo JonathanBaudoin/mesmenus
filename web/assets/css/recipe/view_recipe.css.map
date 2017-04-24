@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAII,UAAG;EACC,aAAa,EAAE,IAAI;ACKnB,yCAAkD;EDFtD,aAAM;IAEE,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,aAAa;AAElC,gBAAG;EAKC,OAAO,EAAE,IAAI;EACb,gBAAgB,EETd,OAAO;EFUT,KAAK,EEnBT,OAAO;EDYP,yCAAmD;IDAnD,gBAAG;MAEK,aAAa,EAAE,GAAG",
+"mappings": "AAII,UAAG;EACC,aAAa,EAAE,IAAI;ACInB,yCAAkD;EDDtD,aAAM;IAEE,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,aAAa;AAElC,gBAAG;EAKC,OAAO,EAAE,IAAI;EACb,gBAAgB,EETd,OAAO;EFUT,KAAK,EEnBT,OAAO;EDWP,yCAAmD;IDCnD,gBAAG;MAEK,aAAa,EAAE,GAAG",
 "sources": ["view_recipe.scss","../_breakpoints.scss","../_colors.scss"],
 "names": [],
 "file": "view_recipe.css"

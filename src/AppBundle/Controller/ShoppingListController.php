@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ShoppingController
@@ -151,6 +152,7 @@ class ShoppingListController extends Controller
      * @return JsonResponse
      *
      * @Route("{id}/liste-de-courses/voir/ajax/product_cart/{productId}", name="app_shoppinglist_add_product_to_cart", options={"expose"=true})
+     * @Security("has_role('ROLE_USER')")
      */
     public function addProductToCartAction(Request $request, Menu $menu, $productId)
     {
@@ -179,5 +181,66 @@ class ShoppingListController extends Controller
         }
 
         return new JsonResponse('error');
+    }
+
+    /**
+     * @param Request $request
+     * @param Menu    $menu
+     * @param         $productId
+     *
+     * @return array|RedirectResponse|NotFoundHttpException
+     *
+     * @Route("{id}/liste-de-courses/modifier/produit/{productId}", name="app_shoppinglist_edit_product_to_cart")
+     * @Security("has_role('ROLE_USER')")
+     * @Template("app/shoppingList/edit_product.html.twig")
+     */
+    public function editProductToCartAction(Request $request, Menu $menu, $productId)
+    {
+        if ($menu->getUser() === $this->getUser()) {
+            $shoppingListRepository = $this->getDoctrine()->getRepository('AppBundle:ShoppingListIngredients');
+            $product                = $shoppingListRepository->findProductByMenu($menu, $productId);
+
+            if ($product) {
+                $removeProductForm = $this->createFormBuilder($product)->getForm();
+
+                $productForm = $this->createForm(ShoppingListIngredientType::class, $product);
+                $productForm
+                    ->remove('ingredient')
+                    ->remove('ingredientName')
+                ;
+
+                $removeProductForm->handleRequest($request);
+                $productForm->handleRequest($request);
+
+                $em = $this->getDoctrine()->getManager();
+
+                if ($removeProductForm->isSubmitted() && $removeProductForm->isValid()) {
+                    $em->remove($product);
+                    $em->flush();
+
+                    $this->addFlash('success', $this->get('translator')->trans(
+                        'shoppingList.ingredient.deleted',
+                        ['%product%' => $product->getIngredientName()]
+                    ));
+                    return $this->redirectToRoute('app_shoppinglist_view', ['id' => $menu->getId()]);
+                }
+
+                if ($productForm->isSubmitted()) {
+                    if ($productForm->isValid()) {
+                        $em->persist($product);
+                        $em->flush();
+                    }
+                }
+
+                return [
+                    'menu'              => $menu,
+                    'product'           => $product,
+                    'productForm'       => $productForm->createView(),
+                    'removeProductForm' => $removeProductForm->createView(),
+                ];
+            }
+        }
+
+        return $this->createNotFoundException();
     }
 }
