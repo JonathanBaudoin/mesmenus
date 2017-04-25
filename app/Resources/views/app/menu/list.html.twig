@@ -5,18 +5,30 @@
         <a href="{{ path('app_menu_add') }}" class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ 'menu.add'|trans }}</a>
     </div>
 
-    <ul>
-
+    <ul id="menu-list">
     {% for menu in pagination %}
-        {% set from = menu.dateStart|localizeddate('full', 'none') %}
-        {% set to = menu.dateEnd|localizeddate('full', 'none') %}
-        <li>
-            <a href="{{ path('app_menu_view', {'id': menu.id}) }}">{{ 'menu.from_to'|trans({'%from%': from, '%to%': to})|raw }}</a>
-            <a href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        {% set from = menu.dateStart|localizeddate('full', 'none')|capitalize %}
+        {% set to = menu.dateEnd|localizeddate('full', 'none')|capitalize %}
+        <li class="menu {{ (menu.dateEnd < date()) ? 'ended' : 'not-ended' }}">
+        {% spaceless %}
+            <span class="menu-date">
+                {{ 'menu.from_to'|trans({'%from%': from, '%to%': to})|raw }}
+            </span>
+            <span>
+                <a class="display" href="{{ path('app_menu_view', {'id': menu.id}) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a class="edit" href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <a  class="shopping-list"href="{{ path('app_shoppinglist_view', {'id': menu.id}) }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            </span>
+        {% endspaceless %}
         </li>
     {% endfor %}
     </ul>
 {% endblock %}
 
 {% block stylesheets %}
+    {% stylesheets filter="sass"
+    "assets/css/menu/list_menu.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}

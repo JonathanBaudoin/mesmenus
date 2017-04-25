@@ -81,7 +81,7 @@ menu.form.dateEnd:             Dernier jour
 menu.form.recipes.empty_value: -
 menu.add.success:              Votre menu a bien été créé
 menu.edit.success:             Votre menu a bien été modifié
-menu.from_to:                  Menu du <strong>%from%</strong> au <strong>%to%</strong>
+menu.from_to:                  '%from%<br />%to%'
 
 
 # SHOPPING LIST

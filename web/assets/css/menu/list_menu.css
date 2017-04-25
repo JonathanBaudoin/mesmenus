@@ -1,0 +1,26 @@
+@media only screen and (min-width: 768px) {
+  #menu-list {
+    display: flex;
+    justify-content: space-around; } }
+#menu-list .ended {
+  color: #d9534f; }
+#menu-list .not-ended {
+  color: #5cb85c; }
+#menu-list .menu {
+  background-color: #e0e0e0;
+  border: 1px solid #c1c1c1;
+  margin: 10px;
+  padding: 10px; }
+  #menu-list .menu .menu-date {
+    font-weight: bold; }
+  #menu-list .menu span {
+    display: block;
+    text-align: center;
+    margin: 10px; }
+  #menu-list .menu a {
+    margin: 10px;
+    color: #3c7d9c; }
+  #menu-list .menu i {
+    font-size: 2em; }
+
+/*# sourceMappingURL=list_menu.css.map */
