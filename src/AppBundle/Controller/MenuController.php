@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class MenuController
@@ -159,5 +160,47 @@ class MenuController extends Controller
             'menu'  => $menu,
             'meals' => $meals,
         ];
+    }
+
+    /**
+     * @param Menu $menu
+     *
+     * @return Response
+     *
+     * @Route("{id}/voir-pdf/", name="app_menu_view_pdf")
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function exportPdfAction(Menu $menu)
+    {
+        if ($menu->getUser() !== $this->getUser()) {
+            throw $this->createNotFoundException();
+        }
+
+        $meals = [];
+        /** @var Meal $meal */
+        foreach ($menu->getMeals() as $meal) {
+            $meals[$meal->getDate()->format('Y-m-d')][$meal->getType()] = $meal->getRecipes();
+        }
+
+        $shoppingList = $this
+            ->get('doctrine')
+            ->getRepository('AppBundle:ShoppingListIngredients')
+            ->findByMenu($menu)
+        ;
+
+        $html = $this->renderView(':app/menu:view_pdf.html.twig', [
+            'menu'         => $menu,
+            'meals'        => $meals,
+            'shoppingList' => $shoppingList,
+        ]);
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            200,
+            [
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="menu.pdf"'
+            ]
+        );
     }
 }

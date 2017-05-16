@@ -1,7 +1,8 @@
 @media only screen and (min-width: 768px) {
   #menu-list {
     display: flex;
-    justify-content: space-around; } }
+    flex-wrap: wrap;
+    justify-content: space-between; } }
 #menu-list .ended {
   color: #d9534f; }
 #menu-list .not-ended {
@@ -11,6 +12,12 @@
   border: 1px solid #c1c1c1;
   margin: 10px;
   padding: 10px; }
+  @media only screen and (min-width: 768px) {
+    #menu-list .menu {
+      flex: 0 1 calc(100% * (1/3) - 20px); } }
+  @media only screen and (min-width: 992px) {
+    #menu-list .menu {
+      flex: 0 1 calc(100% * (1/4) - 20px); } }
   #menu-list .menu .menu-date {
     font-weight: bold; }
   #menu-list .menu span {

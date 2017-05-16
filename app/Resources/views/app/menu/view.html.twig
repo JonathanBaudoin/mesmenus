@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <h1>{{ 'menu.from_to'|trans({'%from%': from, '%to%': to})|raw }}</h1>
+    <h1>{{ 'menu.from_to.title'|trans({'%from%': from, '%to%': to})|raw }}</h1>
 
     {# Menu #}
     <table class="table">
@@ -50,6 +50,7 @@
         <p class="center">
             <a class="btn" href="{{ path('app_shoppinglist_view', {'id': menu.getId}) }}" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ 'shoppingList.view'|trans }}</a>
             <a class="btn" href="{{ path('app_menu_edit', {'id': menu.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ 'menu.edit'|trans }}</a>
+            <a class="btn" href="{{ path('app_menu_view_pdf', {'id': menu.id}) }}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ 'menu.view.pdf'|trans }}</a>
         </p>
     </div>
 {% endblock %}

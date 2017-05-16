@@ -76,15 +76,18 @@ ingredient.add.exists:      L'ingrédient %name% existe déjà !
 menu.add:                      Créer un nouveau menu
 menu.edit:                     Modifier le menu
 menu.view:                     Voir le menu
+menu.view.pdf:                 Télécharger le PDF
 menu.form.dateStart:           Premier jour
 menu.form.dateEnd:             Dernier jour
 menu.form.recipes.empty_value: -
 menu.add.success:              Votre menu a bien été créé
 menu.edit.success:             Votre menu a bien été modifié
 menu.from_to:                  '%from%<br />%to%'
+menu.from_to.title:            '%from% au %to%'
 
 
 # SHOPPING LIST
+shoppingList:                           Liste de courses
 shoppingList.view:                      Voir la liste de courses
 shoppingList.generate:                  Générer la liste de courses
 shoppingList.add:                       Modifier la liste de courses

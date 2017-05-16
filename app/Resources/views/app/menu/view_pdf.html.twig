@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Menu{% endblock %}</title>
+
+    <style type="text/css">
+        h1, h2 {
+            text-align: center;
+        }
+        h2::first-letter {
+            text-transform: capitalize;
+        }
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            background-color: gray;
+            color: #ffffff;
+        }
+
+        td, th {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+
+        .lunch, .dinner {
+            width: 50%;
+        }
+
+        td ul li {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .day {
+            text-transform: capitalize;
+        }
+
+
+        #shopping-list li {
+            display: inline-block;
+            width: 28%;
+            margin-right: 2%;
+            padding: 10px;
+            border-left: 1px solid gray;
+        }
+
+        #shopping-list li .quantity {
+            float: right;
+        }
+
+        .name {
+            margin-right: 10px;
+        }
+        .quantity {
+            color: gray;
+        }
+    </style>
+
+</head>
+<body>
+{% set from = menu.dateStart|localizeddate('full', 'none') %}
+{% set to = menu.dateEnd|localizeddate('full', 'none') %}
+<h1><a href="{{ url('homepage') }}">MesMenus.fr</a></h1>
+<h2>{{ 'menu.from_to.title'|trans({'%from%': from, '%to%': to})|raw }}</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th class="day">{{ 'day'|trans }}</th>
+        <th class="lunch">{{ 'lunch'|trans }}</th>
+        <th class="dinner">{{ 'dinner'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for menuDate in range(menu.dateStart|date('U'), menu.dateEnd|date('U'), 86400) %}
+        {% set lunches = meals[menuDate|date('Y-m-d')]['lunch'] %}
+        {% set dinners = meals[menuDate|date('Y-m-d')]['dinner'] %}
+        <tr>
+            <td class="day">{{ menuDate|localizeddate('none', 'none', null, null, 'EEEE') }}</td>
+            <td class="lunch">
+                {% if lunches|length > 0 %}
+                    <ul>
+                        {% for lunch in lunches %}
+                            <li><a href="{{ url('app_recipe_view', {'slug': lunch.slug}) }}" class="recipe">{{ lunch.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </td>
+            <td class="dinner">
+                {% if dinners|length > 0 %}
+                    <ul>
+                        {% for dinner in dinners %}
+                            <li><a href="{{ url('app_recipe_view', {'slug': dinner.slug}) }}" class="recipe">{{ dinner.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h2>{{ 'shoppingList'|trans }}</h2>
+<ul id="shopping-list">
+    {% for ingredient in shoppingList if ingredient.inCart == false %}
+        <li>
+            <span class="name">{{ ingredient.ingredientName }}</span> <span class="quantity">{{ ingredient.amount }} {{ ingredient.measureUnit }}</span>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
