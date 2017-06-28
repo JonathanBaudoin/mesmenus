@@ -38,7 +38,10 @@
     {% endif %}
 
     <div class="center">
-        <input type="submit" id="_submit" name="_submit" value="{{ 'validate'|trans }}" />
+        <input type="submit" id="_submit" name="_submit" value="{{ 'validate'|trans }}" /><br />
+    </div>
+    <div class="center">
+        <a href="{{ path('app_menu_view', {'id': menu.id}) }}" class="btn">{{ 'menu.view'|trans }}</a>
     </div>
     {{ form_end(menuForm) }}
 {% endblock %}
