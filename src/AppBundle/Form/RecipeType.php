@@ -33,7 +33,7 @@ class RecipeType extends AbstractType
             ])
             ->add('preparationTime', NumberType::class, [
                 'label'    => 'recipe.form.preparationTime.label',
-                'required' => true,
+                'required' => false,
                 'attr'     => ['placeholder' => 'recipe.form.minutes.placeholder'],
 
             ])
@@ -64,7 +64,8 @@ class RecipeType extends AbstractType
                 },
             ])
             ->add('instructions', TextareaType::class, [
-                'label' => 'recipe.form.instructions.label',
+                'label'    => 'recipe.form.instructions.label',
+                'required' => false,
             ])
         ;
     }

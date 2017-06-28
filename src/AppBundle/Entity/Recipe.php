@@ -57,8 +57,7 @@ class Recipe
     /**
      * @var int
      *
-     * @ORM\Column(name="preparation_time", type="integer", nullable=false)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="preparation_time", type="integer", nullable=true)
      * @Assert\Type("integer")
      */
     protected $preparationTime;
@@ -90,7 +89,7 @@ class Recipe
     /**
      * @var string
      *
-     * @ORM\Column(name="instructions", type="text")
+     * @ORM\Column(name="instructions", type="text", nullable=true)
      */
     protected $instructions;
 

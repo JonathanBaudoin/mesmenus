@@ -6,9 +6,9 @@
     <div id="recipe">
         <ul id="time">
             <li><i class="fa fa-users" aria-hidden="true"></i> {{ 'recipe.view.eaters.label'|transchoice(recipe.eaters) }}</li>
-            <li><i class="fa fa-hourglass-start" aria-hidden="true"></i> {{ 'recipe.view.preparationTime.label'|transchoice(recipe.preparationTime) }}</li>
-            <li><i class="fa fa-hourglass-half" aria-hidden="true"></i> {{ 'recipe.view.cookingTime.label'|transchoice(recipe.preparationTime) }}</li>
-            <li><i class="fa fa-hourglass-end" aria-hidden="true"></i> {{ 'recipe.view.breakTime.label'|transchoice(recipe.preparationTime) }}</li>
+            {% if recipe.preparationTime is not null %}<li><i class="fa fa-hourglass-start" aria-hidden="true"></i> {{ 'recipe.view.preparationTime.label'|transchoice(recipe.preparationTime) }}</li>{% endif %}
+            {% if recipe.cookingTime is not null %}<li><i class="fa fa-hourglass-half" aria-hidden="true"></i> {{ 'recipe.view.cookingTime.label'|transchoice(recipe.cookingTime) }}</li>{% endif %}
+            {% if recipe.breakTime is not null %}<li><i class="fa fa-hourglass-end" aria-hidden="true"></i> {{ 'recipe.view.breakTime.label'|transchoice(recipe.breakTime) }}</li>{% endif %}
         </ul>
 
         <ul id="ingredients">
