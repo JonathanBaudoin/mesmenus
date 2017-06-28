@@ -10,8 +10,10 @@
         margin-bottom: 10px;
     }
 
-    display: flex;
-    justify-content: space-between;
+    @include breakpoint(tablet) {
+        display: flex;
+        justify-content: space-between;
+    }
 
     #not-in-cart, #in-cart {
         width: 100%;
