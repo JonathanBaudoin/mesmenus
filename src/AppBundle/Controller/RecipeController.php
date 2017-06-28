@@ -148,4 +148,33 @@ class RecipeController extends Controller
     {
         return ['recipe' => $recipe];
     }
+
+    /**
+     * @param Request $request
+     * @param Recipe  $recipe
+     *
+     * @return array|RedirectResponse
+     *
+     * @Route("{slug}/supprimer/", name="app_recipe_delete")
+     * @Template("app/recipe/delete.html.twig")
+     */
+    public function deleteAction(Request $request, Recipe $recipe)
+    {
+        $deleteForm = $this->createFormBuilder()->getForm();
+        $deleteForm->handleRequest($request);
+
+        if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($recipe);
+            $em->flush();
+
+            $this->addFlash('success', $this->get('translator')->trans('recipe.delete.success'));
+            return $this->redirectToRoute('app_recipe_list');
+        }
+
+        return [
+            'recipe'     => $recipe,
+            'deleteForm' => $deleteForm->createView()
+        ];
+    }
 }

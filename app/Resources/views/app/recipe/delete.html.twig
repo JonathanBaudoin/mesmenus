@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>{{ recipe.name }}</h1>
+
+    <p>Voulez-vous vraiment supprimer cette recette ?</p>
+
+    {{ form_start(deleteForm) }}
+        <div class="center">
+            <input class="btn delete" type="submit" id="_submit" name="_submit" value="{{ 'delete'|trans }}" />
+        </div>
+    {{ form_end(deleteForm) }}
+
+{% endblock %}

@@ -59,6 +59,7 @@ recipe.form.submit.add:            Créer ma recette
 recipe.form.submit.edit:           Modifier la recette
 recipe.add.success:                Votre recette a bien été créée
 recipe.edit.success:               La recette a bien été modifiée
+recipe.delete.success:             La recette a bien été supprimée
 
 
 # INGREDIENT

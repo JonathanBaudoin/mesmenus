@@ -23,6 +23,9 @@
         <div class="center">
             <a href="{{ path('app_recipe_edit', {'slug': recipe.slug}) }}" class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ 'recipe.edit'|trans }}</a>
         </div>
+        <div class="center">
+            <a href="{{ path('app_recipe_delete', {'slug': recipe.slug}) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> {{ 'delete'|trans }}</a>
+        </div>
         {% endif %}
     </div>
 {% endblock %}

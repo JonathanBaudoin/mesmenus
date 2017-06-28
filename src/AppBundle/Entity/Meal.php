@@ -59,10 +59,10 @@ class Meal
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Recipe")
+     * @ORM\ManyToMany(targetEntity="Recipe", cascade={"all"}, orphanRemoval=true)
      * @ORM\JoinTable(name="meal_has_recipes",
-     *      joinColumns={@ORM\JoinColumn(name="meal_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="recipe_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="meal_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="recipe_id", referencedColumnName="id", onDelete="CASCADE")}
      *  )
      */
     protected $recipes;
