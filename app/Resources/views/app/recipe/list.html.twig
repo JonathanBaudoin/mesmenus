@@ -9,8 +9,10 @@
     <ul id="recipe-list">
     {% for recipe in pagination %}
         <li>
-            <h2><a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">{{ recipe.name }}</a></h2>
-            <span class="recipe-author">proposée par {{ recipe.user.username }}</span>
+            <a href="{{ path('app_recipe_view', {'slug': recipe.slug}) }}">
+                <span class="recipe-title">{{ recipe.name }}</span>
+                <span class="recipe-author">proposée par {{ recipe.user.username }}</span>
+            </a>
         </li>
     {% endfor %}
     </ul>

@@ -49,6 +49,7 @@ recipe.add:                        Ajouter une recette
 recipe.edit:                       Modifier la recette
 recipe.return:                     Retourner à la recette
 recipe.form.name.label:            Nom de la recette
+recipe.form.public.label:          Partager la recette
 recipe.form.preparationTime.label: Temps de préparation (en minutes)
 recipe.form.cookingTime.label:     Temps de cuisson (en minutes)
 recipe.form.breakTime.label:       Temps de repos (en minutes)

@@ -11,15 +11,33 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Meal;
 use AppBundle\Entity\Menu;
+use AppBundle\Entity\User;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class MenuType extends AbstractType
 {
+    /** @var Registry */
+    protected $doctrine;
+
+    /** @var User|null */
+    protected $user;
+
+    /**
+     * MenuType constructor.
+     *
+     * @param Registry $doctrine
+     */
+    public function __construct(Registry $doctrine, TokenStorageInterface $tokenStorage)
+    {
+        $this->doctrine = $doctrine;
+        $this->user     = $tokenStorage->getToken()->getUser();
+    }
     /**
      * {@inheritdoc}
      */
@@ -53,6 +71,7 @@ class MenuType extends AbstractType
 
         if (!is_null($menu->getId())) {
             $startDate = clone $menu->getDateStart();
+            $recipes   = $this->doctrine->getRepository('AppBundle:Recipe')->findAllQueryBuilder($this->user)->getQuery()->getResult();
 
             for ($d = $startDate; $d <= $menu->getDateEnd(); $d->add(new \DateInterval('P1D'))) {
                 foreach (Meal::$mealTypes as $meal) {
@@ -62,7 +81,8 @@ class MenuType extends AbstractType
                             'required'    => false,
                             'multiple'    => true,
                             'mapped'      => false,
-                            'placeholder' => 'menu.form.recipes.empty_value'
+                            'placeholder' => 'menu.form.recipes.empty_value',
+                            'choices'     => $recipes,
                         ))
                     ;
                 }

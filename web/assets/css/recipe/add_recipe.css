@@ -13,6 +13,10 @@
     #add-recipe #fields-recipe {
       width: 55%;
       padding-right: 10px; } }
+  #add-recipe #fields-recipe #recipe_public_content label {
+    display: inline-block; }
+  #add-recipe #fields-recipe #recipe_public_content input {
+    float: right; }
 #add-recipe #list-ingredients {
   width: 100%; }
   @media only screen and (min-width: 992px) {

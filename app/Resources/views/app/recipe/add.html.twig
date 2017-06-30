@@ -37,6 +37,12 @@
                     {{ form_errors(recipeForm.name) }}
                 </div>
 
+                <div id="recipe_public_content">
+                    {{ form_label(recipeForm.public) }}
+                    {{ form_widget(recipeForm.public) }}
+                    {{ form_errors(recipeForm.public) }}
+                </div>
+
                 <div>
                     {{ form_label(recipeForm.preparationTime) }}
                     {{ form_widget(recipeForm.preparationTime) }}

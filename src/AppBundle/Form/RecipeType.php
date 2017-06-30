@@ -13,6 +13,7 @@ use AppBundle\Repository\IngredientRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -30,6 +31,10 @@ class RecipeType extends AbstractType
             ->add('name', TextType::class, [
                 'label'    => 'recipe.form.name.label',
                 'required' => true,
+            ])
+            ->add('public', CheckboxType::class, [
+                'label'    => 'recipe.form.public.label',
+                'required' => false,
             ])
             ->add('preparationTime', NumberType::class, [
                 'label'    => 'recipe.form.preparationTime.label',

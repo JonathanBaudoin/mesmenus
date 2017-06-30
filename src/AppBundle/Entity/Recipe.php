@@ -101,11 +101,11 @@ class Recipe
     protected $ingredients;
 
     /**
-     * @var int
+     * @var boolean
      *
-     * @ORM\Column(name="status", type="integer")
+     * @ORM\Column(name="public", type="boolean")
      */
-    protected $status = 0;
+    protected $public = 0;
 
 
     public function __construct()
@@ -325,21 +325,22 @@ class Recipe
     }
 
     /**
-     * @return int
+     * @return boolean
      */
-    public function getStatus()
+    public function isPublic()
     {
-        return $this->status;
+        return $this->public;
     }
 
     /**
-     * @param int $status
+     * @param boolean $public
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setPublic($public)
     {
-        $this->status = (int) $status;
+        $this->public = (boolean) $public;
+
         return $this;
     }
 

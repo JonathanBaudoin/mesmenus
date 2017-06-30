@@ -22,6 +22,16 @@
             width: 55%;
             padding-right: 10px;
         }
+
+        #recipe_public_content {
+            label {
+                display: inline-block;
+            }
+
+            input {
+                float: right;
+            }
+        }
     }
 
     #list-ingredients {

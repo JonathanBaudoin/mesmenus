@@ -42,7 +42,7 @@ class RecipeController extends Controller
     {
         /** @var RecipeRepository $recipeRepository */
         $recipeRepository = $this->getDoctrine()->getRepository('AppBundle:Recipe');
-        $qb               = $recipeRepository->findAllQueryBuilder();
+        $qb               = $recipeRepository->findAllQueryBuilder($this->getUser());
         $pagination       = $this->get('app.services.paginator')->paginate($qb, $page);
 
         return [
