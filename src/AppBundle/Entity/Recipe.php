@@ -105,7 +105,7 @@ class Recipe
      *
      * @ORM\Column(name="public", type="boolean")
      */
-    protected $public = 0;
+    protected $public = false;
 
 
     public function __construct()
