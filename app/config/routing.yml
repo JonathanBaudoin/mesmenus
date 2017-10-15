@@ -5,5 +5,8 @@ app:
 user:
     resource: Routing/user.yml
 
+easy_admin_bundle:
+    resource: Routing/admin.yml
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
