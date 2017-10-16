@@ -6,7 +6,8 @@
         <h1>{{ 'user.login.h1'|trans }}</h1>
 
         {% if error %}
-            <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+            <div class="flash-message flash-error">
+                {{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         <form action="{{ path("fos_user_security_check") }}" method="post">

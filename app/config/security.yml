@@ -34,6 +34,10 @@ security:
             logout:
                 path: /deconnexion/
                 target: homepage
+            remember_me:
+                secret: '%secret%'
+                lifetime: 1209600 # 2 weeks
+                path: /
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
