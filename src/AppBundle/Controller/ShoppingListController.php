@@ -117,8 +117,7 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Menu    $menu
+     * @param Menu $menu
      *
      * @return array
      *
@@ -126,7 +125,7 @@ class ShoppingListController extends Controller
      * @Security("has_role('ROLE_USER')")
      * @Template("app/shoppingList/view.html.twig")
      */
-    public function viewAction(Request $request, Menu $menu)
+    public function viewAction(Menu $menu)
     {
         if ($menu->getUser() !== $this->getUser()) {
             throw $this->createNotFoundException();

@@ -11,7 +11,6 @@ namespace AppBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="meal")
@@ -59,10 +58,10 @@ class Meal
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Recipe", cascade={"all"}, orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="Recipe", cascade={"persist"})
      * @ORM\JoinTable(name="meal_has_recipes",
      *      joinColumns={@ORM\JoinColumn(name="meal_id", referencedColumnName="id", onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="recipe_id", referencedColumnName="id", onDelete="CASCADE")}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="recipe_id", referencedColumnName="id")}
      *  )
      */
     protected $recipes;

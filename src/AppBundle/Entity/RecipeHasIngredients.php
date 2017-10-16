@@ -73,7 +73,7 @@ class RecipeHasIngredients implements IngredientInterface
     }
 
     /**
-     * @return int
+     * @return Recipe
      */
     public function getRecipe()
     {

@@ -31,7 +31,8 @@ class MenuType extends AbstractType
     /**
      * MenuType constructor.
      *
-     * @param Registry $doctrine
+     * @param Registry              $doctrine
+     * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(Registry $doctrine, TokenStorageInterface $tokenStorage)
     {

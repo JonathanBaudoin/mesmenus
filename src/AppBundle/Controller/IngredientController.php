@@ -29,7 +29,7 @@ class IngredientController extends Controller
     /**
      * @param Request $request
      *
-     * @return array
+     * @return array|RedirectResponse
      *
      * @Route("ajouter/")
      * @Security("has_role('ROLE_USER')")

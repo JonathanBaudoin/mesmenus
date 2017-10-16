@@ -8,7 +8,6 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\RecipeHasIngredients;
 use Doctrine\Common\DataFixtures\AbstractFixture;
