@@ -102,6 +102,7 @@ shoppingList.ingredient.edit:           Modifier la liste de courses
 shoppingList.ingredient.add.long:       Le produit n'existe pas ?<br />Ajoutez-le à votre liste !
 shoppingList.ingredient.added:          Le produit a bien été ajouté à votre liste de courses
 shoppingList.ingredient.deleted:        Le produit «%product%» a bien été supprimé de votre liste de courses
+shoppingList.ingredient.edited:         Le produit «%product%» a bien été modifié
 shoppingList.empty.explanation: >
     Votre liste de courses est vide. Si vous avez terminé votre menu, vous pouvez la générer. Les ingrédients des recettes
     prévues seront automatiquement importés. Vous pourrez alors compléter la liste.

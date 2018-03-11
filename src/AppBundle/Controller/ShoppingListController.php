@@ -228,6 +228,12 @@ class ShoppingListController extends Controller
                     if ($productForm->isValid()) {
                         $em->persist($product);
                         $em->flush();
+
+                        $this->addFlash('success', $this->get('translator')->trans(
+                            'shoppingList.ingredient.edited',
+                            ['%product%' => $product->getIngredientName()]
+                        ));
+                        return $this->redirectToRoute('app_shoppinglist_view', ['id' => $menu->getId()]);
                     }
                 }
 
