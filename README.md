@@ -1,7 +1,7 @@
 menu
 ====
 
-A Symfony project created on October 31, 2016, 1:37 pm.
+A Symfony3 project created on October 31, 2016, 1:37 pm.
 
 ### Requirements
 
