@@ -30,6 +30,8 @@ bin/console doctrine:fixtures:load
 ### Assets
 ```bash
 bin/console assets:install --symlink
+
+bin/console assetic:watch
 ```
 
 ### Régler pb de droit sur fichier cache et logs
