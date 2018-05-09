@@ -48,7 +48,7 @@ class Ingredient implements IngredientInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="ingredient")
      */
     protected $recipes;
 

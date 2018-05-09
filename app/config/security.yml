@@ -20,12 +20,11 @@ security:
             security: false
 
         main:
-            pattern:   ^/
+            pattern:   .*
             context:   user
             anonymous: true
             form_login:
                 provider:             fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
                 login_path:           /connexion
                 check_path:           /login_check
                 use_forward:          false
@@ -38,8 +37,10 @@ security:
                 secret: '%secret%'
                 lifetime: 1209600 # 2 weeks
                 path: /
+            logout_on_user_change: true
 
     access_control:
+        - { path: ^/connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

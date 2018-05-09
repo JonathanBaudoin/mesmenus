@@ -77,27 +77,6 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Menu    $menu
-     *
-     * @return array|RedirectResponse
-     *
-     * @Route("{id}/liste-de-courses/modifier")
-     * @Security("has_role('ROLE_USER')")
-     * @Template("app/shoppingList/edit.html.twig")
-     */
-    public function editAction(Request $request, Menu $menu)
-    {
-        if ($menu->getUser() !== $this->getUser()) {
-            throw $this->createNotFoundException();
-        }
-
-        return [
-
-        ];
-    }
-
-    /**
      * @param Menu $menu
      *
      * @return RedirectResponse

@@ -8,12 +8,11 @@
 
 namespace AppBundle\Form;
 
-
 use AppBundle\Entity\Meal;
 use AppBundle\Entity\Menu;
 use AppBundle\Entity\User;
-use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +21,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class MenuType extends AbstractType
 {
-    /** @var Registry */
+    /** @var RegistryInterface */
     protected $doctrine;
 
     /** @var User|null */
@@ -31,10 +30,10 @@ class MenuType extends AbstractType
     /**
      * MenuType constructor.
      *
-     * @param Registry              $doctrine
+     * @param RegistryInterface     $doctrine
      * @param TokenStorageInterface $tokenStorage
      */
-    public function __construct(Registry $doctrine, TokenStorageInterface $tokenStorage)
+    public function __construct(RegistryInterface $doctrine, TokenStorageInterface $tokenStorage)
     {
         $this->doctrine = $doctrine;
         $this->user     = $tokenStorage->getToken()->getUser();

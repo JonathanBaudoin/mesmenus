@@ -4,18 +4,18 @@
 parameters:
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
+    database_name:     mesmenus
     database_user:     root
     database_password: ~
-    # You should uncomment this if you want use pdo_sqlite
-    # database_path: "%kernel.root_dir%/data.db3"
 
     mailer_transport:  smtp
+    mailer_port:       ~
     mailer_host:       127.0.0.1
-    mailer_user:       ~
+    mailer_user:       baudoin.jonathan@gmail.com
     mailer_password:   ~
     mailer_sender_name: Mes menus
-    sending_mail_address_in_dev: mail@host.com
+    sending_mail_address_in_dev: baudoin.jonathan@gmail.com
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locale: fr

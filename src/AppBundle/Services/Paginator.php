@@ -9,11 +9,12 @@
 namespace AppBundle\Services;
 
 use Doctrine\ORM\QueryBuilder;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class Paginator
 {
-    /** @var \Knp\Component\Pager\Paginator */
+    /** @var PaginatorInterface */
     protected $paginator;
 
     /** @var RequestStack */
@@ -22,7 +23,7 @@ class Paginator
     /** @var int */
     protected $pageRange;
 
-    public function __construct(\Knp\Component\Pager\Paginator $paginator, RequestStack $requestStack, $pageRange)
+    public function __construct(PaginatorInterface $paginator, RequestStack $requestStack, $pageRange)
     {
         $this->paginator = $paginator;
         $this->request   = $requestStack;

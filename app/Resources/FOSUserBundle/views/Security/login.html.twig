@@ -27,8 +27,6 @@
                     <label for="remember_me">{{ 'user.remember_me'|trans() }}</label>
                 </div>
 
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
                 <div class="center">
                     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
                 </div>

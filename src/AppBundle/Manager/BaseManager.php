@@ -8,13 +8,12 @@
 
 namespace AppBundle\Manager;
 
-
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 class BaseManager
 {
-    /** @var EntityManager */
+    /** @var EntityManagerInterface */
     protected $em;
 
     /** @var EntityRepository */
@@ -23,7 +22,7 @@ class BaseManager
     /** @var string */
     protected $class;
 
-    public function __construct(EntityManager $em, $class)
+    public function __construct(EntityManagerInterface $em, $class)
     {
         $this->em         = $em;
         $this->repository = $em->getRepository($class);
@@ -39,9 +38,9 @@ class BaseManager
     }
 
     /**
-     * @return EntityManager
+     * @return EntityManagerInterface
      */
-    public function getEntityManager(): EntityManager
+    public function getEntityManager(): EntityManagerInterface
     {
         return $this->em;
     }
