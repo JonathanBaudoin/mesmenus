@@ -21,12 +21,19 @@ body {
     //font-size: 12px;
 }
 
+.body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 h1 {
     color: $blue-darker;
 }
 
 a {
     outline: 0;
+    color: $blue-darker;
 }
 
 .hidden {
@@ -37,6 +44,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.justify {
+    text-align: justify;
 }
 
 .error {
@@ -56,6 +67,14 @@ a {
 }
 .float-right {
     float: right;
+}
+
+.list {
+    padding-left: 30px;
+
+    li {
+        list-style: circle;
+    }
 }
 
 #header-nav {
@@ -134,6 +153,7 @@ a {
 
 #content {
 
+    flex-grow: 1;
     .flash-message {
         margin: 10px 0 10px 0;
         padding: 10px;
@@ -164,6 +184,33 @@ a {
     }
 
     width: $content-width-tablet;
+
+    @include breakpoint(desktop) {
+        width: $content-width-desktop;
+        margin: auto;
+    }
+}
+
+footer {
+    display: flex;
+    align-self: flex-end;
+    width: $content-width-tablet;
+
+    min-height: 60px;
+    background-color: $blue-darker;
+    padding-left: 10px;
+
+    a {
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            color: $white;
+            text-decoration: underline;
+        }
+    }
 
     @include breakpoint(desktop) {
         width: $content-width-desktop;

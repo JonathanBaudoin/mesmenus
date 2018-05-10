@@ -10,10 +10,21 @@ class AppController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     *
      * @Template("app/index.html.twig")
      */
     public function indexAction()
     {
         return [];
+    }
+
+    /**
+     * @Route("/a-propos")
+     *
+     * @Template("app/about.html.twig")
+     */
+    public function aboutAction()
+    {
+
     }
 }

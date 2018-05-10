@@ -32,20 +32,21 @@
                     </ul>
                 </div>
                 {% block header %}
-                    {{ include('header.html.twig') }}
+                    {{ include('_header.html.twig') }}
                 {% endblock header %}
 
                 {% block nav %}
-                    {{ include('nav.html.twig') }}
+                    {{ include('_nav.html.twig') }}
                 {% endblock nav %}
             </div>
 
-            <div id="content">
-                {{ include('flash-message.html.twig') }}
+            <main id="content">
+                {{ include('_flash-message.html.twig') }}
                 {% block content %}{% endblock %}
-            </div>
+            </main>
 
             {% block footer %}
+                {{ include('_footer.html.twig') }}
             {% endblock footer %}
         </div>
         {% javascripts

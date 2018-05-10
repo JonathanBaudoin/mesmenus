@@ -13,6 +13,8 @@ measureUnit:  Unité de mesure
 product:      Produit
 product.name: Nom du produit
 
+about: À propos
+
 
 # NAVIGATION MENU
 menu.homepage.label: Accueil
