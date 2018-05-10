@@ -11,7 +11,7 @@
             {% if recipe.breakTime is not null %}<li><i class="fa fa-hourglass-end" aria-hidden="true"></i> {{ 'recipe.view.breakTime.label'|transchoice(recipe.breakTime) }}</li>{% endif %}
         </ul>
 
-        <ul id="ingredients">
+        <ul id="ingredients" class="list">
         {% for ingredient in recipe.ingredients %}
             <li><span class="ingredient-name">{{ ingredient.name }} :</span> {{ ingredient.amount|number_format(1, ',', ' ') }} {{ ingredient.measureUnit }}</li>
         {% endfor %}

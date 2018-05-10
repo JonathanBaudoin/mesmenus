@@ -2,8 +2,8 @@
 @import "../breakpoints";
 
 #recipe-list {
-
     margin-bottom: 20px;
+    display: flex;
 
     @include breakpoint(tablet) {
         display: flex;
@@ -12,6 +12,7 @@
     }
 
     li {
+        display: flex;
         margin-bottom: 10px;
 
         a {
