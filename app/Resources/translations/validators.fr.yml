@@ -2,4 +2,6 @@ menu.dateStart.gte.today: Le premier jour ne peut pas être déjà passé.
 menu.dateEnd.gte.today: Le dernier jour ne peut pas être déjà passé.
 menu.dateEnd.gte.dateStart: Le dernier jour ne doit pas être avant le premier.
 
-shoppingListIngredient.name.not_null: Veuillez ajouter un produit
+shoppingListIngredient.name.not_null: Veuillez ajouter un produit.
+
+recipe.type.incorrect: Ce type de recette est inccorect.

@@ -10,10 +10,12 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Meal;
 use AppBundle\Entity\Menu;
+use AppBundle\Entity\Recipe;
 use AppBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -66,6 +68,16 @@ class MenuType extends AbstractType
                 'attr'     => [
                     'data-date-format' => $dateFormat
                 ]
+            ))
+            ->add('autoFilled', ChoiceType::class, array(
+                'label'        => 'menu.form.autoFilled.label',
+                'mapped'       => false,
+                'expanded'     => true,
+                'multiple'     => true,
+                'choices'      => Recipe::$recipeTypes,
+                'choice_label' => function ($value, $key, $index) {
+                    return ucfirst($value);
+                }
             ))
         ;
 

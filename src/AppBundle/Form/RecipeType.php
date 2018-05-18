@@ -8,17 +8,21 @@
 
 namespace AppBundle\Form;
 
-
+use AppBundle\Entity\Recipe;
 use AppBundle\Repository\IngredientRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class RecipeType
+ */
 class RecipeType extends AbstractType
 {
     /**
@@ -30,6 +34,15 @@ class RecipeType extends AbstractType
             ->add('name', TextType::class, [
                 'label'    => 'recipe.form.name.label',
                 'required' => true,
+            ])
+            ->add('recipeType', ChoiceType::class, [
+                'label'        => 'recipe.form.recipeType.label',
+                'required'     => true,
+                'placeholder'  => 'recipe.form.recipeType.placeholder',
+                'choices'      => Recipe::$recipeTypes,
+                'choice_label' => function ($value, $key, $index) {
+                    return ucfirst($value);
+                }
             ])
             ->add('public', CheckboxType::class, [
                 'label'    => 'recipe.form.public.label',

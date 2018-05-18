@@ -19,6 +19,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Recipe
 {
+    static public $recipeTypes = [
+        'entrée'  => 'entrée',
+        'plat'    => 'plat',
+        'dessert' => 'dessert'
+    ];
+
     /**
      * @var integer
      *
@@ -99,6 +105,19 @@ class Recipe
      * @ORM\OneToMany(targetEntity="RecipeHasIngredients", mappedBy="recipe", orphanRemoval=true, cascade={"persist"})
      */
     protected $ingredients;
+
+    /**
+     * Entrée, plat ou dessert ?
+     *
+     * @var string
+     *
+     * @ORM\Column(name="recipe_type", type="string", nullable=false, length=25)
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(max=25)
+     */
+    protected $recipeType;
 
     /**
      * @var boolean
@@ -344,4 +363,30 @@ class Recipe
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getRecipeType()
+    {
+        return $this->recipeType;
+    }
+
+    /**
+     * @param string $recipeType
+     * @return $this
+     */
+    public function setRecipeType($recipeType)
+    {
+        $this->recipeType = $recipeType;
+
+        return $this;
+    }
+
+    /**
+     * @Assert\IsTrue(message="recipe.type.incorrect")
+     */
+    public function isRecipeTypeCorrect()
+    {
+        return in_array($this->recipeType, self::$recipeTypes);
+    }
 }

@@ -13,6 +13,10 @@ measureUnit:  Unité de mesure
 product:      Produit
 product.name: Nom du produit
 
+entrée:  entrée
+plat:    plat
+dessert: dessert
+
 about: À propos
 
 
@@ -45,24 +49,26 @@ recipe.view.preparationTime.label: '{0,1}Préparation : %count% minute|]1,Inf[Pr
 recipe.view.cookingTime.label:     '{0,1}Cuisson : %count% minute|]1,Inf[Cuisson : %count% minutes'
 recipe.view.breakTime.label:       '{0,1}Repos : %count% minute|]1,Inf[Repos : %count% minutes'
 
-recipe.list.h1:                    Toutes les recettes
-recipe.add.h1:                     Ajouter une recette
-recipe.add:                        Ajouter une recette
-recipe.edit:                       Modifier la recette
-recipe.return:                     Retourner à la recette
-recipe.form.name.label:            Nom de la recette
-recipe.form.public.label:          Partager la recette
-recipe.form.preparationTime.label: Temps de préparation (en minutes)
-recipe.form.cookingTime.label:     Temps de cuisson (en minutes)
-recipe.form.breakTime.label:       Temps de repos (en minutes)
-recipe.form.eaters.label:          Nombre de personnes
-recipe.form.instructions.label:    Instructions
-recipe.form.minutes.placeholder:   'ex: 60'
-recipe.form.submit.add:            Créer ma recette
-recipe.form.submit.edit:           Modifier la recette
-recipe.add.success:                Votre recette a bien été créée
-recipe.edit.success:               La recette a bien été modifiée
-recipe.delete.success:             La recette a bien été supprimée
+recipe.list.h1:                     Toutes les recettes
+recipe.add.h1:                      Ajouter une recette
+recipe.add:                         Ajouter une recette
+recipe.edit:                        Modifier la recette
+recipe.return:                      Retourner à la recette
+recipe.form.name.label:             Nom de la recette
+recipe.form.recipeType.label:       Type de la recette
+recipe.form.public.label:           Partager la recette
+recipe.form.preparationTime.label:  Temps de préparation (en minutes)
+recipe.form.cookingTime.label:      Temps de cuisson (en minutes)
+recipe.form.breakTime.label:        Temps de repos (en minutes)
+recipe.form.eaters.label:           Nombre de personnes
+recipe.form.instructions.label:     Instructions
+recipe.form.minutes.placeholder:    'ex: 60'
+recipe.form.recipeType.placeholder: Choisissez un type
+recipe.form.submit.add:             Créer ma recette
+recipe.form.submit.edit:            Modifier la recette
+recipe.add.success:                 Votre recette a bien été créée
+recipe.edit.success:                La recette a bien été modifiée
+recipe.delete.success:              La recette a bien été supprimée
 
 
 # INGREDIENT
@@ -83,6 +89,7 @@ menu.view:                     Voir le menu
 menu.view.pdf:                 Télécharger le PDF
 menu.form.dateStart:           Premier jour
 menu.form.dateEnd:             Dernier jour
+menu.form.autoFilled.label:    Remplir automatiquement les repas vides du menu ?
 menu.form.recipes.empty_value: -
 menu.add.success:              Votre menu a bien été créé
 menu.edit.success:             Votre menu a bien été modifié

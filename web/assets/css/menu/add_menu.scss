@@ -13,6 +13,22 @@
     }
 }
 
+#menu-auto-filled {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    input {
+        margin-left: 25px;
+    }
+
+    #menu_autoFilled {
+        input, label {
+            display: inline;
+        }
+    }
+}
+
 .table {
     #day {
         width: 50px;

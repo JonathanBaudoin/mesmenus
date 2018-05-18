@@ -14,9 +14,16 @@
             <div class="widget">{{ form_widget(menuForm.dateEnd) }}</div>
             <div class="errors">{{ form_errors(menuForm.dateEnd) }}</div>
         </div>
+
     </div>
 
     {% if menu.id is not null %}
+    <div id="menu-auto-filled">
+        <div class="label">{{ form_label(menuForm.autoFilled) }}</div>
+        <div class="widget">{{ form_widget(menuForm.autoFilled) }}</div>
+        <div class="errors">{{ form_errors(menuForm.autoFilled) }}</div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
