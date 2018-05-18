@@ -69,10 +69,10 @@ class MenuController extends Controller
         $menuForm->handleRequest($request);
 
         if ($menuForm->isSubmitted()) {
-            $autoFilled = $menuForm->get('autoFilled')->getData();
             $startDate  = clone $menu->getDateStart();
 
             if (!is_null($menu->getId())) {
+                $autoFilled = $menuForm->get('autoFilled')->getData();
                 $usedRecipes   = [];
                 $unfilledMeals = 0;
 
