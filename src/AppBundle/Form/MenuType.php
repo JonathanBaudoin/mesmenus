@@ -69,19 +69,22 @@ class MenuType extends AbstractType
                     'data-date-format' => $dateFormat
                 ]
             ))
-            ->add('autoFilled', ChoiceType::class, array(
-                'label'        => 'menu.form.autoFilled.label',
-                'mapped'       => false,
-                'expanded'     => true,
-                'multiple'     => true,
-                'choices'      => Recipe::$recipeTypes,
-                'choice_label' => function ($value, $key, $index) {
-                    return ucfirst($value);
-                }
-            ))
         ;
 
         if (!is_null($menu->getId())) {
+            $builder
+                ->add('autoFilled', ChoiceType::class, array(
+                    'label'        => 'menu.form.autoFilled.label',
+                    'mapped'       => false,
+                    'expanded'     => true,
+                    'multiple'     => true,
+                    'choices'      => Recipe::$recipeTypes,
+                    'choice_label' => function ($value, $key, $index) {
+                        return ucfirst($value);
+                    }
+                ))
+            ;
+
             $startDate = clone $menu->getDateStart();
             $recipes   = $this->doctrine->getRepository('AppBundle:Recipe')->findAllQueryBuilder($this->user)->getQuery()->getResult();
 
