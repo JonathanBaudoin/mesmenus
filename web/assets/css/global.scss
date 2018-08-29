@@ -6,13 +6,19 @@ $content-width-desktop: 960px;
 $content-width-tablet: 100%;
 $content-width-mobile: 100%;
 
-body, div, ul, li, a, a:hover, h1, h2, h3, h4, h5, h6 {
+body, div, ul, li, h1, h2, h3, h4, h5, h6 {
     list-style: none;
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    color: #555555;
+}
 
+p, li {
+    color: $text;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: $link;
 }
 
 body {
@@ -200,16 +206,33 @@ footer {
     background-color: $blue-darker;
     padding-left: 10px;
 
-    a {
-        color: $white;
+    ul {
         display: flex;
-        align-items: center;
-        justify-content: center;
 
-        &:hover {
-            color: $white;
-            text-decoration: underline;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 50px;
+
+            a {
+                color: $white;
+
+                &:hover {
+                    color: $white;
+                    text-decoration: underline;
+                }
+            }
+
+            i {
+                text-decoration: none;
+
+                &.fa-github {
+                    font-size: 150%;
+                }
+            }
         }
+
     }
 
     @include breakpoint(desktop) {

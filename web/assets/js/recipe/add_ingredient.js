@@ -14,7 +14,7 @@ AddIngredient.prototype = {
             e.preventDefault();
 
             var ingredientForm = $('#add-ingredient #ingredient-form');
-            ingredientForm.show('slow');
+            ingredientForm.show();
             $(this).hide();
 
             var contentMessage = $('#add-ingredient-message');
@@ -25,6 +25,8 @@ AddIngredient.prototype = {
 
                 var ingredientName = $('#add-ingredient #ingredient-form #ingredient_name').val();
                 contentMessage.removeClass();
+
+                console.log('toto');
 
                 $.ajax({
                     url: $('#add-ingredient #ingredient-form #ingredient_form').attr('action'),
@@ -46,8 +48,8 @@ AddIngredient.prototype = {
                                 '</div>'
                             );
 
-                            ingredientForm.hide('slow');
-                            $('#add-ingredient #ingredient-button .btn').show();
+                            // ingredientForm.hide('slow');
+                            // $('#add-ingredient #ingredient-button .btn').show();
                             $('#add-ingredient #ingredient-form #ingredient_name').val('');
                         }
                     }

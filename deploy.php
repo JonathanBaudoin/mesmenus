@@ -10,7 +10,7 @@ require 'recipe/symfony3.php';
 serverList('./app/config/servers.yml');
 
 // Set configurations
-set('repository', 'git@bitbucket.org:JonathanBaudoin/mesmenus.git');
+set('repository', 'git@github.com:JonathanBaudoin/mesmenus.git');
 set('keep_releases', 5);
 set('shared_files', ['app/config/parameters.yml']);
 set('shared_dirs', [

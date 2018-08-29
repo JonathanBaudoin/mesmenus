@@ -27,4 +27,14 @@ class AppController extends Controller
     {
 
     }
+
+    /**
+     * @Route("/participer")
+     *
+     * @Template("app/participate.html.twig")
+     */
+    public function participateAction()
+    {
+
+    }
 }
